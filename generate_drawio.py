@@ -9,6 +9,7 @@ Usage:
 
 import argparse
 import json
+import os
 import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
@@ -1259,62 +1260,140 @@ def load_project_data(filepath: str) -> dict:
     return data
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Generate draw.io swimlane timeline diagrams from project JSON data."
-    )
-    parser.add_argument(
-        "input",
-        help="Input project JSON file"
-    )
-    parser.add_argument(
-        "-o", "--output",
-        default="output.drawio",
-        help="Output draw.io file (default: output.drawio)"
-    )
+def process_single_file(input_path: str, output_path: str = None) -> bool:
+    """Process a single project JSON file and generate draw.io output.
 
-    args = parser.parse_args()
+    Returns True on success, False on failure.
+    """
+    global _id_counter
+    _id_counter = 0  # Reset ID counter for each file
+
+    # Auto-generate output path if not specified
+    if output_path is None:
+        base_name = os.path.splitext(input_path)[0]
+        output_path = f"{base_name}.drawio"
 
     try:
         # Load project data
-        print(f"Loading project data from {args.input}...")
-        data = load_project_data(args.input)
+        print(f"\nProcessing: {input_path}")
+        data = load_project_data(input_path)
 
         # Generate draw.io XML
-        print("Generating draw.io diagram...")
         generator = DrawioGenerator(data)
         xml_output = generator.generate()
 
         # Write output file
-        with open(args.output, "w", encoding="utf-8") as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write(xml_output)
 
-        print(f"Successfully generated {args.output}")
+        print(f"  -> Generated: {output_path}")
 
         # Print summary
         num_tasks = len(data.get("tasks", []))
         num_milestones = len(data.get("milestones", []))
         num_workstreams = len(data.get("workstreams", []))
         num_risks = len(data.get("risks", []))
-
         num_markers = len(data.get("date_markers", []))
 
-        print(f"\nDiagram contains:")
-        print(f"  - {num_workstreams} workstreams")
-        print(f"  - {num_tasks} tasks")
-        print(f"  - {num_milestones} milestones")
-        print(f"  - {len(data.get('dependencies', []))} dependencies")
-        print(f"  - {num_markers} date markers")
-        print(f"  - {num_risks} risks")
+        print(f"     {num_workstreams} workstreams, {num_tasks} tasks, {num_milestones} milestones, {num_markers} markers, {num_risks} risks")
+        return True
 
     except FileNotFoundError:
-        print(f"Error: File '{args.input}' not found", file=sys.stderr)
-        sys.exit(1)
+        print(f"  Error: File not found", file=sys.stderr)
+        return False
     except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON in '{args.input}': {e}", file=sys.stderr)
-        sys.exit(1)
+        print(f"  Error: Invalid JSON - {e}", file=sys.stderr)
+        return False
     except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr)
+        print(f"  Error: {e}", file=sys.stderr)
+        return False
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Generate draw.io swimlane timeline diagrams from project JSON data.",
+        epilog="""
+Examples:
+  %(prog)s project.json                     # Single file -> project.drawio
+  %(prog)s project.json -o output.drawio    # Single file with custom output
+  %(prog)s proj1.json proj2.json proj3.json # Multiple files -> proj1.drawio, proj2.drawio, proj3.drawio
+  %(prog)s --dir ./projects                 # All JSON files in directory
+  %(prog)s --dir ./projects -o ./output     # All JSON files, output to different directory
+        """,
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "inputs",
+        nargs="*",
+        help="Input project JSON file(s)"
+    )
+    parser.add_argument(
+        "-o", "--output",
+        help="Output path. For single file: output filename. For multiple files/directory: output directory."
+    )
+    parser.add_argument(
+        "-d", "--dir",
+        help="Process all .json files in the specified directory"
+    )
+
+    args = parser.parse_args()
+
+    # Collect input files
+    input_files = []
+
+    if args.dir:
+        # Process directory
+        if not os.path.isdir(args.dir):
+            print(f"Error: Directory '{args.dir}' not found", file=sys.stderr)
+            sys.exit(1)
+
+        for filename in sorted(os.listdir(args.dir)):
+            if filename.endswith(".json"):
+                input_files.append(os.path.join(args.dir, filename))
+
+        if not input_files:
+            print(f"Error: No .json files found in '{args.dir}'", file=sys.stderr)
+            sys.exit(1)
+    elif args.inputs:
+        input_files = args.inputs
+    else:
+        parser.print_help()
+        sys.exit(1)
+
+    # Process files
+    success_count = 0
+    fail_count = 0
+
+    if len(input_files) == 1 and args.output and not os.path.isdir(args.output):
+        # Single file with specific output filename
+        if process_single_file(input_files[0], args.output):
+            success_count += 1
+        else:
+            fail_count += 1
+    else:
+        # Multiple files or directory output
+        output_dir = args.output if args.output else None
+
+        if output_dir and not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        for input_path in input_files:
+            if output_dir:
+                base_name = os.path.splitext(os.path.basename(input_path))[0]
+                output_path = os.path.join(output_dir, f"{base_name}.drawio")
+            else:
+                output_path = None  # Auto-generate in same directory as input
+
+            if process_single_file(input_path, output_path):
+                success_count += 1
+            else:
+                fail_count += 1
+
+    # Summary
+    print(f"\n{'='*40}")
+    print(f"Processed {success_count + fail_count} file(s): {success_count} succeeded, {fail_count} failed")
+
+    if fail_count > 0:
         sys.exit(1)
 
 
