@@ -90,6 +90,14 @@ class DrawioGenerator:
         self.project_start = parse_date(self.project["start_date"])
         self.project_end = parse_date(self.project["end_date"])
 
+        # Calculate visual end date (extend to Saturday of the week containing project_end)
+        # Python weekday: Monday=0, Tuesday=1, ..., Saturday=5, Sunday=6
+        days_until_saturday = (5 - self.project_end.weekday()) % 7
+        if days_until_saturday == 0 and self.project_end.weekday() != 5:
+            # If it's Sunday, go to next Saturday
+            days_until_saturday = 6
+        self.visual_end = self.project_end + timedelta(days=days_until_saturday)
+
         # Build risk lookup by affected item
         self.risks_by_item = {}
         for risk in self.risks:
@@ -184,7 +192,7 @@ class DrawioGenerator:
 
     def calculate_diagram_size(self) -> tuple[float, float]:
         """Calculate total diagram dimensions."""
-        days = (self.project_end - self.project_start).days
+        days = (self.visual_end - self.project_start).days
         width = SWIMLANE_HEADER_WIDTH + (days * PIXELS_PER_DAY) + 50
 
         # Sum up all swimlane heights
@@ -255,9 +263,9 @@ class DrawioGenerator:
 
         total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
 
-        # Iterate through each day in the project range
+        # Iterate through each day in the visual range (extends to end of week)
         current = self.project_start
-        while current <= self.project_end:
+        while current <= self.visual_end:
             # Check if it's Saturday (5) or Sunday (6)
             if current.weekday() in (5, 6):
                 x = date_to_x(current, self.project_start)
@@ -311,7 +319,7 @@ class DrawioGenerator:
         week_num = 1
         current = first_sunday
 
-        while current <= self.project_end + timedelta(days=7):
+        while current <= self.visual_end:
             x = date_to_x(current, self.project_start)
 
             # Sunday vertical line (solid, darker) - marks start of week
