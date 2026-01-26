@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Management Schema",
+  "description": "Schema for project management data that generates draw.io swimlane timeline diagrams",
+  "type": "object",
+  "required": ["project"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["start_date", "end_date"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Project name"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Project start date (ISO 8601 format: YYYY-MM-DD)"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Project end date (ISO 8601 format: YYYY-MM-DD)"
+        },
+        "time_unit": {
+          "type": "string",
+          "enum": ["week", "month"],
+          "default": "week",
+          "description": "Time unit for timeline markers"
+        }
+      }
+    },
+    "workstreams": {
+      "type": "array",
+      "description": "List of workstreams (swimlanes)",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the workstream"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name for the workstream"
+          },
+          "color": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$",
+            "description": "Hex color code for the workstream"
+          }
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "description": "List of tasks",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "workstream", "start", "end"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the task"
+          },
+          "name": {
+            "type": "string",
+            "description": "Task name"
+          },
+          "workstream": {
+            "type": "string",
+            "description": "ID of the workstream this task belongs to"
+          },
+          "start": {
+            "type": "string",
+            "format": "date",
+            "description": "Task start date (ISO 8601 format: YYYY-MM-DD)"
+          },
+          "end": {
+            "type": "string",
+            "format": "date",
+            "description": "Task end date (ISO 8601 format: YYYY-MM-DD)"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Person responsible for the task"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["not_started", "in_progress", "complete", "on_track", "at_risk", "delayed", "blocked"],
+            "description": "Current status of the task"
+          },
+          "percent_complete": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Percentage of task completion"
+          }
+        }
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "description": "List of milestones",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "date", "workstream"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the milestone"
+          },
+          "name": {
+            "type": "string",
+            "description": "Milestone name"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Milestone target date (ISO 8601 format: YYYY-MM-DD)"
+          },
+          "workstream": {
+            "type": "string",
+            "description": "ID of the workstream this milestone belongs to"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["on_track", "at_risk", "delayed", "complete"],
+            "description": "Current status of the milestone"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "List of dependencies between tasks/milestones",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "ID of the source task/milestone"
+          },
+          "to": {
+            "type": "string",
+            "description": "ID of the target task/milestone"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["finish_to_start", "start_to_start", "finish_to_finish", "start_to_finish"],
+            "default": "finish_to_start",
+            "description": "Type of dependency relationship"
+          }
+        }
+      }
+    },
+    "date_markers": {
+      "type": "array",
+      "description": "Vertical marker lines for important dates",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "date"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the marker"
+          },
+          "name": {
+            "type": "string",
+            "description": "Label for the marker line"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date for the marker (ISO 8601 format: YYYY-MM-DD)"
+          },
+          "color": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$",
+            "default": "#FF0000",
+            "description": "Hex color code for the marker line"
+          },
+          "style": {
+            "type": "string",
+            "enum": ["dashed", "dotted", "solid"],
+            "default": "dashed",
+            "description": "Line style for the marker"
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "description": "List of project risks",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the risk"
+          },
+          "name": {
+            "type": "string",
+            "description": "Risk name/title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the risk"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["low", "medium", "high"],
+            "description": "Severity level of the risk"
+          },
+          "likelihood": {
+            "type": "string",
+            "enum": ["low", "medium", "high"],
+            "description": "Likelihood of the risk occurring"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["open", "monitoring", "mitigated", "closed"],
+            "description": "Current status of the risk"
+          },
+          "mitigation": {
+            "type": "string",
+            "description": "Mitigation strategy for the risk"
+          },
+          "affected": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of task/milestone IDs affected by this risk"
+          }
+        }
+      }
+    }
+  }
+}
