@@ -368,7 +368,7 @@
   ],
   "risks": [
     {
-      "id": "risk1",
+      "id": "1",
       "name": "ATO Delay",
       "description": "Security review process may take longer than anticipated",
       "severity": "high",
@@ -378,7 +378,7 @@
       "affected": ["ato2", "ato3", "ms3"]
     },
     {
-      "id": "risk2",
+      "id": "2",
       "name": "GCP Environment Access",
       "description": "Service account permissions and VPC setup may face delays",
       "severity": "medium",
@@ -388,7 +388,7 @@
       "affected": ["gcp3", "gcp4", "ms1"]
     },
     {
-      "id": "risk3",
+      "id": "3",
       "name": "DocAI Performance",
       "description": "Document processing may not meet latency requirements",
       "severity": "medium",

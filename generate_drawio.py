@@ -35,15 +35,15 @@ SEVERITY_COLORS = {
 }
 
 # Layout constants
-SWIMLANE_HEADER_WIDTH = 120
+SWIMLANE_HEADER_WIDTH = 150
 SWIMLANE_MIN_HEIGHT = 60
-TIMELINE_HEADER_HEIGHT = 50
-PIXELS_PER_DAY = 8
-TASK_HEIGHT = 30
+TIMELINE_HEADER_HEIGHT = 70
+PIXELS_PER_DAY = 30
+TASK_HEIGHT = 32
 TASK_VERTICAL_PADDING = 8  # Padding between stacked tasks
 TASK_TOP_PADDING = 15  # Padding from top of swimlane
 MILESTONE_SIZE = 20
-RISK_MARKER_SIZE = 12
+RISK_MARKER_SIZE = 16
 TABLE_ROW_HEIGHT = 30
 TABLE_START_Y_OFFSET = 80
 
@@ -280,7 +280,7 @@ class DrawioGenerator:
             current += timedelta(days=1)
 
     def add_timeline_header(self, root: ET.Element):
-        """Add timeline header with week/month markers aligned to Mondays."""
+        """Add timeline header with week markers aligned to Sundays (Sun-Sat weeks)."""
         width, _ = self.calculate_diagram_size()
         total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
 
@@ -300,26 +300,22 @@ class DrawioGenerator:
         geom.set("height", str(TIMELINE_HEADER_HEIGHT))
         geom.set("as", "geometry")
 
-        time_unit = self.project.get("time_unit", "week")
-
-        # Find the first Monday on or after project start
+        # Find the first Sunday on or before project start
         current = self.project_start
-        days_until_monday = (7 - current.weekday()) % 7
-        if days_until_monday > 0:
-            first_monday = current + timedelta(days=days_until_monday)
-        else:
-            first_monday = current  # Already a Monday
+        # Python weekday: Monday=0, Sunday=6
+        # We want to find the Sunday before or on current date
+        days_since_sunday = (current.weekday() + 1) % 7
+        first_sunday = current - timedelta(days=days_since_sunday)
 
-        # Add week markers aligned to Mondays
+        # Add week markers aligned to Sundays
         week_num = 1
-        current = first_monday
+        current = first_sunday
 
         while current <= self.project_end + timedelta(days=7):
             x = date_to_x(current, self.project_start)
 
-            # Only draw if within visible area
-            if x >= SWIMLANE_HEADER_WIDTH:
-                # Monday vertical line (solid, darker)
+            # Sunday vertical line (solid, darker) - marks start of week
+            if x >= SWIMLANE_HEADER_WIDTH - PIXELS_PER_DAY:
                 line_cell = ET.SubElement(root, "mxCell")
                 line_cell.set("id", generate_id())
                 line_cell.set("value", "")
@@ -341,7 +337,10 @@ class DrawioGenerator:
                 target.set("y", str(int(TIMELINE_HEADER_HEIGHT + total_swimlane_height)))
                 target.set("as", "targetPoint")
 
-                # Week label with date
+            # Only draw labels if within visible area
+            if x >= SWIMLANE_HEADER_WIDTH:
+                # Week label with date range
+                week_end = current + timedelta(days=6)
                 label = f"W{week_num}: {current.strftime('%b %d')}"
 
                 label_cell = ET.SubElement(root, "mxCell")
@@ -353,52 +352,84 @@ class DrawioGenerator:
 
                 label_geom = ET.SubElement(label_cell, "mxGeometry")
                 label_geom.set("x", str(int(x + 2)))
-                label_geom.set("y", "5")
-                label_geom.set("width", str(int(PIXELS_PER_DAY * 5)))
+                label_geom.set("y", "3")
+                label_geom.set("width", str(int(PIXELS_PER_DAY * 7)))
                 label_geom.set("height", "15")
                 label_geom.set("as", "geometry")
 
-                # Add day labels (M T W T F) below week label
-                day_labels = ["M", "T", "W", "T", "F"]
-                for day_idx, day_label in enumerate(day_labels):
-                    day_x = x + (day_idx * PIXELS_PER_DAY)
+            # Add day labels (S M T W T F S) and day numbers for all 7 days
+            day_labels = ["S", "M", "T", "W", "T", "F", "S"]
+            for day_idx, day_label in enumerate(day_labels):
+                day_date = current + timedelta(days=day_idx)
+                day_x = date_to_x(day_date, self.project_start)
 
-                    day_cell = ET.SubElement(root, "mxCell")
-                    day_cell.set("id", generate_id())
-                    day_cell.set("value", day_label)
-                    day_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontColor=#666666;")
-                    day_cell.set("vertex", "1")
-                    day_cell.set("parent", "1")
+                # Only draw if within visible area
+                if day_x < SWIMLANE_HEADER_WIDTH:
+                    continue
 
-                    day_geom = ET.SubElement(day_cell, "mxGeometry")
-                    day_geom.set("x", str(int(day_x)))
-                    day_geom.set("y", "25")
-                    day_geom.set("width", str(PIXELS_PER_DAY))
-                    day_geom.set("height", "15")
-                    day_geom.set("as", "geometry")
+                # Day letter
+                day_cell = ET.SubElement(root, "mxCell")
+                day_cell.set("id", generate_id())
+                day_cell.set("value", day_label)
+                # Weekend days in grey
+                if day_idx in (0, 6):  # Sunday or Saturday
+                    day_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;fontStyle=1;"
+                else:
+                    day_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#333333;fontStyle=1;"
+                day_cell.set("style", day_style)
+                day_cell.set("vertex", "1")
+                day_cell.set("parent", "1")
 
-                    # Light vertical gridline for each weekday
-                    if day_idx > 0:  # Skip Monday, already has a line
-                        day_line = ET.SubElement(root, "mxCell")
-                        day_line.set("id", generate_id())
-                        day_line.set("value", "")
-                        day_line.set("style", "endArrow=none;html=1;strokeColor=#E0E0E0;strokeWidth=1;")
-                        day_line.set("edge", "1")
-                        day_line.set("parent", "1")
+                day_geom = ET.SubElement(day_cell, "mxGeometry")
+                day_geom.set("x", str(int(day_x)))
+                day_geom.set("y", "22")
+                day_geom.set("width", str(PIXELS_PER_DAY))
+                day_geom.set("height", "14")
+                day_geom.set("as", "geometry")
 
-                        day_line_geom = ET.SubElement(day_line, "mxGeometry")
-                        day_line_geom.set("relative", "1")
-                        day_line_geom.set("as", "geometry")
+                # Day number
+                day_num = day_date.day
+                num_cell = ET.SubElement(root, "mxCell")
+                num_cell.set("id", generate_id())
+                num_cell.set("value", str(day_num))
+                # Weekend days in grey
+                if day_idx in (0, 6):  # Sunday or Saturday
+                    num_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;"
+                else:
+                    num_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#666666;"
+                num_cell.set("style", num_style)
+                num_cell.set("vertex", "1")
+                num_cell.set("parent", "1")
 
-                        day_source = ET.SubElement(day_line_geom, "mxPoint")
-                        day_source.set("x", str(int(day_x)))
-                        day_source.set("y", str(TIMELINE_HEADER_HEIGHT))
-                        day_source.set("as", "sourcePoint")
+                num_geom = ET.SubElement(num_cell, "mxGeometry")
+                num_geom.set("x", str(int(day_x)))
+                num_geom.set("y", "38")
+                num_geom.set("width", str(PIXELS_PER_DAY))
+                num_geom.set("height", "14")
+                num_geom.set("as", "geometry")
 
-                        day_target = ET.SubElement(day_line_geom, "mxPoint")
-                        day_target.set("x", str(int(day_x)))
-                        day_target.set("y", str(int(TIMELINE_HEADER_HEIGHT + total_swimlane_height)))
-                        day_target.set("as", "targetPoint")
+                # Light vertical gridline for each day (except Sunday which has week line)
+                if day_idx > 0:
+                    day_line = ET.SubElement(root, "mxCell")
+                    day_line.set("id", generate_id())
+                    day_line.set("value", "")
+                    day_line.set("style", "endArrow=none;html=1;strokeColor=#E0E0E0;strokeWidth=1;")
+                    day_line.set("edge", "1")
+                    day_line.set("parent", "1")
+
+                    day_line_geom = ET.SubElement(day_line, "mxGeometry")
+                    day_line_geom.set("relative", "1")
+                    day_line_geom.set("as", "geometry")
+
+                    day_source = ET.SubElement(day_line_geom, "mxPoint")
+                    day_source.set("x", str(int(day_x)))
+                    day_source.set("y", str(TIMELINE_HEADER_HEIGHT))
+                    day_source.set("as", "sourcePoint")
+
+                    day_target = ET.SubElement(day_line_geom, "mxPoint")
+                    day_target.set("x", str(int(day_x)))
+                    day_target.set("y", str(int(TIMELINE_HEADER_HEIGHT + total_swimlane_height)))
+                    day_target.set("as", "targetPoint")
 
             week_num += 1
             current += timedelta(weeks=1)
@@ -446,7 +477,7 @@ class DrawioGenerator:
             row_geom.set("as", "geometry")
 
     def add_date_markers(self, root: ET.Element):
-        """Add vertical date marker lines for important dates."""
+        """Add vertical date marker lines for important dates (lines only, labels added separately)."""
         if not self.date_markers:
             return
 
@@ -465,7 +496,6 @@ class DrawioGenerator:
             x = date_to_x(marker_date, self.project_start)
             color = marker.get("color", "#FF0000")
             style = marker.get("style", "dashed")
-            name = marker.get("name", "")
 
             # Determine stroke style
             if style == "dashed":
@@ -497,20 +527,56 @@ class DrawioGenerator:
             target.set("y", str(int(marker_bottom)))
             target.set("as", "targetPoint")
 
-            # Marker label at top (rotated)
+    def add_date_marker_labels(self, root: ET.Element):
+        """Add date marker labels (called last to ensure they appear on top)."""
+        if not self.date_markers:
+            return
+
+        for marker in self.date_markers:
+            marker_date = parse_date(marker["date"])
+
+            # Skip markers outside project range
+            if marker_date < self.project_start or marker_date > self.project_end:
+                continue
+
+            x = date_to_x(marker_date, self.project_start)
+            color = marker.get("color", "#FF0000")
+            name = marker.get("name", "")
+
+            # Marker label at top, offset slightly to the right of the line
             if name:
+                # Position at top of swimlane area, just right of the line
+                label_x = x + 4
+                label_y = TIMELINE_HEADER_HEIGHT + 5
+
+                # Background for better readability
+                bg_cell = ET.SubElement(root, "mxCell")
+                bg_cell.set("id", generate_id())
+                bg_cell.set("value", "")
+                bg_cell.set("style", "rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;opacity=85;")
+                bg_cell.set("vertex", "1")
+                bg_cell.set("parent", "1")
+
+                bg_geom = ET.SubElement(bg_cell, "mxGeometry")
+                bg_geom.set("x", str(int(label_x - 2)))
+                bg_geom.set("y", str(int(label_y - 1)))
+                bg_geom.set("width", str(len(name) * 7 + 8))
+                bg_geom.set("height", str(16))
+                bg_geom.set("as", "geometry")
+
+                # Label text
                 label_cell = ET.SubElement(root, "mxCell")
                 label_cell.set("id", generate_id())
                 label_cell.set("value", f"<b>{escape_xml(name)}</b>")
-                label_cell.set("style", f"text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=bottom;whiteSpace=wrap;rounded=0;fontSize=9;fontColor={color};rotation=-90;")
+                label_cell.set("style", f"text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor={color};")
                 label_cell.set("vertex", "1")
                 label_cell.set("parent", "1")
 
                 label_geom = ET.SubElement(label_cell, "mxGeometry")
-                label_geom.set("x", str(int(x - 8)))
-                label_geom.set("y", str(int(marker_bottom - 100)))
-                label_geom.set("width", str(100))
-                label_geom.set("height", str(16))
+                label_geom.set("x", str(int(label_x)))
+                label_geom.set("y", str(int(label_y)))
+                label_geom.set("width", str(len(name) * 7 + 4))
+                label_geom.set("height", str(14))
                 label_geom.set("as", "geometry")
 
     def add_tasks(self, root: ET.Element):
@@ -641,36 +707,34 @@ class DrawioGenerator:
             self.add_risk_markers(root, ms_id, x + MILESTONE_SIZE + 2, y - 5)
 
     def add_risk_markers(self, root: ET.Element, item_id: str, x: float, y: float):
-        """Add risk indicator circles on affected items."""
+        """Add risk indicator circles with risk ID numbers on affected items."""
         if item_id not in self.risks_by_item:
             return
 
         risks = self.risks_by_item[item_id]
-        # Find the highest severity risk
-        highest_severity = "low"
-        for risk in risks:
-            sev = risk.get("severity", "low")
-            if sev == "high":
-                highest_severity = "high"
-                break
-            elif sev == "medium" and highest_severity == "low":
-                highest_severity = "medium"
 
-        color = SEVERITY_COLORS.get(highest_severity, SEVERITY_COLORS["low"])
+        # Add a marker for each risk affecting this item
+        for idx, risk in enumerate(risks):
+            risk_id = risk.get("id", "?")
+            severity = risk.get("severity", "low")
+            color = SEVERITY_COLORS.get(severity, SEVERITY_COLORS["low"])
 
-        marker_cell = ET.SubElement(root, "mxCell")
-        marker_cell.set("id", generate_id())
-        marker_cell.set("value", "!")
-        marker_cell.set("style", f"ellipse;whiteSpace=wrap;html=1;fillColor={color};strokeColor=#333333;fontColor=#FFFFFF;fontSize=8;fontStyle=1;")
-        marker_cell.set("vertex", "1")
-        marker_cell.set("parent", "1")
+            # Offset each marker horizontally if multiple risks
+            marker_x = x + (idx * (RISK_MARKER_SIZE + 2))
 
-        geom = ET.SubElement(marker_cell, "mxGeometry")
-        geom.set("x", str(int(x)))
-        geom.set("y", str(int(y)))
-        geom.set("width", str(RISK_MARKER_SIZE))
-        geom.set("height", str(RISK_MARKER_SIZE))
-        geom.set("as", "geometry")
+            marker_cell = ET.SubElement(root, "mxCell")
+            marker_cell.set("id", generate_id())
+            marker_cell.set("value", str(risk_id))
+            marker_cell.set("style", f"ellipse;whiteSpace=wrap;html=1;fillColor={color};strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;")
+            marker_cell.set("vertex", "1")
+            marker_cell.set("parent", "1")
+
+            geom = ET.SubElement(marker_cell, "mxGeometry")
+            geom.set("x", str(int(marker_x)))
+            geom.set("y", str(int(y)))
+            geom.set("width", str(RISK_MARKER_SIZE))
+            geom.set("height", str(RISK_MARKER_SIZE))
+            geom.set("as", "geometry")
 
     def add_dependencies(self, root: ET.Element):
         """Add dependency arrows between tasks/milestones."""
@@ -801,6 +865,341 @@ class DrawioGenerator:
 
                 x_offset += col_widths[col_idx]
 
+    def add_legend(self, root: ET.Element):
+        """Add a legend explaining diagram symbols and colors."""
+        # Position legend to the right of the risk table
+        total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
+        legend_x = 900
+        legend_y = TIMELINE_HEADER_HEIGHT + total_swimlane_height + TABLE_START_Y_OFFSET - 30
+
+        # Legend container - two columns
+        col_width = 180
+        legend_width = col_width * 2 + 30
+        legend_height = 220
+
+        # Legend background (less rounded corners)
+        bg_cell = ET.SubElement(root, "mxCell")
+        bg_cell.set("id", generate_id())
+        bg_cell.set("value", "")
+        bg_cell.set("style", "rounded=0;arcSize=5;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#CCCCCC;strokeWidth=1;")
+        bg_cell.set("vertex", "1")
+        bg_cell.set("parent", "1")
+
+        bg_geom = ET.SubElement(bg_cell, "mxGeometry")
+        bg_geom.set("x", str(int(legend_x)))
+        bg_geom.set("y", str(int(legend_y)))
+        bg_geom.set("width", str(legend_width))
+        bg_geom.set("height", str(legend_height))
+        bg_geom.set("as", "geometry")
+
+        # Legend title (centered)
+        title_cell = ET.SubElement(root, "mxCell")
+        title_cell.set("id", generate_id())
+        title_cell.set("value", "<b>Legend</b>")
+        title_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;")
+        title_cell.set("vertex", "1")
+        title_cell.set("parent", "1")
+
+        title_geom = ET.SubElement(title_cell, "mxGeometry")
+        title_geom.set("x", str(int(legend_x)))
+        title_geom.set("y", str(int(legend_y + 5)))
+        title_geom.set("width", str(legend_width))
+        title_geom.set("height", str(20))
+        title_geom.set("as", "geometry")
+
+        # LEFT COLUMN
+        left_col_x = legend_x
+        current_y = legend_y + 32
+
+        # Task Status section
+        self._add_legend_section(root, left_col_x, current_y, "Task Status (Border)")
+        current_y += 18
+
+        status_items = [
+            ("Complete", STATUS_COLORS["complete"]),
+            ("In Progress", STATUS_COLORS["in_progress"]),
+            ("At Risk", STATUS_COLORS["at_risk"]),
+            ("Delayed/Blocked", STATUS_COLORS["delayed"]),
+            ("Not Started", STATUS_COLORS["not_started"]),
+        ]
+
+        for label, color in status_items:
+            self._add_legend_color_item(root, left_col_x + 15, current_y, label, color, "rounded=1;strokeWidth=2;fillColor=#FFFFFF;")
+            current_y += 18
+
+        current_y += 6
+
+        # Milestone section
+        self._add_legend_section(root, left_col_x, current_y, "Milestones")
+        current_y += 18
+
+        milestone_items = [
+            ("On Track", STATUS_COLORS["on_track"]),
+            ("At Risk", STATUS_COLORS["at_risk"]),
+            ("Delayed", STATUS_COLORS["delayed"]),
+        ]
+
+        for label, color in milestone_items:
+            self._add_legend_diamond_item(root, left_col_x + 15, current_y, label, color)
+            current_y += 18
+
+        # RIGHT COLUMN
+        right_col_x = legend_x + col_width + 10
+        current_y = legend_y + 32
+
+        # Risk Markers section
+        self._add_legend_section(root, right_col_x, current_y, "Risk Markers")
+        current_y += 18
+
+        risk_items = [
+            ("High Severity", SEVERITY_COLORS["high"]),
+            ("Medium Severity", SEVERITY_COLORS["medium"]),
+            ("Low Severity", SEVERITY_COLORS["low"]),
+        ]
+
+        for label, color in risk_items:
+            self._add_legend_circle_item(root, right_col_x + 15, current_y, label, color)
+            current_y += 18
+
+        current_y += 6
+
+        # Other elements section
+        self._add_legend_section(root, right_col_x, current_y, "Other Elements")
+        current_y += 18
+
+        # Weekend shading
+        self._add_legend_rect_item(root, right_col_x + 15, current_y, "Weekend", "#E8E8E8")
+        current_y += 18
+
+        # Date marker
+        self._add_legend_line_item(root, right_col_x + 15, current_y, "Date Marker", "#F44336")
+        current_y += 18
+
+        # Dependency arrow
+        self._add_legend_arrow_item(root, right_col_x + 15, current_y, "Dependency", "#666666")
+
+    def _add_legend_section(self, root: ET.Element, x: float, y: float, title: str):
+        """Add a section header in the legend."""
+        cell = ET.SubElement(root, "mxCell")
+        cell.set("id", generate_id())
+        cell.set("value", f"<b>{escape_xml(title)}</b>")
+        cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;")
+        cell.set("vertex", "1")
+        cell.set("parent", "1")
+
+        geom = ET.SubElement(cell, "mxGeometry")
+        geom.set("x", str(int(x + 10)))
+        geom.set("y", str(int(y)))
+        geom.set("width", str(200))
+        geom.set("height", str(16))
+        geom.set("as", "geometry")
+
+    def _add_legend_color_item(self, root: ET.Element, x: float, y: float, label: str, color: str, extra_style: str = ""):
+        """Add a colored rectangle item to the legend."""
+        # Color swatch
+        swatch = ET.SubElement(root, "mxCell")
+        swatch.set("id", generate_id())
+        swatch.set("value", "")
+        swatch.set("style", f"{extra_style}strokeColor={color};")
+        swatch.set("vertex", "1")
+        swatch.set("parent", "1")
+
+        swatch_geom = ET.SubElement(swatch, "mxGeometry")
+        swatch_geom.set("x", str(int(x)))
+        swatch_geom.set("y", str(int(y)))
+        swatch_geom.set("width", str(24))
+        swatch_geom.set("height", str(14))
+        swatch_geom.set("as", "geometry")
+
+        # Label
+        label_cell = ET.SubElement(root, "mxCell")
+        label_cell.set("id", generate_id())
+        label_cell.set("value", escape_xml(label))
+        label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;")
+        label_cell.set("vertex", "1")
+        label_cell.set("parent", "1")
+
+        label_geom = ET.SubElement(label_cell, "mxGeometry")
+        label_geom.set("x", str(int(x + 30)))
+        label_geom.set("y", str(int(y)))
+        label_geom.set("width", str(120))
+        label_geom.set("height", str(14))
+        label_geom.set("as", "geometry")
+
+    def _add_legend_diamond_item(self, root: ET.Element, x: float, y: float, label: str, color: str):
+        """Add a diamond (milestone) item to the legend."""
+        # Diamond shape
+        diamond = ET.SubElement(root, "mxCell")
+        diamond.set("id", generate_id())
+        diamond.set("value", "")
+        diamond.set("style", f"rhombus;whiteSpace=wrap;html=1;fillColor={color};strokeColor=#333333;strokeWidth=1;")
+        diamond.set("vertex", "1")
+        diamond.set("parent", "1")
+
+        diamond_geom = ET.SubElement(diamond, "mxGeometry")
+        diamond_geom.set("x", str(int(x + 4)))
+        diamond_geom.set("y", str(int(y)))
+        diamond_geom.set("width", str(14))
+        diamond_geom.set("height", str(14))
+        diamond_geom.set("as", "geometry")
+
+        # Label
+        label_cell = ET.SubElement(root, "mxCell")
+        label_cell.set("id", generate_id())
+        label_cell.set("value", escape_xml(label))
+        label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;")
+        label_cell.set("vertex", "1")
+        label_cell.set("parent", "1")
+
+        label_geom = ET.SubElement(label_cell, "mxGeometry")
+        label_geom.set("x", str(int(x + 30)))
+        label_geom.set("y", str(int(y)))
+        label_geom.set("width", str(120))
+        label_geom.set("height", str(14))
+        label_geom.set("as", "geometry")
+
+    def _add_legend_circle_item(self, root: ET.Element, x: float, y: float, label: str, color: str):
+        """Add a circle (risk marker) item to the legend."""
+        # Circle shape with number
+        circle = ET.SubElement(root, "mxCell")
+        circle.set("id", generate_id())
+        circle.set("value", "#")
+        circle.set("style", f"ellipse;whiteSpace=wrap;html=1;fillColor={color};strokeColor=#333333;fontColor=#FFFFFF;fontSize=8;fontStyle=1;")
+        circle.set("vertex", "1")
+        circle.set("parent", "1")
+
+        circle_geom = ET.SubElement(circle, "mxGeometry")
+        circle_geom.set("x", str(int(x + 2)))
+        circle_geom.set("y", str(int(y)))
+        circle_geom.set("width", str(16))
+        circle_geom.set("height", str(16))
+        circle_geom.set("as", "geometry")
+
+        # Label
+        label_cell = ET.SubElement(root, "mxCell")
+        label_cell.set("id", generate_id())
+        label_cell.set("value", escape_xml(label))
+        label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;")
+        label_cell.set("vertex", "1")
+        label_cell.set("parent", "1")
+
+        label_geom = ET.SubElement(label_cell, "mxGeometry")
+        label_geom.set("x", str(int(x + 30)))
+        label_geom.set("y", str(int(y)))
+        label_geom.set("width", str(120))
+        label_geom.set("height", str(16))
+        label_geom.set("as", "geometry")
+
+    def _add_legend_rect_item(self, root: ET.Element, x: float, y: float, label: str, color: str):
+        """Add a rectangle item to the legend."""
+        # Rectangle
+        rect = ET.SubElement(root, "mxCell")
+        rect.set("id", generate_id())
+        rect.set("value", "")
+        rect.set("style", f"rounded=0;whiteSpace=wrap;html=1;fillColor={color};strokeColor=none;opacity=70;")
+        rect.set("vertex", "1")
+        rect.set("parent", "1")
+
+        rect_geom = ET.SubElement(rect, "mxGeometry")
+        rect_geom.set("x", str(int(x)))
+        rect_geom.set("y", str(int(y)))
+        rect_geom.set("width", str(24))
+        rect_geom.set("height", str(14))
+        rect_geom.set("as", "geometry")
+
+        # Label
+        label_cell = ET.SubElement(root, "mxCell")
+        label_cell.set("id", generate_id())
+        label_cell.set("value", escape_xml(label))
+        label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;")
+        label_cell.set("vertex", "1")
+        label_cell.set("parent", "1")
+
+        label_geom = ET.SubElement(label_cell, "mxGeometry")
+        label_geom.set("x", str(int(x + 30)))
+        label_geom.set("y", str(int(y)))
+        label_geom.set("width", str(120))
+        label_geom.set("height", str(14))
+        label_geom.set("as", "geometry")
+
+    def _add_legend_line_item(self, root: ET.Element, x: float, y: float, label: str, color: str):
+        """Add a vertical dashed line item to the legend."""
+        # Vertical line
+        line = ET.SubElement(root, "mxCell")
+        line.set("id", generate_id())
+        line.set("value", "")
+        line.set("style", f"endArrow=none;html=1;strokeColor={color};strokeWidth=2;dashed=1;dashPattern=8 4;")
+        line.set("edge", "1")
+        line.set("parent", "1")
+
+        line_geom = ET.SubElement(line, "mxGeometry")
+        line_geom.set("relative", "1")
+        line_geom.set("as", "geometry")
+
+        source = ET.SubElement(line_geom, "mxPoint")
+        source.set("x", str(int(x + 12)))
+        source.set("y", str(int(y)))
+        source.set("as", "sourcePoint")
+
+        target = ET.SubElement(line_geom, "mxPoint")
+        target.set("x", str(int(x + 12)))
+        target.set("y", str(int(y + 12)))
+        target.set("as", "targetPoint")
+
+        # Label
+        label_cell = ET.SubElement(root, "mxCell")
+        label_cell.set("id", generate_id())
+        label_cell.set("value", escape_xml(label))
+        label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;")
+        label_cell.set("vertex", "1")
+        label_cell.set("parent", "1")
+
+        label_geom = ET.SubElement(label_cell, "mxGeometry")
+        label_geom.set("x", str(int(x + 30)))
+        label_geom.set("y", str(int(y)))
+        label_geom.set("width", str(100))
+        label_geom.set("height", str(14))
+        label_geom.set("as", "geometry")
+
+    def _add_legend_arrow_item(self, root: ET.Element, x: float, y: float, label: str, color: str):
+        """Add an arrow item to the legend."""
+        # Horizontal arrow
+        arrow = ET.SubElement(root, "mxCell")
+        arrow.set("id", generate_id())
+        arrow.set("value", "")
+        arrow.set("style", f"endArrow=block;html=1;strokeColor={color};strokeWidth=1;endFill=1;curved=1;")
+        arrow.set("edge", "1")
+        arrow.set("parent", "1")
+
+        arrow_geom = ET.SubElement(arrow, "mxGeometry")
+        arrow_geom.set("relative", "1")
+        arrow_geom.set("as", "geometry")
+
+        source = ET.SubElement(arrow_geom, "mxPoint")
+        source.set("x", str(int(x)))
+        source.set("y", str(int(y + 7)))
+        source.set("as", "sourcePoint")
+
+        target = ET.SubElement(arrow_geom, "mxPoint")
+        target.set("x", str(int(x + 24)))
+        target.set("y", str(int(y + 7)))
+        target.set("as", "targetPoint")
+
+        # Label
+        label_cell = ET.SubElement(root, "mxCell")
+        label_cell.set("id", generate_id())
+        label_cell.set("value", escape_xml(label))
+        label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;")
+        label_cell.set("vertex", "1")
+        label_cell.set("parent", "1")
+
+        label_geom = ET.SubElement(label_cell, "mxGeometry")
+        label_geom.set("x", str(int(x + 30)))
+        label_geom.set("y", str(int(y)))
+        label_geom.set("width", str(100))
+        label_geom.set("height", str(14))
+        label_geom.set("as", "geometry")
+
     def generate(self) -> str:
         """Generate the complete draw.io XML."""
         mxfile = self.create_mxfile()
@@ -818,6 +1217,8 @@ class DrawioGenerator:
         self.add_milestones(root)
         self.add_dependencies(root)
         self.add_risk_table(root)
+        self.add_legend(root)
+        self.add_date_marker_labels(root)  # Added last to appear on top
 
         # Convert to string with XML declaration
         ET.indent(mxfile, space="  ")
