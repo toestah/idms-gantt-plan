@@ -1,0 +1,771 @@
+{
+  "project": {
+    "name": "IRS IDMS - Intelligent Document Management System",
+    "start_date": "2026-01-26",
+    "end_date": "2026-04-15",
+    "time_unit": "week",
+    "show_weekends": true,
+    "week_start": "monday"
+  },
+  "workstreams": [
+    {"id": "gcp", "name": "GCP Env(s)", "color": "#4285F4"},
+    {"id": "network", "name": "Network", "color": "#34A853"},
+    {"id": "monitoring", "name": "Monitoring & Logging", "color": "#FBBC04"},
+    {"id": "ato", "name": "ATO", "color": "#EA4335"},
+    {"id": "uiux", "name": "UI/UX", "color": "#9C27B0"},
+    {"id": "docsearch", "name": "Document Search", "color": "#00BCD4"},
+    {"id": "workspace", "name": "Workspace", "color": "#FF9800"},
+    {"id": "docai", "name": "DocAI", "color": "#607D8B"}
+  ],
+  "tasks": [
+    {
+      "id": "gcp1",
+      "name": "Dev Environment (GKE, VPC, Firewall)",
+      "workstream": "gcp",
+      "start": "2026-01-26",
+      "end": "2026-01-31",
+      "owner": "Dale/Irfan",
+      "status": "in_progress",
+      "percent_complete": 85
+    },
+    {
+      "id": "gcp2",
+      "name": "Pre-Prod Environment Setup",
+      "workstream": "gcp",
+      "start": "2026-01-27",
+      "end": "2026-02-14",
+      "owner": "Dale/Awais",
+      "status": "in_progress",
+      "percent_complete": 30
+    },
+    {
+      "id": "gcp3",
+      "name": "Prod Environment Build (GKE + Apigee)",
+      "workstream": "gcp",
+      "start": "2026-02-10",
+      "end": "2026-02-28",
+      "owner": "Dale/Irfan",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "gcp4",
+      "name": "IAM & CMEK Configuration",
+      "workstream": "gcp",
+      "start": "2026-01-26",
+      "end": "2026-02-07",
+      "owner": "Irfan",
+      "status": "in_progress",
+      "percent_complete": 70
+    },
+    {
+      "id": "gcp5",
+      "name": "Terraform IaC Finalization",
+      "workstream": "gcp",
+      "start": "2026-02-03",
+      "end": "2026-02-14",
+      "owner": "Awais",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "net1",
+      "name": "Apigee X Deployment & API Load Balancer",
+      "workstream": "network",
+      "start": "2026-01-27",
+      "end": "2026-02-07",
+      "owner": "Irfan",
+      "status": "in_progress",
+      "percent_complete": 40
+    },
+    {
+      "id": "net2",
+      "name": "Load Balancer Setup (Dev)",
+      "workstream": "network",
+      "start": "2026-01-26",
+      "end": "2026-01-31",
+      "owner": "Irfan/Dale",
+      "status": "in_progress",
+      "percent_complete": 80
+    },
+    {
+      "id": "net3",
+      "name": "PSC Configuration",
+      "workstream": "network",
+      "start": "2026-02-03",
+      "end": "2026-02-14",
+      "owner": "Irfan",
+      "status": "blocked",
+      "percent_complete": 0
+    },
+    {
+      "id": "net4",
+      "name": "FCR Pre-Prod/Prod (Firewall)",
+      "workstream": "network",
+      "start": "2026-02-03",
+      "end": "2026-02-13",
+      "owner": "Karthik/IRS",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Must complete before E2E Network Validation - required for ATO package"
+    },
+    {
+      "id": "net5",
+      "name": "DNS Configuration (Pre-Prod/Prod)",
+      "workstream": "network",
+      "start": "2026-02-03",
+      "end": "2026-02-13",
+      "owner": "Charles Deel/IRS",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Must complete before E2E Network Validation - required for ATO package"
+    },
+    {
+      "id": "net6",
+      "name": "E2E Network Connectivity Validation",
+      "workstream": "network",
+      "start": "2026-02-14",
+      "end": "2026-02-20",
+      "owner": "Waqas/Irfan",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Must complete BEFORE Conditional ATO submission - feeds into ATO package. Depends on FCR and DNS completion."
+    },
+    {
+      "id": "net7",
+      "name": "EPZ Workaround Implementation",
+      "workstream": "network",
+      "start": "2026-02-03",
+      "end": "2026-02-21",
+      "owner": "Waqas/Chris Good",
+      "status": "at_risk",
+      "percent_complete": 0
+    },
+    {
+      "id": "mon1",
+      "name": "Monitoring Setup Validation",
+      "workstream": "monitoring",
+      "start": "2026-01-26",
+      "end": "2026-02-07",
+      "owner": "Dale",
+      "status": "in_progress",
+      "percent_complete": 50
+    },
+    {
+      "id": "mon2",
+      "name": "Logging Pipeline Configuration",
+      "workstream": "monitoring",
+      "start": "2026-02-10",
+      "end": "2026-02-21",
+      "owner": "Dale",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "mon3",
+      "name": "Alerting & Dashboards",
+      "workstream": "monitoring",
+      "start": "2026-02-24",
+      "end": "2026-03-06",
+      "owner": "Dale",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "mon4",
+      "name": "Production Monitoring Setup",
+      "workstream": "monitoring",
+      "start": "2026-02-24",
+      "end": "2026-03-13",
+      "owner": "Dale",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ato1",
+      "name": "Security Controls Documentation (15 controls)",
+      "workstream": "ato",
+      "start": "2026-01-26",
+      "end": "2026-02-07",
+      "owner": "Maham",
+      "status": "in_progress",
+      "percent_complete": 40
+    },
+    {
+      "id": "ato2",
+      "name": "Pre-Prod Environment Validation",
+      "workstream": "ato",
+      "start": "2026-02-10",
+      "end": "2026-02-14",
+      "owner": "Maham/Dale",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ato3",
+      "name": "Conditional ATO Submission",
+      "workstream": "ato",
+      "start": "2026-02-17",
+      "end": "2026-02-21",
+      "owner": "Maham",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ato4",
+      "name": "IRS Conditional ATO Review (~10 days + buffer)",
+      "workstream": "ato",
+      "start": "2026-02-24",
+      "end": "2026-03-13",
+      "owner": "IRS",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "External dependency - built in 5-day buffer for IRS review variability"
+    },
+    {
+      "id": "ato5",
+      "name": "Penetration Testing",
+      "workstream": "ato",
+      "start": "2026-03-09",
+      "end": "2026-03-20",
+      "owner": "IRS/Vendor",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ato6",
+      "name": "Full ATO Evidence Package",
+      "workstream": "ato",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
+      "owner": "Maham",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ui1",
+      "name": "Component Library Development",
+      "workstream": "uiux",
+      "start": "2026-01-26",
+      "end": "2026-02-07",
+      "owner": "Michael O'Connor",
+      "status": "in_progress",
+      "percent_complete": 70
+    },
+    {
+      "id": "ui2",
+      "name": "Search UI Development",
+      "workstream": "uiux",
+      "start": "2026-01-26",
+      "end": "2026-02-14",
+      "owner": "Michael O'Connor",
+      "status": "in_progress",
+      "percent_complete": 60
+    },
+    {
+      "id": "ui3",
+      "name": "Matter/Case View UI",
+      "workstream": "uiux",
+      "start": "2026-02-03",
+      "end": "2026-02-21",
+      "owner": "Michael O'Connor",
+      "status": "in_progress",
+      "percent_complete": 30
+    },
+    {
+      "id": "ui4",
+      "name": "Document Chat UI",
+      "workstream": "uiux",
+      "start": "2026-02-10",
+      "end": "2026-02-28",
+      "owner": "Michael O'Connor",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ui5",
+      "name": "Usability Testing (Pre-Prod)",
+      "workstream": "uiux",
+      "start": "2026-02-24",
+      "end": "2026-03-06",
+      "owner": "Michael O'Connor",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ui6",
+      "name": "Accessibility Compliance Validation",
+      "workstream": "uiux",
+      "start": "2026-03-02",
+      "end": "2026-03-13",
+      "owner": "Michael O'Connor",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ui7",
+      "name": "UAT Fixes & Production Deployment",
+      "workstream": "uiux",
+      "start": "2026-03-09",
+      "end": "2026-03-20",
+      "owner": "Michael O'Connor",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ds1",
+      "name": "Vertex AI Search Configuration",
+      "workstream": "docsearch",
+      "start": "2026-01-26",
+      "end": "2026-02-07",
+      "owner": "Samia",
+      "status": "in_progress",
+      "percent_complete": 65
+    },
+    {
+      "id": "ds2",
+      "name": "Search & Summary API Refinement",
+      "workstream": "docsearch",
+      "start": "2026-01-26",
+      "end": "2026-02-14",
+      "owner": "Samia/Ajay",
+      "status": "in_progress",
+      "percent_complete": 50
+    },
+    {
+      "id": "ds3",
+      "name": "Search Quality Evaluation",
+      "workstream": "docsearch",
+      "start": "2026-02-10",
+      "end": "2026-02-28",
+      "owner": "Samia",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ds4",
+      "name": "Search Tuning & Optimization",
+      "workstream": "docsearch",
+      "start": "2026-02-17",
+      "end": "2026-03-06",
+      "owner": "Samia",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ds5",
+      "name": "Production Search Deployment",
+      "workstream": "docsearch",
+      "start": "2026-03-02",
+      "end": "2026-03-13",
+      "owner": "Dale",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ws1",
+      "name": "Workspace/Drive ACL Configuration",
+      "workstream": "workspace",
+      "start": "2026-01-26",
+      "end": "2026-02-07",
+      "owner": "Angelica/Waqas",
+      "status": "in_progress",
+      "percent_complete": 40
+    },
+    {
+      "id": "ws2",
+      "name": "VLDAP/SSO Integration",
+      "workstream": "workspace",
+      "start": "2026-02-03",
+      "end": "2026-02-21",
+      "owner": "Gina Bone/IRS",
+      "status": "blocked",
+      "percent_complete": 0
+    },
+    {
+      "id": "ws3",
+      "name": "BEARS Domain Account Setup",
+      "workstream": "workspace",
+      "start": "2026-02-03",
+      "end": "2026-02-14",
+      "owner": "Karthik/Gina Bone",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ws4",
+      "name": "Pilot User Onboarding",
+      "workstream": "workspace",
+      "start": "2026-02-17",
+      "end": "2026-02-28",
+      "owner": "Angelica",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "ws5",
+      "name": "Workspace Integration Testing",
+      "workstream": "workspace",
+      "start": "2026-03-02",
+      "end": "2026-03-13",
+      "owner": "Angelica/Waqas",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "dai1",
+      "name": "Basic Court Order Model Training",
+      "workstream": "docai",
+      "start": "2026-01-26",
+      "end": "2026-02-03",
+      "owner": "Maham",
+      "status": "in_progress",
+      "percent_complete": 75
+    },
+    {
+      "id": "dai2",
+      "name": "Statement of Taxpayer Model",
+      "workstream": "docai",
+      "start": "2026-01-26",
+      "end": "2026-02-03",
+      "owner": "Maham",
+      "status": "in_progress",
+      "percent_complete": 90
+    },
+    {
+      "id": "dai3",
+      "name": "Case Closing Model (incl. Decisions)",
+      "workstream": "docai",
+      "start": "2026-01-27",
+      "end": "2026-02-07",
+      "owner": "Maham",
+      "status": "in_progress",
+      "percent_complete": 60
+    },
+    {
+      "id": "dai4",
+      "name": "AUR SNOD Model Training",
+      "workstream": "docai",
+      "start": "2026-01-30",
+      "end": "2026-02-14",
+      "owner": "Maham",
+      "status": "blocked",
+      "percent_complete": 0
+    },
+    {
+      "id": "dai5",
+      "name": "DocAI HITL Workflow Integration",
+      "workstream": "docai",
+      "start": "2026-02-10",
+      "end": "2026-02-28",
+      "owner": "Maham/Ajay",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "dai6",
+      "name": "DocAI Production Deployment",
+      "workstream": "docai",
+      "start": "2026-03-02",
+      "end": "2026-03-13",
+      "owner": "Maham",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "data1",
+      "name": "Initial Data Ingestion (Dev)",
+      "workstream": "docsearch",
+      "start": "2026-01-27",
+      "end": "2026-02-07",
+      "owner": "Waqas/Mark",
+      "status": "in_progress",
+      "percent_complete": 20
+    },
+    {
+      "id": "data2",
+      "name": "Salesforce Connectivity & Data Pull",
+      "workstream": "docsearch",
+      "start": "2026-02-03",
+      "end": "2026-02-21",
+      "owner": "Waqas",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "data3",
+      "name": "Pre-Prod Data Load (10TB subset)",
+      "workstream": "docsearch",
+      "start": "2026-02-24",
+      "end": "2026-03-06",
+      "owner": "Waqas/Mark",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "data4",
+      "name": "Prod Data Transfer Phase 1 (40TB)",
+      "workstream": "docsearch",
+      "start": "2026-03-02",
+      "end": "2026-03-13",
+      "owner": "Waqas",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "data5",
+      "name": "Prod Data Transfer Phase 2 (40TB)",
+      "workstream": "docsearch",
+      "start": "2026-03-09",
+      "end": "2026-03-20",
+      "owner": "Waqas",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "data6",
+      "name": "Prod Data Transfer Phase 3 (20TB) & Indexing",
+      "workstream": "docsearch",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
+      "owner": "Waqas/Mark",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "train1",
+      "name": "Training Materials Development",
+      "workstream": "uiux",
+      "start": "2026-02-24",
+      "end": "2026-03-13",
+      "owner": "Eric",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "train2",
+      "name": "End User Training Delivery",
+      "workstream": "uiux",
+      "start": "2026-03-16",
+      "end": "2026-03-31",
+      "owner": "Eric",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "hyper1",
+      "name": "Go-Live Hypercare Support",
+      "workstream": "gcp",
+      "start": "2026-03-16",
+      "end": "2026-04-14",
+      "owner": "All",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "hyper2",
+      "name": "Production Stabilization",
+      "workstream": "gcp",
+      "start": "2026-04-14",
+      "end": "2026-04-15",
+      "owner": "All",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Compressed due to ATO timeline buffer - tight against PoP end"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "ms_cato",
+      "name": "Conditional ATO Approved",
+      "date": "2026-03-13",
+      "workstream": "ato",
+      "status": "on_track"
+    },
+    {
+      "id": "ms_preprod",
+      "name": "Pre-Prod Ready",
+      "date": "2026-02-21",
+      "workstream": "gcp",
+      "status": "on_track"
+    },
+    {
+      "id": "ms_docai",
+      "name": "All 4 DocAI Models Trained",
+      "date": "2026-02-14",
+      "workstream": "docai",
+      "status": "at_risk"
+    },
+    {
+      "id": "ms_search",
+      "name": "Search Quality Validated",
+      "date": "2026-03-06",
+      "workstream": "docsearch",
+      "status": "on_track"
+    },
+    {
+      "id": "ms_uat",
+      "name": "UAT Sign-off",
+      "date": "2026-03-20",
+      "workstream": "uiux",
+      "status": "on_track"
+    }
+  ],
+  "dependencies": [
+    {
+      "from": "net6",
+      "to": "ato3",
+      "type": "finish_to_start",
+      "notes": "Network validation must complete before Conditional ATO submission - technical evidence required for package"
+    },
+    {
+      "from": "ato2",
+      "to": "ato3",
+      "type": "finish_to_start",
+      "notes": "Pre-Prod Environment Validation must complete before ATO submission"
+    },
+    {
+      "from": "ato3",
+      "to": "ato4",
+      "type": "finish_to_start",
+      "notes": "ATO submission must complete before IRS review begins"
+    },
+    {
+      "from": "ato4",
+      "to": "hyper1",
+      "type": "finish_to_start",
+      "notes": "Conditional ATO must be GRANTED before Prod deployment/Go-Live"
+    },
+    {
+      "from": "net4",
+      "to": "net6",
+      "type": "finish_to_start",
+      "notes": "FCR/Firewall rules needed for E2E network validation"
+    },
+    {
+      "from": "net5",
+      "to": "net6",
+      "type": "finish_to_start",
+      "notes": "DNS needed for E2E network validation"
+    }
+  ],
+  "date_markers": [
+    {
+      "id": "today",
+      "name": "Today (Mid-Sprint 6)",
+      "date": "2026-01-27",
+      "color": "#4CAF50",
+      "style": "solid"
+    },
+    {
+      "id": "cato_submit",
+      "name": "Conditional ATO Submit",
+      "date": "2026-02-21",
+      "color": "#9C27B0",
+      "style": "dashed"
+    },
+    {
+      "id": "prod_limited",
+      "name": "Prod Release 1 (Limited)",
+      "date": "2026-03-16",
+      "color": "#2196F3",
+      "style": "dashed"
+    },
+    {
+      "id": "prod_full",
+      "name": "Full Production Rollout",
+      "date": "2026-04-14",
+      "color": "#F44336",
+      "style": "dashed"
+    },
+    {
+      "id": "pop_end",
+      "name": "PoP End",
+      "date": "2026-04-15",
+      "color": "#9C27B0",
+      "style": "solid"
+    }
+  ],
+  "risks": [
+    {
+      "id": "r1",
+      "name": "EPZ Timeline - October 2026",
+      "description": "EPZ configuration not available until October 2026, well past PoP. Workaround required.",
+      "severity": "high",
+      "likelihood": "high",
+      "status": "open",
+      "mitigation": "Identify and implement network workaround (AT&T NetBond, S3 staging)",
+      "affected": ["net6", "net7", "gcp3"]
+    },
+    {
+      "id": "r2",
+      "name": "SAIC/T-Cloud Dependency",
+      "description": "SAIC controls T-Cloud infrastructure; requests can cause unexpected delays",
+      "severity": "high",
+      "likelihood": "medium",
+      "status": "monitoring",
+      "mitigation": "Proactive tracking via inventory sheet, early escalation",
+      "affected": ["gcp2", "gcp3", "net3", "net4"]
+    },
+    {
+      "id": "r3",
+      "name": "PSC Implementation Delayed",
+      "description": "Private Service Connect blocked on T-Cloud action and SSL certificates",
+      "severity": "medium",
+      "likelihood": "high",
+      "status": "open",
+      "mitigation": "Using self-signed certs as interim workaround for Dev",
+      "affected": ["net3", "net6"]
+    },
+    {
+      "id": "r4",
+      "name": "AUR SNOD Samples Delayed",
+      "description": "4th DocAI document type blocked until Jan 30 samples from Spencer Hitt",
+      "severity": "medium",
+      "likelihood": "medium",
+      "status": "monitoring",
+      "mitigation": "Spencer confirmed Jan 30 ETA; other 3 models proceeding",
+      "affected": ["dai4", "ms_docai"]
+    },
+    {
+      "id": "r5",
+      "name": "Conditional ATO Review Time",
+      "description": "IRS review of conditional ATO takes ~10 business days; external dependency with variability. Built in 5-day buffer but actual timeline depends on IRS. Prod deployment BLOCKED until ATO granted.",
+      "severity": "high",
+      "likelihood": "medium",
+      "status": "open",
+      "mitigation": "Submit early, maintain close communication with IRS security team, ensure all network validation and technical dependencies complete BEFORE submission",
+      "affected": ["ato4", "ms_cato", "data3", "prod_limited"]
+    },
+    {
+      "id": "r6",
+      "name": "VLDAP/SSO Integration",
+      "description": "SSO integration with Radiant VLDAP required for authentication; dependency on IRS",
+      "severity": "medium",
+      "likelihood": "medium",
+      "status": "open",
+      "mitigation": "Karthik following up with Gina Bone; ticket submitted",
+      "affected": ["ws2", "ws4"]
+    },
+    {
+      "id": "r7",
+      "name": "100TB Data Transfer Timeline",
+      "description": "Transferring 100TB of historical Tax Court documents in phases is aggressive",
+      "severity": "medium",
+      "likelihood": "medium",
+      "status": "monitoring",
+      "mitigation": "Phased approach (40+40+20TB); prioritize critical documents first",
+      "affected": ["data4", "data5", "data6"]
+    },
+    {
+      "id": "r8",
+      "name": "Compressed End-of-PoP Timeline",
+      "description": "Adding buffer to IRS Conditional ATO review has compressed the production stabilization window. Full rollout (Apr 14) and PoP end (Apr 15) are now back-to-back.",
+      "severity": "high",
+      "likelihood": "high",
+      "status": "open",
+      "mitigation": "Ensure all validation activities complete BEFORE ATO submission to avoid additional delays. Consider negotiating PoP extension if ATO review takes longer than buffered estimate.",
+      "affected": ["hyper1", "hyper2", "prod_full"]
+    }
+  ]
+}

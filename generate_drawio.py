@@ -44,6 +44,7 @@ TASK_HEIGHT = 32
 TASK_VERTICAL_PADDING = 8  # Padding between stacked tasks
 TASK_TOP_PADDING = 15  # Padding from top of swimlane
 MILESTONE_SIZE = 20
+MILESTONE_VERTICAL_SPACING = 45  # Space needed per milestone (diamond + label)
 RISK_MARKER_SIZE = 16
 TABLE_ROW_HEIGHT = 30
 TABLE_START_Y_OFFSET = 80
@@ -117,6 +118,11 @@ class DrawioGenerator:
         self.swimlane_y_starts = {}  # ws_id -> Y coordinate where swimlane starts
         self._calculate_layout()
 
+        # Calculate milestone layout (group by date, determine vertical stacking)
+        self.milestones_by_date = {}
+        self.max_milestone_stack = 0
+        self._calculate_milestone_layout()
+
     def _tasks_overlap(self, task1: dict, task2: dict) -> bool:
         """Check if two tasks have overlapping date ranges."""
         start1 = parse_date(task1["start"])
@@ -172,14 +178,38 @@ class DrawioGenerator:
             self.swimlane_heights[ws_id] = max(height, SWIMLANE_MIN_HEIGHT)
 
         # Calculate Y start positions for each swimlane
+        # Note: milestone row offset is added in get_workstream_y since milestone layout
+        # is calculated after this method
         current_y = TIMELINE_HEADER_HEIGHT
         for ws_id in ws_list:
             self.swimlane_y_starts[ws_id] = current_y
             current_y += self.swimlane_heights[ws_id]
 
+    def _calculate_milestone_layout(self):
+        """Group milestones by date and calculate vertical stacking needs."""
+        for ms_id, milestone in self.milestones.items():
+            date_str = milestone["date"]
+            if date_str not in self.milestones_by_date:
+                self.milestones_by_date[date_str] = []
+            self.milestones_by_date[date_str].append((ms_id, milestone))
+
+        # Find the maximum number of milestones on any single date
+        if self.milestones_by_date:
+            self.max_milestone_stack = max(len(ms_list) for ms_list in self.milestones_by_date.values())
+        else:
+            self.max_milestone_stack = 0
+
+    def get_milestone_area_height(self) -> float:
+        """Calculate the height needed for the milestone area."""
+        if self.max_milestone_stack == 0:
+            return 0
+        return self.max_milestone_stack * MILESTONE_VERTICAL_SPACING + 10  # +10 for padding
+
     def get_workstream_y(self, ws_id: str) -> float:
-        """Get Y coordinate for a workstream."""
-        return self.swimlane_y_starts.get(ws_id, TIMELINE_HEADER_HEIGHT)
+        """Get Y coordinate for a workstream (accounts for milestone row at top)."""
+        base_y = self.swimlane_y_starts.get(ws_id, TIMELINE_HEADER_HEIGHT)
+        # Add milestone area height since it's at the top
+        return base_y + self.get_milestone_area_height()
 
     def get_swimlane_height(self, ws_id: str) -> float:
         """Get the computed height for a workstream's swimlane."""
@@ -193,13 +223,17 @@ class DrawioGenerator:
 
     def calculate_diagram_size(self) -> tuple[float, float]:
         """Calculate total diagram dimensions."""
-        days = (self.visual_end - self.project_start).days
+        # Add 1 to include the end date fully (dates are drawn at left edge, so we need +1 for end of day)
+        days = (self.visual_end - self.project_start).days + 1
         width = SWIMLANE_HEADER_WIDTH + (days * PIXELS_PER_DAY) + 50
 
         # Sum up all swimlane heights
         height = TIMELINE_HEADER_HEIGHT
         for ws_id in self.workstreams:
             height += self.get_swimlane_height(ws_id)
+
+        # Add milestone area (dynamically sized based on overlap)
+        height += self.get_milestone_area_height()
 
         # Add space for risk table
         if self.risks:
@@ -263,6 +297,8 @@ class DrawioGenerator:
             return
 
         total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
+        # Include milestone area in shading
+        total_swimlane_height += self.get_milestone_area_height()
 
         # Iterate through each day in the visual range (extends to end of week)
         current = self.project_start
@@ -292,6 +328,8 @@ class DrawioGenerator:
         """Add timeline header with week markers aligned to Sundays (Sun-Sat weeks)."""
         width, _ = self.calculate_diagram_size()
         total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
+        # Include milestone area in gridline span
+        total_swimlane_height += self.get_milestone_area_height()
 
         # Header background
         header_cell = ET.SubElement(root, "mxCell")
@@ -485,6 +523,46 @@ class DrawioGenerator:
             row_geom.set("height", str(int(height)))
             row_geom.set("as", "geometry")
 
+    def add_milestone_row(self, root: ET.Element):
+        """Add a dedicated row for milestones at the top (below timeline header)."""
+        milestone_height = self.get_milestone_area_height()
+        if milestone_height == 0:
+            return
+
+        width, _ = self.calculate_diagram_size()
+        # Milestone row is at the top, right after the timeline header
+        row_y = TIMELINE_HEADER_HEIGHT
+
+        # Milestone row header
+        header_cell = ET.SubElement(root, "mxCell")
+        header_cell.set("id", generate_id())
+        header_cell.set("value", "Milestones")
+        header_cell.set("style", "rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;")
+        header_cell.set("vertex", "1")
+        header_cell.set("parent", "1")
+
+        geom = ET.SubElement(header_cell, "mxGeometry")
+        geom.set("x", "0")
+        geom.set("y", str(int(row_y)))
+        geom.set("width", str(SWIMLANE_HEADER_WIDTH))
+        geom.set("height", str(int(milestone_height)))
+        geom.set("as", "geometry")
+
+        # Milestone row background
+        row_cell = ET.SubElement(root, "mxCell")
+        row_cell.set("id", generate_id())
+        row_cell.set("value", "")
+        row_cell.set("style", "rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;fillOpacity=20;strokeColor=#CCCCCC;")
+        row_cell.set("vertex", "1")
+        row_cell.set("parent", "1")
+
+        row_geom = ET.SubElement(row_cell, "mxGeometry")
+        row_geom.set("x", str(SWIMLANE_HEADER_WIDTH))
+        row_geom.set("y", str(int(row_y)))
+        row_geom.set("width", str(int(width - SWIMLANE_HEADER_WIDTH)))
+        row_geom.set("height", str(int(milestone_height)))
+        row_geom.set("as", "geometry")
+
     def add_date_markers(self, root: ET.Element):
         """Add vertical date marker lines for important dates (lines only, labels added separately)."""
         if not self.date_markers:
@@ -492,6 +570,8 @@ class DrawioGenerator:
 
         # Calculate the vertical span for markers
         total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
+        # Include milestone area in marker span
+        total_swimlane_height += self.get_milestone_area_height()
         marker_top = TIMELINE_HEADER_HEIGHT
         marker_bottom = TIMELINE_HEADER_HEIGHT + total_swimlane_height
 
@@ -537,9 +617,12 @@ class DrawioGenerator:
             target.set("as", "targetPoint")
 
     def add_date_marker_labels(self, root: ET.Element):
-        """Add date marker labels (called last to ensure they appear on top)."""
+        """Add date marker labels in the milestone area at top (called last to ensure they appear on top)."""
         if not self.date_markers:
             return
+
+        # Milestone row is at the top, right after timeline header
+        milestone_row_y = TIMELINE_HEADER_HEIGHT
 
         for marker in self.date_markers:
             marker_date = parse_date(marker["date"])
@@ -552,11 +635,11 @@ class DrawioGenerator:
             color = marker.get("color", "#FF0000")
             name = marker.get("name", "")
 
-            # Marker label at top, offset slightly to the right of the line
+            # Marker label in milestone area, offset slightly to the right of the line
             if name:
-                # Position at top of swimlane area, just right of the line
+                # Position in milestone area, just right of the line
                 label_x = x + 4
-                label_y = TIMELINE_HEADER_HEIGHT + 5
+                label_y = milestone_row_y + 5
 
                 # Background for better readability
                 bg_cell = ET.SubElement(root, "mxCell")
@@ -600,7 +683,8 @@ class DrawioGenerator:
 
             x = date_to_x(start_date, self.project_start)
             y = self.get_task_y(ws_id, task_id)
-            width = (end_date - start_date).days * PIXELS_PER_DAY
+            # Add 1 to include the end date (tasks run through end of the end date)
+            width = ((end_date - start_date).days + 1) * PIXELS_PER_DAY
 
             status = task.get("status", "not_started")
             status_color = STATUS_COLORS.get(status, STATUS_COLORS["not_started"])
@@ -658,62 +742,65 @@ class DrawioGenerator:
             self.add_risk_markers(root, task_id, x + width - 15, y - 5)
 
     def add_milestones(self, root: ET.Element):
-        """Add milestone diamonds to the diagram."""
-        for ms_id, milestone in self.milestones.items():
-            ws_id = milestone["workstream"]
-            if ws_id not in self.workstreams:
-                continue
+        """Add milestone diamonds to the dedicated milestone row at top."""
+        if not self.milestones:
+            return
 
-            ms_date = parse_date(milestone["date"])
+        # Milestone row is at the top, right after timeline header
+        milestone_row_y = TIMELINE_HEADER_HEIGHT
+
+        for date_str, ms_list in self.milestones_by_date.items():
+            ms_date = parse_date(date_str)
             x = date_to_x(ms_date, self.project_start) - MILESTONE_SIZE / 2
-            # Place milestones in the first row of their workstream
-            ws_y = self.get_workstream_y(ws_id)
-            y = ws_y + TASK_TOP_PADDING + (TASK_HEIGHT - MILESTONE_SIZE) / 2
 
-            status = milestone.get("status", "on_track")
-            status_color = STATUS_COLORS.get(status, STATUS_COLORS["on_track"])
+            for idx, (ms_id, milestone) in enumerate(ms_list):
+                # Offset vertically for multiple milestones on same date
+                y = milestone_row_y + 5 + (idx * MILESTONE_VERTICAL_SPACING)
 
-            # Store position for dependencies
-            cell_id = f"milestone_{ms_id}"
-            self.cell_ids[ms_id] = cell_id
-            self.cell_positions[ms_id] = {
-                "x": x, "y": y, "width": MILESTONE_SIZE, "height": MILESTONE_SIZE,
-                "center_x": x + MILESTONE_SIZE / 2, "center_y": y + MILESTONE_SIZE / 2,
-                "right_x": x + MILESTONE_SIZE, "left_x": x
-            }
+                status = milestone.get("status", "on_track")
+                status_color = STATUS_COLORS.get(status, STATUS_COLORS["on_track"])
 
-            # Milestone diamond
-            ms_cell = ET.SubElement(root, "mxCell")
-            ms_cell.set("id", cell_id)
-            ms_cell.set("value", "")
-            ms_cell.set("style", f"rhombus;whiteSpace=wrap;html=1;fillColor={status_color};strokeColor=#333333;strokeWidth=2;")
-            ms_cell.set("vertex", "1")
-            ms_cell.set("parent", "1")
+                # Store position for dependencies
+                cell_id = f"milestone_{ms_id}"
+                self.cell_ids[ms_id] = cell_id
+                self.cell_positions[ms_id] = {
+                    "x": x, "y": y, "width": MILESTONE_SIZE, "height": MILESTONE_SIZE,
+                    "center_x": x + MILESTONE_SIZE / 2, "center_y": y + MILESTONE_SIZE / 2,
+                    "right_x": x + MILESTONE_SIZE, "left_x": x
+                }
 
-            geom = ET.SubElement(ms_cell, "mxGeometry")
-            geom.set("x", str(int(x)))
-            geom.set("y", str(int(y)))
-            geom.set("width", str(MILESTONE_SIZE))
-            geom.set("height", str(MILESTONE_SIZE))
-            geom.set("as", "geometry")
+                # Milestone diamond
+                ms_cell = ET.SubElement(root, "mxCell")
+                ms_cell.set("id", cell_id)
+                ms_cell.set("value", "")
+                ms_cell.set("style", f"rhombus;whiteSpace=wrap;html=1;fillColor={status_color};strokeColor=#333333;strokeWidth=2;")
+                ms_cell.set("vertex", "1")
+                ms_cell.set("parent", "1")
 
-            # Milestone label (below the diamond)
-            label_cell = ET.SubElement(root, "mxCell")
-            label_cell.set("id", generate_id())
-            label_cell.set("value", f"<b>{escape_xml(milestone['name'])}</b>")
-            label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;")
-            label_cell.set("vertex", "1")
-            label_cell.set("parent", "1")
+                geom = ET.SubElement(ms_cell, "mxGeometry")
+                geom.set("x", str(int(x)))
+                geom.set("y", str(int(y)))
+                geom.set("width", str(MILESTONE_SIZE))
+                geom.set("height", str(MILESTONE_SIZE))
+                geom.set("as", "geometry")
 
-            label_geom = ET.SubElement(label_cell, "mxGeometry")
-            label_geom.set("x", str(int(x - 30)))
-            label_geom.set("y", str(int(y + MILESTONE_SIZE + 2)))
-            label_geom.set("width", str(MILESTONE_SIZE + 60))
-            label_geom.set("height", str(20))
-            label_geom.set("as", "geometry")
+                # Milestone label (below the diamond)
+                label_cell = ET.SubElement(root, "mxCell")
+                label_cell.set("id", generate_id())
+                label_cell.set("value", f"<b>{escape_xml(milestone['name'])}</b>")
+                label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;")
+                label_cell.set("vertex", "1")
+                label_cell.set("parent", "1")
 
-            # Add risk markers if this milestone has associated risks
-            self.add_risk_markers(root, ms_id, x + MILESTONE_SIZE + 2, y - 5)
+                label_geom = ET.SubElement(label_cell, "mxGeometry")
+                label_geom.set("x", str(int(x - 30)))
+                label_geom.set("y", str(int(y + MILESTONE_SIZE + 2)))
+                label_geom.set("width", str(MILESTONE_SIZE + 60))
+                label_geom.set("height", str(20))
+                label_geom.set("as", "geometry")
+
+                # Add risk markers if this milestone has associated risks
+                self.add_risk_markers(root, ms_id, x + MILESTONE_SIZE + 2, y - 5)
 
     def add_risk_markers(self, root: ET.Element, item_id: str, x: float, y: float):
         """Add risk indicator circles with risk ID numbers on affected items."""
@@ -776,12 +863,12 @@ class DrawioGenerator:
         if not self.risks:
             return
 
-        # Calculate Y position after all swimlanes
-        total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
-        table_y = TIMELINE_HEADER_HEIGHT + total_swimlane_height + TABLE_START_Y_OFFSET
+        # Calculate Y position after milestone row and all swimlanes
+        total_content_height = self.get_milestone_area_height() + sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
+        table_y = TIMELINE_HEADER_HEIGHT + total_content_height + TABLE_START_Y_OFFSET
 
         # Column widths
-        col_widths = [60, 150, 80, 80, 80, 150, 250]
+        col_widths = [60, 150, 80, 80, 80, 195, 250]
         headers = ["ID", "Risk Name", "Severity", "Likelihood", "Status", "Affected", "Mitigation"]
 
         total_width = sum(col_widths)
@@ -876,10 +963,10 @@ class DrawioGenerator:
 
     def add_legend(self, root: ET.Element):
         """Add a legend explaining diagram symbols and colors."""
-        # Position legend to the right of the risk table
-        total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
-        legend_x = 900
-        legend_y = TIMELINE_HEADER_HEIGHT + total_swimlane_height + TABLE_START_Y_OFFSET - 30
+        # Position legend to the right of the risk table, aligned with table top
+        total_content_height = self.get_milestone_area_height() + sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
+        legend_x = 940
+        legend_y = TIMELINE_HEADER_HEIGHT + total_content_height + TABLE_START_Y_OFFSET
 
         # Legend container - two columns
         col_width = 180
@@ -1220,6 +1307,7 @@ class DrawioGenerator:
         self.add_root_cells(root)
         self.add_timeline_header(root)
         self.add_swimlanes(root)
+        self.add_milestone_row(root)
         self.add_weekend_shading(root)
         self.add_date_markers(root)
         self.add_tasks(root)

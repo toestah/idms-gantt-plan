@@ -1,0 +1,233 @@
+{
+  "project": {
+    "name": "Adams Center Mosque - Executive Summary",
+    "start_date": "2026-02-14",
+    "end_date": "2027-02-15",
+    "time_unit": "week",
+    "show_weekends": true
+  },
+  "workstreams": [
+    {"id": "precon", "name": "Pre-Construction", "color": "#78909C"},
+    {"id": "structure", "name": "Foundation & Structure", "color": "#FF7043"},
+    {"id": "envelope", "name": "Building Envelope & MEP", "color": "#42A5F5"},
+    {"id": "interior", "name": "Interior Build-Out", "color": "#AB47BC"},
+    {"id": "closeout", "name": "Closeout", "color": "#FFA726"}
+  ],
+  "tasks": [
+    {
+      "id": "phase1",
+      "name": "Site Mobilization & Prep",
+      "workstream": "precon",
+      "start": "2026-02-14",
+      "end": "2026-03-15",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase2a",
+      "name": "Excavation & Foundation",
+      "workstream": "structure",
+      "start": "2026-03-16",
+      "end": "2026-05-22",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase2b",
+      "name": "Structural Framing & Dome",
+      "workstream": "structure",
+      "start": "2026-05-25",
+      "end": "2026-06-26",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase3a",
+      "name": "Roofing & Exterior Envelope",
+      "workstream": "envelope",
+      "start": "2026-06-22",
+      "end": "2026-08-21",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase3b",
+      "name": "MEP & Fire Protection Rough-In",
+      "workstream": "envelope",
+      "start": "2026-06-29",
+      "end": "2026-08-14",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase4a",
+      "name": "Insulation, Drywall & Framing",
+      "workstream": "interior",
+      "start": "2026-08-24",
+      "end": "2026-10-02",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase4b",
+      "name": "Finishes, Paint & Flooring",
+      "workstream": "interior",
+      "start": "2026-10-05",
+      "end": "2026-11-20",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase4c",
+      "name": "MEP Trim & Fixtures",
+      "workstream": "interior",
+      "start": "2026-11-16",
+      "end": "2026-12-18",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase4d",
+      "name": "Specialty Systems (AV, Security)",
+      "workstream": "interior",
+      "start": "2026-12-07",
+      "end": "2027-01-02",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
+      "id": "phase5",
+      "name": "Inspections, Punch & CO",
+      "workstream": "closeout",
+      "start": "2027-01-05",
+      "end": "2027-02-13",
+      "owner": "GC",
+      "status": "not_started",
+      "percent_complete": 0
+    }
+  ],
+  "milestones": [
+    {
+      "id": "ms1",
+      "name": "Site Ready",
+      "date": "2026-03-15",
+      "workstream": "precon",
+      "status": "on_track"
+    },
+    {
+      "id": "ms2",
+      "name": "Structure Complete",
+      "date": "2026-06-15",
+      "workstream": "structure",
+      "status": "on_track"
+    },
+    {
+      "id": "ms3",
+      "name": "Dried-In",
+      "date": "2026-08-15",
+      "workstream": "envelope",
+      "status": "on_track"
+    },
+    {
+      "id": "ms4",
+      "name": "Substantial Completion",
+      "date": "2027-01-15",
+      "workstream": "closeout",
+      "status": "on_track"
+    },
+    {
+      "id": "ms5",
+      "name": "Final Completion",
+      "date": "2027-02-15",
+      "workstream": "closeout",
+      "status": "on_track"
+    }
+  ],
+  "dependencies": [
+    {"from": "phase1", "to": "ms1", "type": "finish_to_start"},
+    {"from": "phase1", "to": "phase2a", "type": "finish_to_start"},
+    {"from": "phase2a", "to": "phase2b", "type": "finish_to_start"},
+    {"from": "phase2b", "to": "ms2", "type": "finish_to_start"},
+    {"from": "phase2b", "to": "phase3a", "type": "finish_to_start"},
+    {"from": "phase2b", "to": "phase3b", "type": "finish_to_start"},
+    {"from": "phase3a", "to": "ms3", "type": "finish_to_start"},
+    {"from": "phase3b", "to": "phase4a", "type": "finish_to_start"},
+    {"from": "phase4a", "to": "phase4b", "type": "finish_to_start"},
+    {"from": "phase4b", "to": "phase4c", "type": "finish_to_start"},
+    {"from": "phase4c", "to": "phase4d", "type": "finish_to_start"},
+    {"from": "phase4d", "to": "phase5", "type": "finish_to_start"},
+    {"from": "phase5", "to": "ms4", "type": "finish_to_start"},
+    {"from": "phase5", "to": "ms5", "type": "finish_to_start"}
+  ],
+  "date_markers": [
+    {
+      "id": "today",
+      "name": "Today",
+      "date": "2026-01-26",
+      "color": "#4CAF50",
+      "style": "solid"
+    },
+    {
+      "id": "start",
+      "name": "NTP",
+      "date": "2026-02-14",
+      "color": "#2196F3",
+      "style": "dashed"
+    },
+    {
+      "id": "substantial",
+      "name": "Substantial",
+      "date": "2027-01-15",
+      "color": "#9C27B0",
+      "style": "dashed"
+    },
+    {
+      "id": "final",
+      "name": "Final",
+      "date": "2027-02-15",
+      "color": "#F44336",
+      "style": "dashed"
+    }
+  ],
+  "risks": [
+    {
+      "id": "1",
+      "name": "Weather Delays",
+      "description": "Inclement weather impacting site work and exterior activities",
+      "severity": "high",
+      "likelihood": "high",
+      "status": "monitoring",
+      "mitigation": "Schedule float, weather contingency, temporary enclosures",
+      "affected": ["phase2a", "phase3a"]
+    },
+    {
+      "id": "2",
+      "name": "Long-Lead Items",
+      "description": "Dome, decorative screens, RTUs may have extended lead times",
+      "severity": "high",
+      "likelihood": "medium",
+      "status": "open",
+      "mitigation": "Early procurement, track submittals, identify alternates",
+      "affected": ["phase2b", "phase3a", "phase4c"]
+    },
+    {
+      "id": "3",
+      "name": "Permitting & Inspections",
+      "description": "Potential delays from building department",
+      "severity": "medium",
+      "likelihood": "medium",
+      "status": "monitoring",
+      "mitigation": "Early submissions, maintain relationships, schedule ahead",
+      "affected": ["phase5"]
+    }
+  ]
+}
