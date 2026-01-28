@@ -258,17 +258,6 @@
       "notes": "C-ATO: Control implementation statements and evidence from control owners"
     },
     {
-      "id": "ato5",
-      "name": "[C-ATO] Package Submission",
-      "workstream": "ato",
-      "start": "2026-02-19",
-      "end": "2026-02-20",
-      "owner": "Maham",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "Submit to IRS Assessment team. Pre-Prod must be ready."
-    },
-    {
       "id": "ato6",
       "name": "[C-ATO] IRS Assessment Team Review",
       "workstream": "ato",
