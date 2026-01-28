@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-01-28T14:03:33.936076" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-01-28T17:56:57.034463" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="1996" math="0" shadow="0">
       <root>
@@ -1220,7 +1220,7 @@
         <mxCell id="cell_304" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="150" y="140" width="153" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_gcp2" value="&lt;b&gt;Pre-Prod Environment Setup&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale/Awais&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_gcp2" value="&lt;b&gt;Pre-Prod Environment Setup&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="180" y="220" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_305" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
@@ -1244,7 +1244,7 @@
         <mxCell id="cell_309" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="150" y="180" width="273" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_gcp5" value="&lt;b&gt;Terraform IaC Finalization&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Awais&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_gcp5" value="&lt;b&gt;Terraform IaC Finalization&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="390" y="140" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_net1" value="&lt;b&gt;Apigee X Deployment &amp;amp; API Load Balancer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Irfan&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
@@ -1310,14 +1310,11 @@
         <mxCell id="task_mon5" value="&lt;b&gt;UI Logging Development and Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael/Samia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="360" y="544" width="360" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato1" value="&lt;b&gt;[C-ATO] Document Control Implementation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="180" y="606" width="360" height="32" as="geometry" />
+        <mxCell id="task_ato1" value="&lt;b&gt;[C-ATO] Document Current State + Gap Analysis&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="606" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_319" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="180" y="606" width="144" height="32" as="geometry" />
-        </mxCell>
-        <mxCell id="task_ato2" value="&lt;b&gt;[C-ATO] Gap Analysis&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="390" y="686" width="240" height="32" as="geometry" />
+          <mxGeometry x="150" y="606" width="144" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato3" value="&lt;b&gt;[C-ATO] Remediate Findings (Pre-Prod)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="600" y="606" width="240" height="32" as="geometry" />

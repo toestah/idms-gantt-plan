@@ -66,7 +66,7 @@
       "workstream": "gcp",
       "start": "2026-01-27",
       "end": "2026-02-14",
-      "owner": "Dale/Awais",
+      "owner": "Dale",
       "status": "in_progress",
       "percent_complete": 30
     },
@@ -96,7 +96,7 @@
       "workstream": "gcp",
       "start": "2026-02-03",
       "end": "2026-02-14",
-      "owner": "Awais",
+      "owner": "Dale",
       "status": "not_started",
       "percent_complete": 0
     },
@@ -226,25 +226,14 @@
     },
     {
       "id": "ato1",
-      "name": "[C-ATO] Document Control Implementation",
+      "name": "[C-ATO] Document Current State + Gap Analysis",
       "workstream": "ato",
-      "start": "2026-01-27",
-      "end": "2026-02-07",
+      "start": "2026-01-26",
+      "end": "2026-02-06",
       "owner": "Maham",
       "status": "in_progress",
       "percent_complete": 40,
-      "notes": "C-ATO: Document current state with input from control owners"
-    },
-    {
-      "id": "ato2",
-      "name": "[C-ATO] Gap Analysis",
-      "workstream": "ato",
-      "start": "2026-02-03",
-      "end": "2026-02-10",
-      "owner": "Maham",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "C-ATO: Identify gaps between current state and required controls"
+      "notes": "C-ATO: Document current state of control implementation and identify gaps"
     },
     {
       "id": "ato3",
