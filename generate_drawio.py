@@ -41,6 +41,11 @@ SWIMLANE_MIN_HEIGHT = 60
 TIMELINE_HEADER_HEIGHT = 70
 PIXELS_PER_DAY = 30
 TASK_HEIGHT = 32
+TASK_MIN_HEIGHT = 28
+TASK_MAX_HEIGHT = 50
+TASK_DEFAULT_FONT_SIZE = 11
+TASK_MIN_FONT_SIZE = 8
+CHARS_PER_PIXEL = 0.14  # Approximate characters per pixel at font size 11
 TASK_VERTICAL_PADDING = 8  # Padding between stacked tasks
 TASK_TOP_PADDING = 15  # Padding from top of swimlane
 MILESTONE_SIZE = 20
@@ -53,6 +58,48 @@ TABLE_START_Y_OFFSET = 80
 def parse_date(date_str: str) -> datetime:
     """Parse ISO date string to datetime."""
     return datetime.strptime(date_str, "%Y-%m-%d")
+
+def calculate_task_dimensions(name: str, owner: str, width: float) -> tuple[float, int]:
+    """Calculate task box height and font size based on text length and available width.
+    
+    Returns (height, font_size)
+    """
+    # Calculate total text length (name is more important, owner is smaller)
+    text_length = len(name)
+    
+    # Estimate how many characters can fit on one line at default font size
+    # Subtract padding (about 10px on each side)
+    usable_width = max(width - 20, 30)
+    chars_per_line = usable_width * CHARS_PER_PIXEL
+    
+    # If text fits on ~1.5 lines at default font, use defaults
+    if text_length <= chars_per_line * 1.5:
+        return (TASK_HEIGHT, TASK_DEFAULT_FONT_SIZE)
+    
+    # Try reducing font size first
+    for font_size in range(TASK_DEFAULT_FONT_SIZE - 1, TASK_MIN_FONT_SIZE - 1, -1):
+        # Font size reduction increases chars per pixel roughly linearly
+        scale = TASK_DEFAULT_FONT_SIZE / font_size
+        adjusted_chars = chars_per_line * scale
+        if text_length <= adjusted_chars * 1.5:
+            return (TASK_HEIGHT, font_size)
+    
+    # Text is still too long - calculate needed height for wrapping
+    # At minimum font size
+    scale = TASK_DEFAULT_FONT_SIZE / TASK_MIN_FONT_SIZE
+    chars_at_min = chars_per_line * scale
+    lines_needed = max(1, text_length / max(chars_at_min, 5))
+    
+    # Each line needs about 14px at small font, plus some padding
+    line_height = 13
+    needed_height = lines_needed * line_height + 8  # 8px padding
+    
+    # Clamp to max height
+    final_height = min(max(needed_height, TASK_MIN_HEIGHT), TASK_MAX_HEIGHT)
+    
+    return (final_height, TASK_MIN_FONT_SIZE)
+
+
 
 
 def date_to_x(date: datetime, project_start: datetime) -> float:
@@ -114,6 +161,8 @@ class DrawioGenerator:
 
         # Calculate layout with overlap handling
         self.task_rows = {}  # task_id -> row number within workstream
+        self.task_heights = {}  # task_id -> calculated height
+        self.task_font_sizes = {}  # task_id -> calculated font size
         self.swimlane_heights = {}  # ws_id -> computed height
         self.swimlane_y_starts = {}  # ws_id -> Y coordinate where swimlane starts
         self._calculate_layout()
@@ -154,6 +203,22 @@ class DrawioGenerator:
             rows = []
 
             for task_id, task in ws_tasks:
+                # Calculate task width and dimensions
+                start_date = parse_date(task["start"])
+                end_date = parse_date(task["end"])
+                # +1 to include end date fully
+                task_days = (end_date - start_date).days + 1
+                task_width = task_days * PIXELS_PER_DAY
+                
+                # Calculate optimal height and font size
+                height, font_size = calculate_task_dimensions(
+                    task.get("name", ""),
+                    task.get("owner", ""),
+                    task_width
+                )
+                self.task_heights[task_id] = height
+                self.task_font_sizes[task_id] = font_size
+                
                 # Find the first row where this task doesn't overlap with existing tasks
                 assigned = False
                 for row_idx, row_tasks in enumerate(rows):
@@ -173,9 +238,13 @@ class DrawioGenerator:
                     rows.append([task])
                     self.task_rows[task_id] = len(rows) - 1
 
-            # Calculate swimlane height based on number of rows
+            # Calculate swimlane height based on number of rows and max task heights
             num_rows = max(len(rows), 1)
-            height = TASK_TOP_PADDING * 2 + num_rows * TASK_HEIGHT + (num_rows - 1) * TASK_VERTICAL_PADDING
+            # Find max task height across all tasks in this workstream
+            max_task_height = TASK_HEIGHT
+            for tid, _ in ws_tasks:
+                max_task_height = max(max_task_height, self.task_heights.get(tid, TASK_HEIGHT))
+            height = TASK_TOP_PADDING * 2 + num_rows * max_task_height + (num_rows - 1) * TASK_VERTICAL_PADDING
             self.swimlane_heights[ws_id] = max(height, SWIMLANE_MIN_HEIGHT)
 
         # Calculate Y start positions for each swimlane
@@ -220,7 +289,10 @@ class DrawioGenerator:
         """Get Y coordinate for a task within a workstream, accounting for row stacking."""
         ws_y = self.get_workstream_y(ws_id)
         row = self.task_rows.get(task_id, 0)
-        return ws_y + TASK_TOP_PADDING + row * (TASK_HEIGHT + TASK_VERTICAL_PADDING)
+        # Use max task height for this workstream for consistent row positioning
+        max_height = max(self.task_heights.get(tid, TASK_HEIGHT) 
+                        for tid in self.task_rows if self.tasks.get(tid, {}).get("workstream") == ws_id) if self.task_rows else TASK_HEIGHT
+        return ws_y + TASK_TOP_PADDING + row * (max_height + TASK_VERTICAL_PADDING)
 
     def calculate_diagram_size(self) -> tuple[float, float]:
         """Calculate total diagram dimensions."""
@@ -697,12 +769,16 @@ class DrawioGenerator:
             status_color = STATUS_COLORS.get(status, STATUS_COLORS["not_started"])
             percent = task.get("percent_complete", 0)
 
+            # Get calculated dimensions for this task
+            task_height = self.task_heights.get(task_id, TASK_HEIGHT)
+            task_font_size = self.task_font_sizes.get(task_id, TASK_DEFAULT_FONT_SIZE)
+
             # Store position for dependencies
             cell_id = f"task_{task_id}"
             self.cell_ids[task_id] = cell_id
             self.cell_positions[task_id] = {
-                "x": x, "y": y, "width": width, "height": TASK_HEIGHT,
-                "center_x": x + width / 2, "center_y": y + TASK_HEIGHT / 2,
+                "x": x, "y": y, "width": width, "height": task_height,
+                "center_x": x + width / 2, "center_y": y + task_height / 2,
                 "right_x": x + width, "left_x": x
             }
 
@@ -714,10 +790,11 @@ class DrawioGenerator:
             owner = task.get("owner", "")
             label = f"<b>{escape_xml(task['name'])}</b>"
             if owner:
-                label += f"<br><font style=\"font-size:10px\">{escape_xml(owner)}</font>"
+                owner_font_size = max(task_font_size - 1, 7)
+                label += f"<br><font style=\"font-size:{owner_font_size}px\">{escape_xml(owner)}</font>"
 
             task_cell.set("value", label)
-            task_cell.set("style", f"rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor={status_color};strokeWidth=2;verticalAlign=middle;fontSize=11;")
+            task_cell.set("style", f"rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor={status_color};strokeWidth=2;verticalAlign=middle;fontSize={task_font_size};")
             task_cell.set("vertex", "1")
             task_cell.set("parent", "1")
 
@@ -725,7 +802,7 @@ class DrawioGenerator:
             geom.set("x", str(int(x)))
             geom.set("y", str(int(y)))
             geom.set("width", str(int(max(width, 40))))
-            geom.set("height", str(TASK_HEIGHT))
+            geom.set("height", str(int(task_height)))
             geom.set("as", "geometry")
 
             # Progress fill overlay
@@ -742,7 +819,7 @@ class DrawioGenerator:
                 prog_geom.set("x", str(int(x)))
                 prog_geom.set("y", str(int(y)))
                 prog_geom.set("width", str(int(max(progress_width, 5))))
-                prog_geom.set("height", str(TASK_HEIGHT))
+                prog_geom.set("height", str(int(task_height)))
                 prog_geom.set("as", "geometry")
 
             # Add risk markers if this task has associated risks
