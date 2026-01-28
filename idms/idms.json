@@ -928,7 +928,7 @@
       "id": "prod_full",
       "name": "Full Production Rollout",
       "date": "2026-04-10",
-      "color": "#F44336",
+      "color": "#00FF00",
       "style": "dashed"
     },
     {
