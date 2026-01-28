@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-01-28T13:41:03.748525" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-01-28T13:45:10.230590" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="1996" math="0" shadow="0">
       <root>
@@ -1307,55 +1307,55 @@
         <mxCell id="task_mon4" value="&lt;b&gt;Production Monitoring Setup&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1020" y="544" width="540" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato1" value="&lt;b&gt;Document Control Implementation (15 priority controls)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato1" value="&lt;b&gt;[C-ATO] Document Control Implementation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="180" y="606" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_319" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="180" y="606" width="144" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato2" value="&lt;b&gt;Gap Analysis&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato2" value="&lt;b&gt;[C-ATO] Gap Analysis&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="390" y="686" width="240" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato3" value="&lt;b&gt;Remediate Findings (Pre-Prod)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato3" value="&lt;b&gt;[C-ATO] Remediate Findings (Pre-Prod)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="600" y="606" width="240" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato4" value="&lt;b&gt;Finalize Statements + Gather Evidence&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato4" value="&lt;b&gt;[C-ATO] Finalize Statements + Gather Evidence&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="720" y="686" width="210" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato5" value="&lt;b&gt;C-ATO Package Submission&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato5" value="&lt;b&gt;[C-ATO] Package Submission&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="870" y="606" width="60" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato6" value="&lt;b&gt;IRS Assessment Team Review&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato6" value="&lt;b&gt;[C-ATO] IRS Assessment Team Review&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1020" y="606" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_320" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="1365" y="601" width="16" height="16" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato7" value="&lt;b&gt;Address Feedback + Resubmit&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato7" value="&lt;b&gt;[C-ATO] Address Feedback + Resubmit&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1410" y="606" width="150" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_321" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="1545" y="601" width="16" height="16" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato8" value="&lt;b&gt;AO Review → C-ATO Decision&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS AO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato8" value="&lt;b&gt;[C-ATO] AO Review → C-ATO Decision&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS AO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1530" y="686" width="60" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_322" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="1575" y="681" width="16" height="16" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato9" value="&lt;b&gt;Security Artifacts (SSP, IRP, etc.)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato9" value="&lt;b&gt;[Full ATO] Security Artifacts (SSP, IRP)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="810" y="726" width="1170" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato10" value="&lt;b&gt;Full Controls Assessment&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato10" value="&lt;b&gt;[Full ATO] Full Controls Assessment&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="180" y="646" width="900" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato11" value="&lt;b&gt;SAR Production (Assessment Team)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato11" value="&lt;b&gt;[Full ATO] SAR Production&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1470" y="646" width="450" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato12" value="&lt;b&gt;POAM Findings + Corrections&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato12" value="&lt;b&gt;[Full ATO] POAM Findings + Corrections&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1890" y="606" width="240" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato13" value="&lt;b&gt;Final AO Review → Full ATO&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS AO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato13" value="&lt;b&gt;[Full ATO] Final AO Review → ATO Decision&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS AO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="2100" y="646" width="270" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ux1" value="&lt;b&gt;Screen Identification and Design&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
@@ -1376,7 +1376,7 @@
         <mxCell id="task_ui2" value="&lt;b&gt;AI and Chat UI Development&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="360" y="868" width="570" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ui3" value="&lt;b&gt;Document Collaboration and HITL&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ui3" value="&lt;b&gt;Develop Document Collaboration and HITL&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="660" y="788" width="480" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui4" value="&lt;b&gt;Usability and Accessibility Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael/Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
@@ -1691,7 +1691,7 @@
         <mxCell id="cell_391" value="Open" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CCCCCC;fontSize=9;align=left;spacingLeft=4;" vertex="1" parent="1">
           <mxGeometry x="380" y="1766" width="80" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="cell_392" value="IRS Assessment Team Review, Address Feedback + Resubmit, AO Review → C-ATO Decision, ms_cato_approved, Pre-Prod Data Load (10TB subset), Prod Data Transfer Phase 1 (40TB)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CCCCCC;fontSize=9;align=left;spacingLeft=4;" vertex="1" parent="1">
+        <mxCell id="cell_392" value="[C-ATO] IRS Assessment Team Review, [C-ATO] Address Feedback + Resubmit, [C-ATO] AO Review → C-ATO Decision, ms_cato_approved, Pre-Prod Data Load (10TB subset), Prod Data Transfer Phase 1 (40TB)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CCCCCC;fontSize=9;align=left;spacingLeft=4;" vertex="1" parent="1">
           <mxGeometry x="460" y="1766" width="195" height="45" as="geometry" />
         </mxCell>
         <mxCell id="cell_393" value="Submit early, maintain close communication with IRS security team, ensure Pre-Prod ready and all evidence gathered BEFORE submission" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CCCCCC;fontSize=9;align=left;spacingLeft=4;" vertex="1" parent="1">

@@ -216,7 +216,7 @@
     },
     {
       "id": "ato1",
-      "name": "Document Control Implementation (15 priority controls)",
+      "name": "[C-ATO] Document Control Implementation",
       "workstream": "ato",
       "start": "2026-01-27",
       "end": "2026-02-07",
@@ -227,7 +227,7 @@
     },
     {
       "id": "ato2",
-      "name": "Gap Analysis",
+      "name": "[C-ATO] Gap Analysis",
       "workstream": "ato",
       "start": "2026-02-03",
       "end": "2026-02-10",
@@ -238,7 +238,7 @@
     },
     {
       "id": "ato3",
-      "name": "Remediate Findings (Pre-Prod)",
+      "name": "[C-ATO] Remediate Findings (Pre-Prod)",
       "workstream": "ato",
       "start": "2026-02-10",
       "end": "2026-02-17",
@@ -249,7 +249,7 @@
     },
     {
       "id": "ato4",
-      "name": "Finalize Statements + Gather Evidence",
+      "name": "[C-ATO] Finalize Statements + Gather Evidence",
       "workstream": "ato",
       "start": "2026-02-14",
       "end": "2026-02-20",
@@ -260,7 +260,7 @@
     },
     {
       "id": "ato5",
-      "name": "C-ATO Package Submission",
+      "name": "[C-ATO] Package Submission",
       "workstream": "ato",
       "start": "2026-02-19",
       "end": "2026-02-20",
@@ -271,7 +271,7 @@
     },
     {
       "id": "ato6",
-      "name": "IRS Assessment Team Review",
+      "name": "[C-ATO] IRS Assessment Team Review",
       "workstream": "ato",
       "start": "2026-02-24",
       "end": "2026-03-07",
@@ -282,7 +282,7 @@
     },
     {
       "id": "ato7",
-      "name": "Address Feedback + Resubmit",
+      "name": "[C-ATO] Address Feedback + Resubmit",
       "workstream": "ato",
       "start": "2026-03-09",
       "end": "2026-03-13",
@@ -293,7 +293,7 @@
     },
     {
       "id": "ato8",
-      "name": "AO Review \u2192 C-ATO Decision",
+      "name": "[C-ATO] AO Review \u2192 C-ATO Decision",
       "workstream": "ato",
       "start": "2026-03-13",
       "end": "2026-03-14",
@@ -304,7 +304,7 @@
     },
     {
       "id": "ato9",
-      "name": "Security Artifacts (SSP, IRP, etc.)",
+      "name": "[Full ATO] Security Artifacts (SSP, IRP)",
       "workstream": "ato",
       "start": "2026-02-17",
       "end": "2026-03-27",
@@ -315,7 +315,7 @@
     },
     {
       "id": "ato10",
-      "name": "Full Controls Assessment",
+      "name": "[Full ATO] Full Controls Assessment",
       "workstream": "ato",
       "start": "2026-01-27",
       "end": "2026-02-25",
@@ -326,7 +326,7 @@
     },
     {
       "id": "ato11",
-      "name": "SAR Production (Assessment Team)",
+      "name": "[Full ATO] SAR Production",
       "workstream": "ato",
       "start": "2026-03-11",
       "end": "2026-03-25",
@@ -337,7 +337,7 @@
     },
     {
       "id": "ato12",
-      "name": "POAM Findings + Corrections",
+      "name": "[Full ATO] POAM Findings + Corrections",
       "workstream": "ato",
       "start": "2026-03-25",
       "end": "2026-04-01",
@@ -348,7 +348,7 @@
     },
     {
       "id": "ato13",
-      "name": "Final AO Review \u2192 Full ATO",
+      "name": "[Full ATO] Final AO Review \u2192 ATO Decision",
       "workstream": "ato",
       "start": "2026-04-01",
       "end": "2026-04-09",
@@ -403,7 +403,7 @@
     },
     {
       "id": "ui3",
-      "name": "Document Collaboration and HITL",
+      "name": "Develop Document Collaboration and HITL",
       "workstream": "uiux",
       "start": "2026-02-12",
       "end": "2026-02-27",
