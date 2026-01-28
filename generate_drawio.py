@@ -46,7 +46,7 @@ TASK_TOP_PADDING = 15  # Padding from top of swimlane
 MILESTONE_SIZE = 20
 MILESTONE_VERTICAL_SPACING = 45  # Space needed per milestone (diamond + label)
 RISK_MARKER_SIZE = 16
-TABLE_ROW_HEIGHT = 30
+TABLE_ROW_HEIGHT = 45
 TABLE_START_Y_OFFSET = 80
 
 
@@ -124,13 +124,14 @@ class DrawioGenerator:
         self._calculate_milestone_layout()
 
     def _tasks_overlap(self, task1: dict, task2: dict) -> bool:
-        """Check if two tasks have overlapping date ranges."""
+        """Check if two tasks have overlapping date ranges (inclusive of end dates)."""
         start1 = parse_date(task1["start"])
         end1 = parse_date(task1["end"])
         start2 = parse_date(task2["start"])
         end2 = parse_date(task2["end"])
-        # Tasks overlap if one starts before the other ends
-        return start1 < end2 and start2 < end1
+        # Tasks overlap if their date ranges intersect (inclusive)
+        # Two ranges [a,b] and [c,d] intersect if a <= d AND c <= b
+        return start1 <= end2 and start2 <= end1
 
     def _calculate_layout(self):
         """Calculate task row assignments and swimlane heights to handle overlaps."""
@@ -583,6 +584,9 @@ class DrawioGenerator:
                 continue
 
             x = date_to_x(marker_date, self.project_start)
+            # Position "end" means end of the day (right edge), "start" means start of day (left edge)
+            if marker.get("position", "start") == "end":
+                x += PIXELS_PER_DAY
             color = marker.get("color", "#FF0000")
             style = marker.get("style", "dashed")
 
@@ -632,6 +636,9 @@ class DrawioGenerator:
                 continue
 
             x = date_to_x(marker_date, self.project_start)
+            # Position "end" means end of the day (right edge), "start" means start of day (left edge)
+            if marker.get("position", "start") == "end":
+                x += PIXELS_PER_DAY
             color = marker.get("color", "#FF0000")
             name = marker.get("name", "")
 
@@ -833,7 +840,16 @@ class DrawioGenerator:
             geom.set("as", "geometry")
 
     def add_dependencies(self, root: ET.Element):
-        """Add dependency arrows between tasks/milestones."""
+        """Add dependency arrows between tasks/milestones.
+
+        Note: Dependencies are tracked in the data model but currently hidden
+        visually for cleaner diagrams. Set show_dependencies=True in project
+        config to display them.
+        """
+        show_dependencies = self.project.get("show_dependencies", False)
+        if not show_dependencies:
+            return
+
         for dep in self.dependencies:
             from_id = dep["from"]
             to_id = dep["to"]

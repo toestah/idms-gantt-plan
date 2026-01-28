@@ -136,10 +136,11 @@
       "name": "EPZ Workaround Implementation",
       "workstream": "network",
       "start": "2026-02-03",
-      "end": "2026-02-21",
+      "end": "2026-02-20",
       "owner": "Waqas/Chris Good",
       "status": "at_risk",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Must complete before Conditional ATO submission - network workaround needed for validation"
     },
     {
       "id": "mon1",
@@ -156,7 +157,7 @@
       "name": "Logging Pipeline Configuration",
       "workstream": "monitoring",
       "start": "2026-02-10",
-      "end": "2026-02-21",
+      "end": "2026-02-20",
       "owner": "Dale",
       "status": "not_started",
       "percent_complete": 0
@@ -183,64 +184,146 @@
     },
     {
       "id": "ato1",
-      "name": "Security Controls Documentation (15 controls)",
+      "name": "Document Control Implementation (15 priority controls)",
       "workstream": "ato",
-      "start": "2026-01-26",
+      "start": "2026-01-27",
       "end": "2026-02-07",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 40
+      "percent_complete": 40,
+      "notes": "C-ATO: Document current state with input from control owners"
     },
     {
       "id": "ato2",
-      "name": "Pre-Prod Environment Validation",
+      "name": "Gap Analysis",
       "workstream": "ato",
-      "start": "2026-02-10",
-      "end": "2026-02-14",
-      "owner": "Maham/Dale",
+      "start": "2026-02-03",
+      "end": "2026-02-10",
+      "owner": "Maham",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "C-ATO: Identify gaps between current state and required controls"
     },
     {
       "id": "ato3",
-      "name": "Conditional ATO Submission",
+      "name": "Remediate Findings (Pre-Prod)",
       "workstream": "ato",
-      "start": "2026-02-17",
-      "end": "2026-02-21",
-      "owner": "Maham",
+      "start": "2026-02-10",
+      "end": "2026-02-17",
+      "owner": "Control Owners",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "C-ATO: Ensure controls implemented in pre-prod environment"
     },
     {
       "id": "ato4",
-      "name": "IRS Conditional ATO Review (~10 days + buffer)",
+      "name": "Finalize Statements + Gather Evidence",
       "workstream": "ato",
-      "start": "2026-02-24",
-      "end": "2026-03-13",
-      "owner": "IRS",
+      "start": "2026-02-14",
+      "end": "2026-02-20",
+      "owner": "Maham",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "External dependency - built in 5-day buffer for IRS review variability"
+      "notes": "C-ATO: Control implementation statements and evidence from control owners"
     },
     {
       "id": "ato5",
-      "name": "Penetration Testing",
+      "name": "C-ATO Package Submission",
       "workstream": "ato",
-      "start": "2026-03-09",
-      "end": "2026-03-20",
-      "owner": "IRS/Vendor",
+      "start": "2026-02-19",
+      "end": "2026-02-20",
+      "owner": "Maham",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Submit to IRS Assessment team. Pre-Prod must be ready."
     },
     {
       "id": "ato6",
-      "name": "Full ATO Evidence Package",
+      "name": "IRS Assessment Team Review",
       "workstream": "ato",
-      "start": "2026-03-16",
+      "start": "2026-02-24",
+      "end": "2026-03-07",
+      "owner": "IRS",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "External: ~10 business days for IRS review and feedback"
+    },
+    {
+      "id": "ato7",
+      "name": "Address Feedback + Resubmit",
+      "workstream": "ato",
+      "start": "2026-03-09",
+      "end": "2026-03-13",
+      "owner": "Maham/Control Owners",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "C-ATO: Resolve gaps, resubmit if needed"
+    },
+    {
+      "id": "ato8",
+      "name": "AO Review → C-ATO Decision",
+      "workstream": "ato",
+      "start": "2026-02-23",
+      "end": "2026-03-13",
+      "owner": "IRS AO",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Authorizing Official reviews and hopefully grants C-ATO"
+    },
+    {
+      "id": "ato9",
+      "name": "Security Artifacts (SSP, IRP, etc.)",
+      "workstream": "ato",
+      "start": "2026-02-17",
       "end": "2026-03-27",
       "owner": "Maham",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Full ATO: Ongoing - System Security Plan, Incident Response Plan, etc."
+    },
+    {
+      "id": "ato10",
+      "name": "Full Controls Assessment",
+      "workstream": "ato",
+      "start": "2026-03-17",
+      "end": "2026-03-27",
+      "owner": "Maham/Control Owners",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Full ATO: Assess all controls current state"
+    },
+    {
+      "id": "ato11",
+      "name": "SAR Production (Assessment Team)",
+      "workstream": "ato",
+      "start": "2026-03-27",
+      "end": "2026-04-04",
+      "owner": "IRS",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Full ATO: Security Assessment Report produced by assessment team"
+    },
+    {
+      "id": "ato12",
+      "name": "POAM Findings + Corrections",
+      "workstream": "ato",
+      "start": "2026-04-04",
+      "end": "2026-04-09",
+      "owner": "Maham/Control Owners",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Full ATO: Correct findings, POAM out what can't be addressed"
+    },
+    {
+      "id": "ato13",
+      "name": "Final AO Review → Full ATO",
+      "workstream": "ato",
+      "start": "2026-04-10",
+      "end": "2026-04-15",
+      "owner": "IRS AO",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Full ATO: Submit package to AO for final authorization"
     },
     {
       "id": "ui1",
@@ -556,8 +639,8 @@
       "id": "hyper1",
       "name": "Go-Live Hypercare Support",
       "workstream": "gcp",
-      "start": "2026-03-16",
-      "end": "2026-04-14",
+      "start": "2026-03-23",
+      "end": "2026-04-09",
       "owner": "All",
       "status": "not_started",
       "percent_complete": 0
@@ -566,33 +649,40 @@
       "id": "hyper2",
       "name": "Production Stabilization",
       "workstream": "gcp",
-      "start": "2026-04-14",
+      "start": "2026-04-10",
       "end": "2026-04-15",
       "owner": "All",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "Compressed due to ATO timeline buffer - tight against PoP end"
+      "notes": "5 days buffer after Full Production Rollout before PoP end"
     }
   ],
   "milestones": [
     {
-      "id": "ms_cato",
-      "name": "Conditional ATO Approved",
-      "date": "2026-03-13",
-      "workstream": "ato",
+      "id": "ms_dev_ready",
+      "name": "Dev Environment Ready",
+      "date": "2026-02-07",
+      "workstream": "gcp",
       "status": "on_track"
     },
     {
       "id": "ms_preprod",
-      "name": "Pre-Prod Ready",
-      "date": "2026-02-21",
+      "name": "Pre-Prod Environment Ready",
+      "date": "2026-02-14",
       "workstream": "gcp",
+      "status": "on_track"
+    },
+    {
+      "id": "ms_cato_submit",
+      "name": "C-ATO Submitted",
+      "date": "2026-02-21",
+      "workstream": "ato",
       "status": "on_track"
     },
     {
       "id": "ms_docai",
       "name": "All 4 DocAI Models Trained",
-      "date": "2026-02-14",
+      "date": "2026-02-13",
       "workstream": "docai",
       "status": "at_risk"
     },
@@ -604,37 +694,117 @@
       "status": "on_track"
     },
     {
+      "id": "ms_prod_ready",
+      "name": "Prod Environment Ready",
+      "date": "2026-03-21",
+      "workstream": "gcp",
+      "status": "on_track"
+    },
+    {
       "id": "ms_uat",
       "name": "UAT Sign-off",
-      "date": "2026-03-20",
+      "date": "2026-03-27",
       "workstream": "uiux",
+      "status": "on_track"
+    },
+    {
+      "id": "ms_full_ato",
+      "name": "Full ATO Granted",
+      "date": "2026-04-15",
+      "workstream": "ato",
       "status": "on_track"
     }
   ],
   "dependencies": [
     {
+      "from": "gcp1",
+      "to": "ms_dev_ready",
+      "type": "finish_to_start",
+      "notes": "Dev environment must be complete for Dev Ready milestone"
+    },
+    {
+      "from": "gcp4",
+      "to": "ms_dev_ready",
+      "type": "finish_to_start",
+      "notes": "IAM/CMEK must be configured for Dev Ready"
+    },
+    {
+      "from": "ms_dev_ready",
+      "to": "gcp2",
+      "type": "finish_to_start",
+      "notes": "Dev must be ready before Pre-Prod can be fully validated"
+    },
+    {
+      "from": "gcp2",
+      "to": "ms_preprod",
+      "type": "finish_to_start",
+      "notes": "Pre-Prod setup must complete for Pre-Prod Ready milestone"
+    },
+    {
       "from": "net6",
-      "to": "ato3",
+      "to": "ms_preprod",
       "type": "finish_to_start",
-      "notes": "Network validation must complete before Conditional ATO submission - technical evidence required for package"
+      "notes": "E2E network validation must complete for Pre-Prod Ready"
     },
     {
-      "from": "ato2",
-      "to": "ato3",
+      "from": "ms_preprod",
+      "to": "ato5",
       "type": "finish_to_start",
-      "notes": "Pre-Prod Environment Validation must complete before ATO submission"
-    },
-    {
-      "from": "ato3",
-      "to": "ato4",
-      "type": "finish_to_start",
-      "notes": "ATO submission must complete before IRS review begins"
+      "notes": "Pre-Prod must be ready before C-ATO can be submitted"
     },
     {
       "from": "ato4",
+      "to": "ato5",
+      "type": "finish_to_start",
+      "notes": "Evidence gathering must complete before C-ATO submission"
+    },
+    {
+      "from": "ato5",
+      "to": "ato6",
+      "type": "finish_to_start",
+      "notes": "C-ATO submission must complete before IRS review begins"
+    },
+    {
+      "from": "ato6",
+      "to": "ato7",
+      "type": "finish_to_start",
+      "notes": "IRS review must complete before feedback can be addressed"
+    },
+    {
+      "from": "ato7",
+      "to": "ato8",
+      "type": "finish_to_start",
+      "notes": "Feedback addressed before AO review"
+    },
+    {
+      "from": "ato8",
+      "to": "ms_cato_approved",
+      "type": "finish_to_start",
+      "notes": "AO decision leads to C-ATO approval"
+    },
+    {
+      "from": "ms_cato_approved",
+      "to": "data3",
+      "type": "finish_to_start",
+      "notes": "C-ATO must be approved before PII data can be loaded"
+    },
+    {
+      "from": "ms_cato_approved",
+      "to": "data4",
+      "type": "finish_to_start",
+      "notes": "C-ATO must be approved before Prod PII data transfer"
+    },
+    {
+      "from": "ms_cato_approved",
       "to": "hyper1",
       "type": "finish_to_start",
-      "notes": "Conditional ATO must be GRANTED before Prod deployment/Go-Live"
+      "notes": "C-ATO must be GRANTED before Prod deployment/Go-Live"
+    },
+    {
+      "from": "gcp3",
+      "to": "ms_prod_ready",
+      "type": "finish_to_start",
+      "notes": "Prod environment build must complete for Prod Ready"
     },
     {
       "from": "net4",
@@ -647,6 +817,18 @@
       "to": "net6",
       "type": "finish_to_start",
       "notes": "DNS needed for E2E network validation"
+    },
+    {
+      "from": "net7",
+      "to": "net6",
+      "type": "finish_to_start",
+      "notes": "EPZ workaround must be in place for E2E network validation"
+    },
+    {
+      "from": "ato13",
+      "to": "ms_full_ato",
+      "type": "finish_to_start",
+      "notes": "Final AO review leads to Full ATO"
     }
   ],
   "date_markers": [
@@ -658,23 +840,44 @@
       "style": "solid"
     },
     {
+      "id": "dev_ready",
+      "name": "Dev Environment Ready",
+      "date": "2026-02-07",
+      "color": "#4285F4",
+      "style": "dashed"
+    },
+    {
+      "id": "preprod_ready",
+      "name": "Pre-Prod Ready",
+      "date": "2026-02-14",
+      "color": "#4285F4",
+      "style": "dashed"
+    },
+    {
       "id": "cato_submit",
-      "name": "Conditional ATO Submit",
+      "name": "C-ATO Submit",
       "date": "2026-02-21",
       "color": "#9C27B0",
       "style": "dashed"
     },
     {
+      "id": "cato_approved",
+      "name": "C-ATO Approved (Target)",
+      "date": "2026-03-14",
+      "color": "#EA4335",
+      "style": "solid"
+    },
+    {
       "id": "prod_limited",
       "name": "Prod Release 1 (Limited)",
-      "date": "2026-03-16",
+      "date": "2026-03-23",
       "color": "#2196F3",
       "style": "dashed"
     },
     {
       "id": "prod_full",
       "name": "Full Production Rollout",
-      "date": "2026-04-14",
+      "date": "2026-04-10",
       "color": "#F44336",
       "style": "dashed"
     },
@@ -683,7 +886,8 @@
       "name": "PoP End",
       "date": "2026-04-15",
       "color": "#9C27B0",
-      "style": "solid"
+      "style": "solid",
+      "position": "end"
     }
   ],
   "risks": [
@@ -730,12 +934,12 @@
     {
       "id": "r5",
       "name": "Conditional ATO Review Time",
-      "description": "IRS review of conditional ATO takes ~10 business days; external dependency with variability. Built in 5-day buffer but actual timeline depends on IRS. Prod deployment BLOCKED until ATO granted.",
+      "description": "IRS review of conditional ATO takes ~10 business days; external dependency with variability. Prod deployment and PII data BLOCKED until C-ATO granted.",
       "severity": "high",
       "likelihood": "medium",
       "status": "open",
-      "mitigation": "Submit early, maintain close communication with IRS security team, ensure all network validation and technical dependencies complete BEFORE submission",
-      "affected": ["ato4", "ms_cato", "data3", "prod_limited"]
+      "mitigation": "Submit early, maintain close communication with IRS security team, ensure Pre-Prod ready and all evidence gathered BEFORE submission",
+      "affected": ["ato6", "ato7", "ato8", "ms_cato_approved", "data3", "data4"]
     },
     {
       "id": "r6",
@@ -760,9 +964,9 @@
     {
       "id": "r8",
       "name": "Compressed End-of-PoP Timeline",
-      "description": "Adding buffer to IRS Conditional ATO review has compressed the production stabilization window. Full rollout (Apr 14) and PoP end (Apr 15) are now back-to-back.",
-      "severity": "high",
-      "likelihood": "high",
+      "description": "Adding buffer to IRS Conditional ATO review has compressed the timeline. Full Production Rollout (Apr 10) with 5-day stabilization buffer before PoP end (Apr 15).",
+      "severity": "medium",
+      "likelihood": "medium",
       "status": "open",
       "mitigation": "Ensure all validation activities complete BEFORE ATO submission to avoid additional delays. Consider negotiating PoP extension if ATO review takes longer than buffered estimate.",
       "affected": ["hyper1", "hyper2", "prod_full"]
