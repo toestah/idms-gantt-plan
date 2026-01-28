@@ -325,10 +325,10 @@
     },
     {
       "id": "ato11",
-      "name": "[Full ATO] SAR Production",
+      "name": "[Full ATO] Validation Team Review & SAR Production",
       "workstream": "ato",
-      "start": "2026-03-11",
-      "end": "2026-03-25",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
       "owner": "IRS",
       "status": "not_started",
       "percent_complete": 0,
