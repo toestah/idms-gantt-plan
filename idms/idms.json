@@ -215,6 +215,16 @@
       "percent_complete": 0
     },
     {
+      "id": "mon5",
+      "name": "UI Logging Development and Testing",
+      "workstream": "monitoring",
+      "start": "2026-02-02",
+      "end": "2026-02-13",
+      "owner": "Michael/Samia",
+      "status": "not_started",
+      "percent_complete": 0
+    },
+    {
       "id": "ato1",
       "name": "[C-ATO] Document Control Implementation",
       "workstream": "ato",
