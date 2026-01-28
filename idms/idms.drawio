@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-01-28T13:12:25.181651" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-01-28T13:13:20.139522" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="1956" math="0" shadow="0">
       <root>
@@ -1368,10 +1368,10 @@
           <mxGeometry x="390" y="828" width="540" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui1" value="&lt;b&gt;Initial Application Screen Development&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="210" y="788" width="420" height="32" as="geometry" />
+          <mxGeometry x="150" y="788" width="480" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_324" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="210" y="788" width="210" height="32" as="geometry" />
+          <mxGeometry x="150" y="788" width="240" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui2" value="&lt;b&gt;AI and Chat UI Development&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="570" y="868" width="360" height="32" as="geometry" />
