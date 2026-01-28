@@ -496,8 +496,8 @@
       "id": "ws2",
       "name": "VLDAP/SSO Integration",
       "workstream": "workspace",
-      "start": "2026-02-03",
-      "end": "2026-02-21",
+      "start": "2026-02-02",
+      "end": "2026-02-18",
       "owner": "Gina Bone/IRS",
       "status": "blocked",
       "percent_complete": 0
