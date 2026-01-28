@@ -712,13 +712,6 @@
       "status": "on_track"
     },
     {
-      "id": "ms_cato_submit",
-      "name": "C-ATO Submitted",
-      "date": "2026-02-21",
-      "workstream": "ato",
-      "status": "on_track"
-    },
-    {
       "id": "ms_docai",
       "name": "All 4 DocAI Models Trained",
       "date": "2026-02-13",
