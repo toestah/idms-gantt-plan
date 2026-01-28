@@ -8,14 +8,46 @@
     "week_start": "monday"
   },
   "workstreams": [
-    {"id": "gcp", "name": "GCP Env(s)", "color": "#4285F4"},
-    {"id": "network", "name": "Network", "color": "#34A853"},
-    {"id": "monitoring", "name": "Monitoring & Logging", "color": "#FBBC04"},
-    {"id": "ato", "name": "ATO", "color": "#EA4335"},
-    {"id": "uiux", "name": "UI/UX", "color": "#9C27B0"},
-    {"id": "docsearch", "name": "Document Search", "color": "#00BCD4"},
-    {"id": "workspace", "name": "Workspace", "color": "#FF9800"},
-    {"id": "docai", "name": "DocAI", "color": "#607D8B"}
+    {
+      "id": "gcp",
+      "name": "GCP Env(s)",
+      "color": "#4285F4"
+    },
+    {
+      "id": "network",
+      "name": "Network",
+      "color": "#34A853"
+    },
+    {
+      "id": "monitoring",
+      "name": "Monitoring & Logging",
+      "color": "#FBBC04"
+    },
+    {
+      "id": "ato",
+      "name": "ATO",
+      "color": "#EA4335"
+    },
+    {
+      "id": "uiux",
+      "name": "UI/UX",
+      "color": "#9C27B0"
+    },
+    {
+      "id": "docsearch",
+      "name": "Document Search",
+      "color": "#00BCD4"
+    },
+    {
+      "id": "workspace",
+      "name": "Workspace",
+      "color": "#FF9800"
+    },
+    {
+      "id": "docai",
+      "name": "DocAI",
+      "color": "#607D8B"
+    }
   ],
   "tasks": [
     {
@@ -261,7 +293,7 @@
     },
     {
       "id": "ato8",
-      "name": "AO Review → C-ATO Decision",
+      "name": "AO Review \u2192 C-ATO Decision",
       "workstream": "ato",
       "start": "2026-02-23",
       "end": "2026-03-13",
@@ -316,7 +348,7 @@
     },
     {
       "id": "ato13",
-      "name": "Final AO Review → Full ATO",
+      "name": "Final AO Review \u2192 Full ATO",
       "workstream": "ato",
       "start": "2026-04-10",
       "end": "2026-04-15",
@@ -834,8 +866,8 @@
   "date_markers": [
     {
       "id": "today",
-      "name": "Today (Mid-Sprint 6)",
-      "date": "2026-01-27",
+      "name": "Today",
+      "date": "2026-01-28",
       "color": "#4CAF50",
       "style": "solid"
     },
@@ -899,7 +931,11 @@
       "likelihood": "high",
       "status": "open",
       "mitigation": "Identify and implement network workaround (AT&T NetBond, S3 staging)",
-      "affected": ["net6", "net7", "gcp3"]
+      "affected": [
+        "net6",
+        "net7",
+        "gcp3"
+      ]
     },
     {
       "id": "r2",
@@ -909,7 +945,12 @@
       "likelihood": "medium",
       "status": "monitoring",
       "mitigation": "Proactive tracking via inventory sheet, early escalation",
-      "affected": ["gcp2", "gcp3", "net3", "net4"]
+      "affected": [
+        "gcp2",
+        "gcp3",
+        "net3",
+        "net4"
+      ]
     },
     {
       "id": "r3",
@@ -919,7 +960,10 @@
       "likelihood": "high",
       "status": "open",
       "mitigation": "Using self-signed certs as interim workaround for Dev",
-      "affected": ["net3", "net6"]
+      "affected": [
+        "net3",
+        "net6"
+      ]
     },
     {
       "id": "r4",
@@ -929,7 +973,10 @@
       "likelihood": "medium",
       "status": "monitoring",
       "mitigation": "Spencer confirmed Jan 30 ETA; other 3 models proceeding",
-      "affected": ["dai4", "ms_docai"]
+      "affected": [
+        "dai4",
+        "ms_docai"
+      ]
     },
     {
       "id": "r5",
@@ -939,7 +986,14 @@
       "likelihood": "medium",
       "status": "open",
       "mitigation": "Submit early, maintain close communication with IRS security team, ensure Pre-Prod ready and all evidence gathered BEFORE submission",
-      "affected": ["ato6", "ato7", "ato8", "ms_cato_approved", "data3", "data4"]
+      "affected": [
+        "ato6",
+        "ato7",
+        "ato8",
+        "ms_cato_approved",
+        "data3",
+        "data4"
+      ]
     },
     {
       "id": "r6",
@@ -949,7 +1003,10 @@
       "likelihood": "medium",
       "status": "open",
       "mitigation": "Karthik following up with Gina Bone; ticket submitted",
-      "affected": ["ws2", "ws4"]
+      "affected": [
+        "ws2",
+        "ws4"
+      ]
     },
     {
       "id": "r7",
@@ -959,7 +1016,11 @@
       "likelihood": "medium",
       "status": "monitoring",
       "mitigation": "Phased approach (40+40+20TB); prioritize critical documents first",
-      "affected": ["data4", "data5", "data6"]
+      "affected": [
+        "data4",
+        "data5",
+        "data6"
+      ]
     },
     {
       "id": "r8",
@@ -969,7 +1030,11 @@
       "likelihood": "medium",
       "status": "open",
       "mitigation": "Ensure all validation activities complete BEFORE ATO submission to avoid additional delays. Consider negotiating PoP extension if ATO review takes longer than buffered estimate.",
-      "affected": ["hyper1", "hyper2", "prod_full"]
+      "affected": [
+        "hyper1",
+        "hyper2",
+        "prod_full"
+      ]
     }
   ]
 }
