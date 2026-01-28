@@ -295,12 +295,12 @@
       "id": "ato8",
       "name": "AO Review \u2192 C-ATO Decision",
       "workstream": "ato",
-      "start": "2026-02-23",
-      "end": "2026-03-13",
+      "start": "2026-03-13",
+      "end": "2026-03-14",
       "owner": "IRS AO",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "Authorizing Official reviews and hopefully grants C-ATO"
+      "notes": "C-ATO: AO reviews and accepts risk, grants Conditional ATO"
     },
     {
       "id": "ato9",
@@ -317,12 +317,12 @@
       "id": "ato10",
       "name": "Full Controls Assessment",
       "workstream": "ato",
-      "start": "2026-02-03",
+      "start": "2026-01-27",
       "end": "2026-02-25",
       "owner": "Maham/Control Owners",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "Full ATO: Assess all controls. Runs parallel with C-ATO work. Ends 2 weeks before SAR."
+      "notes": "Full ATO: Assess all controls. Runs parallel with C-ATO work from day 1. Ends 2 weeks before SAR."
     },
     {
       "id": "ato11",
