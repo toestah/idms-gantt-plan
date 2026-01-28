@@ -336,7 +336,7 @@
     },
     {
       "id": "ato12",
-      "name": "[Full ATO] POAM Findings + Corrections",
+      "name": "[Full ATO] Remediate Findings and/or register POAMs",
       "workstream": "ato",
       "start": "2026-03-30",
       "end": "2026-04-03",
