@@ -361,7 +361,7 @@
       "name": "[Full ATO] Final AO Review \u2192 ATO Decision",
       "workstream": "ato",
       "start": "2026-04-01",
-      "end": "2026-04-09",
+      "end": "2026-04-08",
       "owner": "IRS AO",
       "status": "not_started",
       "percent_complete": 0,
@@ -771,7 +771,7 @@
     {
       "id": "ms_full_ato",
       "name": "Full ATO Granted",
-      "date": "2026-04-08",
+      "date": "2026-04-09",
       "workstream": "ato",
       "status": "on_track"
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-01-28T14:00:38.559220" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-01-28T14:03:33.936076" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="1996" math="0" shadow="0">
       <root>
@@ -1359,7 +1359,7 @@
           <mxGeometry x="1920" y="606" width="180" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato13" value="&lt;b&gt;[Full ATO] Final AO Review → ATO Decision&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS AO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="2100" y="606" width="270" height="32" as="geometry" />
+          <mxGeometry x="2100" y="606" width="240" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ux1" value="&lt;b&gt;Screen Identification and Design&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="150" y="788" width="510" height="32" as="geometry" />
@@ -1566,10 +1566,10 @@
           <mxGeometry x="1910" y="97" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="milestone_ms_full_ato" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#333333;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="2300" y="75" width="20" height="20" as="geometry" />
+          <mxGeometry x="2330" y="75" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="cell_350" value="&lt;b&gt;Full ATO Granted&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="2270" y="97" width="80" height="20" as="geometry" />
+          <mxGeometry x="2300" y="97" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="cell_351" value="&lt;b&gt;Risk Summary&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="10" y="1511" width="200" height="25" as="geometry" />
