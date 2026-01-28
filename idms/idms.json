@@ -358,74 +358,91 @@
       "notes": "Full ATO: Submit package to AO for final authorization"
     },
     {
-      "id": "ui1",
-      "name": "Component Library Development",
+      "id": "ux1",
+      "name": "Screen Identification and Design",
       "workstream": "uiux",
-      "start": "2026-01-26",
-      "end": "2026-02-07",
-      "owner": "Michael O'Connor",
+      "start": "2026-01-28",
+      "end": "2026-02-11",
+      "owner": "Eric",
       "status": "in_progress",
-      "percent_complete": 70
+      "percent_complete": 20,
+      "notes": "UX: Figma screen designs and user flows"
+    },
+    {
+      "id": "ux2",
+      "name": "User Requirements Validation",
+      "workstream": "uiux",
+      "start": "2026-02-03",
+      "end": "2026-02-20",
+      "owner": "Eric",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "CRITICAL: Final refinement and decision making period. Last call before designs/functionality final for MVP. Requires extensive time with users and stakeholders."
+    },
+    {
+      "id": "ui1",
+      "name": "Initial Application Screen Development",
+      "workstream": "uiux",
+      "start": "2026-01-28",
+      "end": "2026-02-10",
+      "owner": "Michael",
+      "status": "in_progress",
+      "percent_complete": 50,
+      "notes": "UI: Includes Component Library, Search UI, Matter/Case View UI - all basic screens and initial functionality"
     },
     {
       "id": "ui2",
-      "name": "Search UI Development",
+      "name": "AI and Chat UI Development",
       "workstream": "uiux",
-      "start": "2026-01-26",
-      "end": "2026-02-14",
-      "owner": "Michael O'Connor",
-      "status": "in_progress",
-      "percent_complete": 60
+      "start": "2026-02-09",
+      "end": "2026-02-20",
+      "owner": "Michael",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "UI: AI chat interface development and refinement"
     },
     {
       "id": "ui3",
-      "name": "Matter/Case View UI",
+      "name": "Document Collaboration and HITL",
       "workstream": "uiux",
-      "start": "2026-02-03",
-      "end": "2026-02-21",
-      "owner": "Michael O'Connor",
-      "status": "in_progress",
-      "percent_complete": 30
+      "start": "2026-02-12",
+      "end": "2026-02-27",
+      "owner": "Michael",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "UI: Google Drive integration and Document Verification (HITL) functionality"
     },
     {
       "id": "ui4",
-      "name": "Document Chat UI",
+      "name": "Usability and Accessibility Testing",
       "workstream": "uiux",
-      "start": "2026-02-10",
-      "end": "2026-02-28",
-      "owner": "Michael O'Connor",
+      "start": "2026-02-23",
+      "end": "2026-03-13",
+      "owner": "Michael/Eric",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Formal usability testing with end users, 508 compliance, keyboard navigation, WAVE/Lighthouse testing, and remediation"
     },
     {
       "id": "ui5",
-      "name": "Usability Testing (Pre-Prod)",
+      "name": "UAT Fixes & Production Deployment",
       "workstream": "uiux",
-      "start": "2026-02-24",
-      "end": "2026-03-06",
-      "owner": "Michael O'Connor",
+      "start": "2026-03-09",
+      "end": "2026-03-20",
+      "owner": "Michael",
       "status": "not_started",
       "percent_complete": 0
     },
     {
       "id": "ui6",
-      "name": "Accessibility Compliance Validation",
+      "name": "Technical Documentation",
       "workstream": "uiux",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
-      "owner": "Michael O'Connor",
+      "start": "2026-03-23",
+      "end": "2026-03-31",
+      "owner": "Michael",
       "status": "not_started",
-      "percent_complete": 0
-    },
-    {
-      "id": "ui7",
-      "name": "UAT Fixes & Production Deployment",
-      "workstream": "uiux",
-      "start": "2026-03-09",
-      "end": "2026-03-20",
-      "owner": "Michael O'Connor",
-      "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Style Guide, Standards Guide, FDD/TDD documents, Figma screens, API calls, DB tables/fields/queries. Supports End User Training."
     },
     {
       "id": "ds1",
@@ -648,24 +665,26 @@
       "percent_complete": 0
     },
     {
-      "id": "train1",
-      "name": "Training Materials Development",
+      "id": "ux3",
+      "name": "User Documentation",
       "workstream": "uiux",
       "start": "2026-02-24",
       "end": "2026-03-13",
       "owner": "Eric",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "UX: End user documentation which also covers training materials"
     },
     {
-      "id": "train2",
+      "id": "ux4",
       "name": "End User Training Delivery",
       "workstream": "uiux",
       "start": "2026-03-16",
       "end": "2026-03-31",
       "owner": "Eric",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "UX: Training delivery supported by Michael's Technical Documentation"
     },
     {
       "id": "hyper1",
