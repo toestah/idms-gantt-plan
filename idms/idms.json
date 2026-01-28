@@ -894,9 +894,9 @@
     },
     {
       "id": "cato_submit",
-      "name": "C-ATO Submit",
+      "name": "C-ATO Submission Target",
       "date": "2026-02-21",
-      "color": "#9C27B0",
+      "color": "#FF0000",
       "style": "dashed"
     },
     {
