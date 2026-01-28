@@ -156,7 +156,7 @@
       "id": "net6",
       "name": "E2E Network Connectivity Validation",
       "workstream": "network",
-      "start": "2026-02-14",
+      "start": "2026-02-16",
       "end": "2026-02-20",
       "owner": "Waqas/Irfan",
       "status": "not_started",

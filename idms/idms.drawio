@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-01-28T18:27:09.859950" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-01-28T18:27:49.631600" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="1996" math="0" shadow="0">
       <root>
@@ -1278,7 +1278,7 @@
           <mxGeometry x="390" y="402" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_net6" value="&lt;b&gt;E2E Network Connectivity Validation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas/Irfan&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="720" y="282" width="210" height="32" as="geometry" />
+          <mxGeometry x="780" y="282" width="150" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_315" value="r1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="915" y="277" width="16" height="16" as="geometry" />
