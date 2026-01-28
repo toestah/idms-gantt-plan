@@ -226,7 +226,7 @@
     },
     {
       "id": "ato1",
-      "name": "[C-ATO] Document Current State + Gap Analysis",
+      "name": "[C-ATO] Document Current State + Perform Gap Analysis",
       "workstream": "ato",
       "start": "2026-01-26",
       "end": "2026-02-06",
