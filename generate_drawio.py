@@ -46,8 +46,8 @@ TASK_MAX_HEIGHT = 50
 TASK_DEFAULT_FONT_SIZE = 11
 TASK_MIN_FONT_SIZE = 8
 CHARS_PER_PIXEL = 0.14  # Approximate characters per pixel at font size 11
-TASK_VERTICAL_PADDING = 8  # Padding between stacked tasks
-TASK_TOP_PADDING = 15  # Padding from top of swimlane
+TASK_VERTICAL_PADDING = 4  # Padding between stacked lanes (tighter)
+SWIMLANE_VERTICAL_PADDING = 8  # Minimal padding at top/bottom of swimlane
 MILESTONE_SIZE = 20
 MILESTONE_VERTICAL_SPACING = 45  # Space needed per milestone (diamond + label)
 RISK_MARKER_SIZE = 16
@@ -249,9 +249,11 @@ class DrawioGenerator:
             self.global_row_height = max(self.global_row_height, self.task_heights[task_id])
         
         # Now calculate swimlane heights using the global row height
+        # Height = content height + minimal padding, centered
         for ws_id in ws_list:
             num_rows = self.swimlane_rows.get(ws_id, 1)
-            height = TASK_TOP_PADDING * 2 + num_rows * self.global_row_height + (num_rows - 1) * TASK_VERTICAL_PADDING
+            content_height = num_rows * self.global_row_height + (num_rows - 1) * TASK_VERTICAL_PADDING
+            height = content_height + 2 * SWIMLANE_VERTICAL_PADDING
             self.swimlane_heights[ws_id] = max(height, SWIMLANE_MIN_HEIGHT)
 
         # Calculate Y start positions for each swimlane
@@ -296,8 +298,17 @@ class DrawioGenerator:
         """Get Y coordinate for a task within a workstream, accounting for row stacking."""
         ws_y = self.get_workstream_y(ws_id)
         row = self.task_rows.get(task_id, 0)
-        # Use global row height for consistent lane sizing across all workstreams
-        return ws_y + TASK_TOP_PADDING + row * (self.global_row_height + TASK_VERTICAL_PADDING)
+        
+        # Calculate content height for this workstream
+        num_rows = self.swimlane_rows.get(ws_id, 1)
+        content_height = num_rows * self.global_row_height + (num_rows - 1) * TASK_VERTICAL_PADDING
+        
+        # Calculate offset to center content within swimlane
+        swimlane_height = self.get_swimlane_height(ws_id)
+        center_offset = (swimlane_height - content_height) / 2
+        
+        # Position task: swimlane_y + centering_offset + row_position
+        return ws_y + center_offset + row * (self.global_row_height + TASK_VERTICAL_PADDING)
 
     def calculate_diagram_size(self) -> tuple[float, float]:
         """Calculate total diagram dimensions."""
