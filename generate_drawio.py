@@ -161,8 +161,10 @@ class DrawioGenerator:
 
         # Calculate layout with overlap handling
         self.task_rows = {}  # task_id -> row number within workstream
+        self.swimlane_rows = {}  # ws_id -> number of rows
         self.task_heights = {}  # task_id -> calculated height
         self.task_font_sizes = {}  # task_id -> calculated font size
+        self.global_row_height = TASK_HEIGHT  # Global consistent row height across all workstreams
         self.swimlane_heights = {}  # ws_id -> computed height
         self.swimlane_y_starts = {}  # ws_id -> Y coordinate where swimlane starts
         self._calculate_layout()
@@ -238,13 +240,18 @@ class DrawioGenerator:
                     rows.append([task])
                     self.task_rows[task_id] = len(rows) - 1
 
-            # Calculate swimlane height based on number of rows and max task heights
-            num_rows = max(len(rows), 1)
-            # Find max task height across all tasks in this workstream
-            max_task_height = TASK_HEIGHT
-            for tid, _ in ws_tasks:
-                max_task_height = max(max_task_height, self.task_heights.get(tid, TASK_HEIGHT))
-            height = TASK_TOP_PADDING * 2 + num_rows * max_task_height + (num_rows - 1) * TASK_VERTICAL_PADDING
+            # Store number of rows for this workstream
+            self.swimlane_rows[ws_id] = max(len(rows), 1)
+
+        # Calculate global row height (max task height across ALL workstreams)
+        self.global_row_height = TASK_HEIGHT
+        for task_id in self.task_heights:
+            self.global_row_height = max(self.global_row_height, self.task_heights[task_id])
+        
+        # Now calculate swimlane heights using the global row height
+        for ws_id in ws_list:
+            num_rows = self.swimlane_rows.get(ws_id, 1)
+            height = TASK_TOP_PADDING * 2 + num_rows * self.global_row_height + (num_rows - 1) * TASK_VERTICAL_PADDING
             self.swimlane_heights[ws_id] = max(height, SWIMLANE_MIN_HEIGHT)
 
         # Calculate Y start positions for each swimlane
@@ -289,10 +296,8 @@ class DrawioGenerator:
         """Get Y coordinate for a task within a workstream, accounting for row stacking."""
         ws_y = self.get_workstream_y(ws_id)
         row = self.task_rows.get(task_id, 0)
-        # Use max task height for this workstream for consistent row positioning
-        max_height = max(self.task_heights.get(tid, TASK_HEIGHT) 
-                        for tid in self.task_rows if self.tasks.get(tid, {}).get("workstream") == ws_id) if self.task_rows else TASK_HEIGHT
-        return ws_y + TASK_TOP_PADDING + row * (max_height + TASK_VERTICAL_PADDING)
+        # Use global row height for consistent lane sizing across all workstreams
+        return ws_y + TASK_TOP_PADDING + row * (self.global_row_height + TASK_VERTICAL_PADDING)
 
     def calculate_diagram_size(self) -> tuple[float, float]:
         """Calculate total diagram dimensions."""
