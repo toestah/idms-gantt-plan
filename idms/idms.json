@@ -705,13 +705,6 @@
       "status": "on_track"
     },
     {
-      "id": "ms_preprod",
-      "name": "Pre-Prod Environment Ready",
-      "date": "2026-02-14",
-      "workstream": "gcp",
-      "status": "on_track"
-    },
-    {
       "id": "ms_docai",
       "name": "All 4 DocAI Models Trained",
       "date": "2026-02-13",
@@ -880,9 +873,9 @@
     },
     {
       "id": "preprod_ready",
-      "name": "Pre-Prod Ready",
+      "name": "Pre-Prod Ready Target",
       "date": "2026-02-14",
-      "color": "#4285F4",
+      "color": "#FF0000",
       "style": "dashed"
     },
     {
