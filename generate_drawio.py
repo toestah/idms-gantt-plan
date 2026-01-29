@@ -414,11 +414,21 @@ class DrawioGenerator:
             current += timedelta(days=1)
 
     def add_timeline_header(self, root: ET.Element):
-        """Add timeline header with week markers aligned to Sundays (Sun-Sat weeks)."""
+        """Add timeline header with month bars and day labels."""
         width, _ = self.calculate_diagram_size()
         total_swimlane_height = sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
         # Include milestone area in gridline span
         total_swimlane_height += self.get_milestone_area_height()
+
+        # Month colors for distinction (alternating)
+        month_colors = [
+            "#E3F2FD",  # Light blue
+            "#FFF3E0",  # Light orange
+            "#E8F5E9",  # Light green
+            "#FCE4EC",  # Light pink
+            "#F3E5F5",  # Light purple
+            "#E0F7FA",  # Light cyan
+        ]
 
         # Header background
         header_cell = ET.SubElement(root, "mxCell")
@@ -436,79 +446,88 @@ class DrawioGenerator:
         geom.set("height", str(TIMELINE_HEADER_HEIGHT))
         geom.set("as", "geometry")
 
-        # Find the first Sunday on or before project start
-        current = self.project_start
-        # Python weekday: Monday=0, Sunday=6
-        # We want to find the Sunday before or on current date
-        days_since_sunday = (current.weekday() + 1) % 7
-        first_sunday = current - timedelta(days=days_since_sunday)
-
-        # Add week markers aligned to Sundays
-        week_num = 1
-        current = first_sunday
-
+        # Find all months in the date range
+        months = []
+        current = self.project_start.replace(day=1)
         while current <= self.visual_end:
-            x = date_to_x(current, self.project_start)
+            # Find end of month
+            if current.month == 12:
+                next_month = current.replace(year=current.year + 1, month=1)
+            else:
+                next_month = current.replace(month=current.month + 1)
+            month_end = next_month - timedelta(days=1)
+            
+            # Clip to project range
+            month_start_vis = max(current, self.project_start)
+            month_end_vis = min(month_end, self.visual_end)
+            
+            months.append({
+                "start": month_start_vis,
+                "end": month_end_vis,
+                "name": current.strftime("%B %Y"),
+                "short_name": current.strftime("%b")
+            })
+            current = next_month
 
-            # Sunday vertical line (solid, darker) - marks start of week
-            if x >= SWIMLANE_HEADER_WIDTH - PIXELS_PER_DAY:
-                line_cell = ET.SubElement(root, "mxCell")
-                line_cell.set("id", generate_id())
-                line_cell.set("value", "")
-                line_cell.set("style", "endArrow=none;html=1;strokeColor=#999999;strokeWidth=1;")
-                line_cell.set("edge", "1")
-                line_cell.set("parent", "1")
+        # Draw month bars
+        for i, month in enumerate(months):
+            color = month_colors[i % len(month_colors)]
+            x_start = date_to_x(month["start"], self.project_start)
+            x_end = date_to_x(month["end"], self.project_start) + PIXELS_PER_DAY
+            bar_width = x_end - x_start
+            
+            # Only draw if visible
+            if x_start < SWIMLANE_HEADER_WIDTH:
+                bar_width -= (SWIMLANE_HEADER_WIDTH - x_start)
+                x_start = SWIMLANE_HEADER_WIDTH
+            
+            if bar_width > 0:
+                # Month bar
+                month_cell = ET.SubElement(root, "mxCell")
+                month_cell.set("id", generate_id())
+                month_cell.set("value", "")
+                month_cell.set("style", f"rounded=0;whiteSpace=wrap;html=1;fillColor={color};strokeColor=#CCCCCC;")
+                month_cell.set("vertex", "1")
+                month_cell.set("parent", "1")
 
-                line_geom = ET.SubElement(line_cell, "mxGeometry")
-                line_geom.set("relative", "1")
-                line_geom.set("as", "geometry")
+                month_geom = ET.SubElement(month_cell, "mxGeometry")
+                month_geom.set("x", str(int(x_start)))
+                month_geom.set("y", "2")
+                month_geom.set("width", str(int(bar_width)))
+                month_geom.set("height", "18")
+                month_geom.set("as", "geometry")
 
-                source = ET.SubElement(line_geom, "mxPoint")
-                source.set("x", str(int(x)))
-                source.set("y", str(TIMELINE_HEADER_HEIGHT))
-                source.set("as", "sourcePoint")
-
-                target = ET.SubElement(line_geom, "mxPoint")
-                target.set("x", str(int(x)))
-                target.set("y", str(int(TIMELINE_HEADER_HEIGHT + total_swimlane_height)))
-                target.set("as", "targetPoint")
-
-            # Only draw labels if within visible area
-            if x >= SWIMLANE_HEADER_WIDTH:
-                # Week label with date range
-                week_end = current + timedelta(days=6)
-                label = f"W{week_num}: {current.strftime('%b %d')}"
-
+                # Month label
                 label_cell = ET.SubElement(root, "mxCell")
                 label_cell.set("id", generate_id())
-                label_cell.set("value", escape_xml(label))
-                label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontStyle=1;")
+                label_cell.set("value", f"<b>{month['name']}</b>")
+                label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;")
                 label_cell.set("vertex", "1")
                 label_cell.set("parent", "1")
 
                 label_geom = ET.SubElement(label_cell, "mxGeometry")
-                label_geom.set("x", str(int(x + 2)))
-                label_geom.set("y", "3")
-                label_geom.set("width", str(int(PIXELS_PER_DAY * 7)))
-                label_geom.set("height", "15")
+                label_geom.set("x", str(int(x_start)))
+                label_geom.set("y", "2")
+                label_geom.set("width", str(int(bar_width)))
+                label_geom.set("height", "18")
                 label_geom.set("as", "geometry")
 
-            # Add day labels (S M T W T F S) and day numbers for all 7 days
-            day_labels = ["S", "M", "T", "W", "T", "F", "S"]
-            for day_idx, day_label in enumerate(day_labels):
-                day_date = current + timedelta(days=day_idx)
-                day_x = date_to_x(day_date, self.project_start)
-
-                # Only draw if within visible area
-                if day_x < SWIMLANE_HEADER_WIDTH:
-                    continue
-
-                # Day letter
+        # Add day labels and numbers for each day
+        current = self.project_start
+        while current <= self.visual_end:
+            day_x = date_to_x(current, self.project_start)
+            
+            # Only draw if within visible area
+            if day_x >= SWIMLANE_HEADER_WIDTH:
+                # Day letter (M T W T F S S)
+                day_labels = ["M", "T", "W", "T", "F", "S", "S"]
+                day_label = day_labels[current.weekday()]
+                
                 day_cell = ET.SubElement(root, "mxCell")
                 day_cell.set("id", generate_id())
                 day_cell.set("value", day_label)
                 # Weekend days in grey
-                if day_idx in (0, 6):  # Sunday or Saturday
+                if current.weekday() >= 5:  # Saturday or Sunday
                     day_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;fontStyle=1;"
                 else:
                     day_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#333333;fontStyle=1;"
@@ -524,12 +543,11 @@ class DrawioGenerator:
                 day_geom.set("as", "geometry")
 
                 # Day number
-                day_num = day_date.day
                 num_cell = ET.SubElement(root, "mxCell")
                 num_cell.set("id", generate_id())
-                num_cell.set("value", str(day_num))
+                num_cell.set("value", str(current.day))
                 # Weekend days in grey
-                if day_idx in (0, 6):  # Sunday or Saturday
+                if current.weekday() >= 5:
                     num_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;"
                 else:
                     num_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#666666;"
@@ -544,31 +562,34 @@ class DrawioGenerator:
                 num_geom.set("height", "14")
                 num_geom.set("as", "geometry")
 
-                # Light vertical gridline for each day (except Sunday which has week line)
-                if day_idx > 0:
-                    day_line = ET.SubElement(root, "mxCell")
-                    day_line.set("id", generate_id())
-                    day_line.set("value", "")
-                    day_line.set("style", "endArrow=none;html=1;strokeColor=#E0E0E0;strokeWidth=1;")
-                    day_line.set("edge", "1")
-                    day_line.set("parent", "1")
+                # Vertical gridline for each day
+                day_line = ET.SubElement(root, "mxCell")
+                day_line.set("id", generate_id())
+                day_line.set("value", "")
+                # Darker line for first of month
+                if current.day == 1:
+                    line_style = "endArrow=none;html=1;strokeColor=#999999;strokeWidth=1;"
+                else:
+                    line_style = "endArrow=none;html=1;strokeColor=#E0E0E0;strokeWidth=1;"
+                day_line.set("style", line_style)
+                day_line.set("edge", "1")
+                day_line.set("parent", "1")
 
-                    day_line_geom = ET.SubElement(day_line, "mxGeometry")
-                    day_line_geom.set("relative", "1")
-                    day_line_geom.set("as", "geometry")
+                day_line_geom = ET.SubElement(day_line, "mxGeometry")
+                day_line_geom.set("relative", "1")
+                day_line_geom.set("as", "geometry")
 
-                    day_source = ET.SubElement(day_line_geom, "mxPoint")
-                    day_source.set("x", str(int(day_x)))
-                    day_source.set("y", str(TIMELINE_HEADER_HEIGHT))
-                    day_source.set("as", "sourcePoint")
+                day_source = ET.SubElement(day_line_geom, "mxPoint")
+                day_source.set("x", str(int(day_x)))
+                day_source.set("y", str(TIMELINE_HEADER_HEIGHT))
+                day_source.set("as", "sourcePoint")
 
-                    day_target = ET.SubElement(day_line_geom, "mxPoint")
-                    day_target.set("x", str(int(day_x)))
-                    day_target.set("y", str(int(TIMELINE_HEADER_HEIGHT + total_swimlane_height)))
-                    day_target.set("as", "targetPoint")
+                day_target = ET.SubElement(day_line_geom, "mxPoint")
+                day_target.set("x", str(int(day_x)))
+                day_target.set("y", str(int(TIMELINE_HEADER_HEIGHT + total_swimlane_height)))
+                day_target.set("as", "targetPoint")
 
-            week_num += 1
-            current += timedelta(weeks=1)
+            current += timedelta(days=1)
 
     def add_swimlanes(self, root: ET.Element):
         """Add swimlane containers for each workstream."""
