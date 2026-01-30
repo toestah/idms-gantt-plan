@@ -353,7 +353,7 @@
       "end": "2026-02-11",
       "owner": "Eric",
       "status": "in_progress",
-      "percent_complete": 20,
+      "percent_complete": 30,
       "notes": "UX: Figma screen designs and user flows"
     },
     {
@@ -467,7 +467,7 @@
       "id": "ds3",
       "name": "Search Quality Evaluation",
       "workstream": "docsearch",
-      "start": "2026-02-10",
+      "start": "2026-02-09",
       "end": "2026-02-28",
       "owner": "Samia",
       "status": "not_started",
