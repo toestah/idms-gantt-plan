@@ -496,7 +496,7 @@
       "id": "ws2",
       "name": "VLDAP/SSO Integration",
       "workstream": "workspace",
-      "start": "2026-02-02",
+      "start": "2026-01-26",
       "end": "2026-02-18",
       "owner": "Gina Bone/IRS",
       "status": "at_risk",
@@ -517,7 +517,7 @@
       "name": "Pilot User Onboarding",
       "workstream": "workspace",
       "start": "2026-02-17",
-      "end": "2026-02-28",
+      "end": "2026-02-27",
       "owner": "Angelica",
       "status": "not_started",
       "percent_complete": 0
