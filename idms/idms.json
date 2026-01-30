@@ -95,7 +95,7 @@
       "name": "Terraform IaC Finalization",
       "workstream": "gcp",
       "start": "2026-02-03",
-      "end": "2026-02-14",
+      "end": "2026-02-13",
       "owner": "Ajay / Dale",
       "status": "not_started",
       "percent_complete": 0
@@ -232,7 +232,7 @@
       "end": "2026-02-06",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 40,
+      "percent_complete": 75,
       "notes": "C-ATO: Document current state of control implementation and identify gaps"
     },
     {
