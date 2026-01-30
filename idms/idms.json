@@ -298,7 +298,7 @@
       "end": "2026-03-13",
       "owner": "Maham",
       "status": "not_started",
-      "percent_complete": 0,
+      "percent_complete": 10,
       "notes": "Full ATO: Ongoing - System Security Plan, Incident Response Plan, etc."
     },
     {
@@ -309,7 +309,7 @@
       "end": "2026-03-13",
       "owner": "Maham/Control Owners",
       "status": "not_started",
-      "percent_complete": 0,
+      "percent_complete": 10,
       "notes": "Full ATO: Assess all controls. Runs parallel with C-ATO work from day 1. Ends 2 weeks before SAR."
     },
     {
