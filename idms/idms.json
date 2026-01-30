@@ -391,7 +391,7 @@
     },
     {
       "id": "ui3",
-      "name": "Develop Document Collaboration and HITL",
+      "name": "Develop Document Collaboration and DocAI HITL",
       "workstream": "uiux",
       "start": "2026-02-12",
       "end": "2026-02-27",
@@ -409,6 +409,17 @@
       "owner": "Michael/Eric",
       "status": "not_started",
       "percent_complete": 0,
+      "notes": "Formal usability testing with end users, 508 compliance, keyboard navigation, WAVE/Lighthouse testing, and remediation"
+    },
+    {
+      "id": "ui55",
+      "name": "Preliminary Usability and Accessibility Testing",
+      "workstream": "uiux",
+      "start": "2026-01-29",
+      "end": "2026-02-06",
+      "owner": "Michael/Eric",
+      "status": "in_progress",
+      "percent_complete": 50,
       "notes": "Formal usability testing with end users, 508 compliance, keyboard navigation, WAVE/Lighthouse testing, and remediation"
     },
     {
