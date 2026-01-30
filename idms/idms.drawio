@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-01-30T13:18:57.686028" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-01-30T13:20:02.964280" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="1889" math="0" shadow="0">
       <root>
@@ -1440,10 +1440,10 @@
           <mxGeometry x="150" y="1230" width="243" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_dai3" value="&lt;b&gt;Case Closing Model (incl. Decisions)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="180" y="1271" width="360" height="32" as="geometry" />
+          <mxGeometry x="180" y="1271" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_331" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="180" y="1271" width="216" height="32" as="geometry" />
+          <mxGeometry x="180" y="1271" width="198" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_dai4" value="&lt;b&gt;AUR SNOD Model Training&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="270" y="1312" width="450" height="32" as="geometry" />
