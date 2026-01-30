@@ -506,10 +506,10 @@
       "id": "ws3",
       "name": "BEARS Domain Account Setup",
       "workstream": "workspace",
-      "start": "2026-02-03",
-      "end": "2026-02-14",
+      "start": "2026-01-26",
+      "end": "2026-02-13",
       "owner": "Karthik/Gina Bone",
-      "status": "not_started",
+      "status": "in_progress",
       "percent_complete": 0
     },
     {
