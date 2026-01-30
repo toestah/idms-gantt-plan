@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-01-30T09:28:39.702047" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-01-30T12:41:55.740011" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="1889" math="0" shadow="0">
       <root>
@@ -1287,10 +1287,10 @@
           <mxGeometry x="480" y="467" width="390" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon3" value="&lt;b&gt;Alerting &amp;amp; Dashboards&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="467" width="330" height="32" as="geometry" />
+          <mxGeometry x="990" y="467" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon4" value="&lt;b&gt;Production Monitoring Setup&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="508" width="540" height="32" as="geometry" />
+          <mxGeometry x="990" y="508" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon5" value="&lt;b&gt;UI Logging Development and Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael/Samia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="360" y="508" width="360" height="32" as="geometry" />
