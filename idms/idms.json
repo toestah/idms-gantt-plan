@@ -94,11 +94,11 @@
       "id": "gcp5",
       "name": "Terraform IaC Finalization",
       "workstream": "gcp",
-      "start": "2026-02-03",
+      "start": "2026-01-26",
       "end": "2026-02-13",
       "owner": "Ajay / Dale",
-      "status": "not_started",
-      "percent_complete": 0
+      "status": "in_progress",
+      "percent_complete": 20
     },
     {
       "id": "net1",
