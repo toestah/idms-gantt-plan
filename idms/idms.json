@@ -723,6 +723,13 @@
       "status": "at_risk"
     },
     {
+      "id": "end_user_training",
+      "name": "End Users Aligned for Training",
+      "date": "2026-02-17",
+      "workstream": "docsearch",
+      "status": "on_track"
+    },
+    {
       "id": "ms_search",
       "name": "Search Quality Validated",
       "date": "2026-03-06",
