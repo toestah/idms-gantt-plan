@@ -74,7 +74,7 @@
       "id": "gcp3",
       "name": "Prod Environment Build (GKE + Apigee)",
       "workstream": "gcp",
-      "start": "2026-02-10",
+      "start": "2026-02-09",
       "end": "2026-02-27",
       "owner": "Dale/Irfan",
       "status": "not_started",
