@@ -324,6 +324,9 @@ class DrawioGenerator:
         # Add milestone area (dynamically sized based on overlap)
         height += self.get_milestone_area_height()
 
+        # Add bottom timeline header (mirrored calendar)
+        height += TIMELINE_HEADER_HEIGHT
+
         # Add space for risk table
         if self.risks:
             height += TABLE_START_Y_OFFSET + TABLE_ROW_HEIGHT * (len(self.risks) + 1) + 50
@@ -588,6 +591,164 @@ class DrawioGenerator:
                 day_target.set("x", str(int(day_x)))
                 day_target.set("y", str(int(TIMELINE_HEADER_HEIGHT + total_swimlane_height)))
                 day_target.set("as", "targetPoint")
+
+            current += timedelta(days=1)
+
+    def get_bottom_header_y(self) -> float:
+        """Calculate Y position for the bottom timeline header."""
+        # Starts after: top header + milestone area + all swimlanes
+        y = TIMELINE_HEADER_HEIGHT + self.get_milestone_area_height()
+        for ws_id in self.workstreams:
+            y += self.get_swimlane_height(ws_id)
+        return y
+
+    def add_bottom_timeline_header(self, root: ET.Element):
+        """Add mirrored timeline header at the bottom of the chart."""
+        width, _ = self.calculate_diagram_size()
+        bottom_y = self.get_bottom_header_y()
+
+        # Month colors for distinction (alternating) - same as top header
+        month_colors = [
+            "#E3F2FD",  # Light blue
+            "#FFF3E0",  # Light orange
+            "#E8F5E9",  # Light green
+            "#FCE4EC",  # Light pink
+            "#F3E5F5",  # Light purple
+            "#E0F7FA",  # Light cyan
+        ]
+
+        # Header background
+        header_cell = ET.SubElement(root, "mxCell")
+        header_id = generate_id()
+        header_cell.set("id", header_id)
+        header_cell.set("value", "")
+        header_cell.set("style", "rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;")
+        header_cell.set("vertex", "1")
+        header_cell.set("parent", "1")
+
+        geom = ET.SubElement(header_cell, "mxGeometry")
+        geom.set("x", str(SWIMLANE_HEADER_WIDTH))
+        geom.set("y", str(int(bottom_y)))
+        geom.set("width", str(int(width - SWIMLANE_HEADER_WIDTH)))
+        geom.set("height", str(TIMELINE_HEADER_HEIGHT))
+        geom.set("as", "geometry")
+
+        # Find all months in the date range
+        months = []
+        current = self.project_start.replace(day=1)
+        while current <= self.visual_end:
+            # Find end of month
+            if current.month == 12:
+                next_month = current.replace(year=current.year + 1, month=1)
+            else:
+                next_month = current.replace(month=current.month + 1)
+            month_end = next_month - timedelta(days=1)
+
+            # Clip to project range
+            month_start_vis = max(current, self.project_start)
+            month_end_vis = min(month_end, self.visual_end)
+
+            months.append({
+                "start": month_start_vis,
+                "end": month_end_vis,
+                "name": current.strftime("%B %Y"),
+                "short_name": current.strftime("%b")
+            })
+            current = next_month
+
+        # Draw month bars at the bottom of the header (reversed position from top)
+        for i, month in enumerate(months):
+            color = month_colors[i % len(month_colors)]
+            x_start = date_to_x(month["start"], self.project_start)
+            x_end = date_to_x(month["end"], self.project_start) + PIXELS_PER_DAY
+            bar_width = x_end - x_start
+
+            # Only draw if visible
+            if x_start < SWIMLANE_HEADER_WIDTH:
+                bar_width -= (SWIMLANE_HEADER_WIDTH - x_start)
+                x_start = SWIMLANE_HEADER_WIDTH
+
+            if bar_width > 0:
+                # Month bar (at bottom of the header area)
+                month_cell = ET.SubElement(root, "mxCell")
+                month_cell.set("id", generate_id())
+                month_cell.set("value", "")
+                month_cell.set("style", f"rounded=0;whiteSpace=wrap;html=1;fillColor={color};strokeColor=#CCCCCC;")
+                month_cell.set("vertex", "1")
+                month_cell.set("parent", "1")
+
+                month_geom = ET.SubElement(month_cell, "mxGeometry")
+                month_geom.set("x", str(int(x_start)))
+                month_geom.set("y", str(int(bottom_y + TIMELINE_HEADER_HEIGHT - 20)))
+                month_geom.set("width", str(int(bar_width)))
+                month_geom.set("height", "18")
+                month_geom.set("as", "geometry")
+
+                # Month label
+                label_cell = ET.SubElement(root, "mxCell")
+                label_cell.set("id", generate_id())
+                label_cell.set("value", f"<b>{month['name']}</b>")
+                label_cell.set("style", "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=1;")
+                label_cell.set("vertex", "1")
+                label_cell.set("parent", "1")
+
+                label_geom = ET.SubElement(label_cell, "mxGeometry")
+                label_geom.set("x", str(int(x_start)))
+                label_geom.set("y", str(int(bottom_y + TIMELINE_HEADER_HEIGHT - 20)))
+                label_geom.set("width", str(int(bar_width)))
+                label_geom.set("height", "18")
+                label_geom.set("as", "geometry")
+
+        # Add day labels and numbers for each day
+        current = self.project_start
+        while current <= self.visual_end:
+            day_x = date_to_x(current, self.project_start)
+
+            # Only draw if within visible area
+            if day_x >= SWIMLANE_HEADER_WIDTH:
+                # Day letter (M T W T F S S)
+                day_labels = ["M", "T", "W", "T", "F", "S", "S"]
+                day_label = day_labels[current.weekday()]
+
+                # Day number (at the top of bottom header)
+                num_cell = ET.SubElement(root, "mxCell")
+                num_cell.set("id", generate_id())
+                num_cell.set("value", str(current.day))
+                # Weekend days in grey
+                if current.weekday() >= 5:
+                    num_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;"
+                else:
+                    num_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#666666;"
+                num_cell.set("style", num_style)
+                num_cell.set("vertex", "1")
+                num_cell.set("parent", "1")
+
+                num_geom = ET.SubElement(num_cell, "mxGeometry")
+                num_geom.set("x", str(int(day_x)))
+                num_geom.set("y", str(int(bottom_y + 4)))
+                num_geom.set("width", str(PIXELS_PER_DAY))
+                num_geom.set("height", "14")
+                num_geom.set("as", "geometry")
+
+                # Day letter (below the number)
+                day_cell = ET.SubElement(root, "mxCell")
+                day_cell.set("id", generate_id())
+                day_cell.set("value", day_label)
+                # Weekend days in grey
+                if current.weekday() >= 5:  # Saturday or Sunday
+                    day_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#999999;fontStyle=1;"
+                else:
+                    day_style = "text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#333333;fontStyle=1;"
+                day_cell.set("style", day_style)
+                day_cell.set("vertex", "1")
+                day_cell.set("parent", "1")
+
+                day_geom = ET.SubElement(day_cell, "mxGeometry")
+                day_geom.set("x", str(int(day_x)))
+                day_geom.set("y", str(int(bottom_y + 20)))
+                day_geom.set("width", str(PIXELS_PER_DAY))
+                day_geom.set("height", "14")
+                day_geom.set("as", "geometry")
 
             current += timedelta(days=1)
 
@@ -993,9 +1154,10 @@ class DrawioGenerator:
         if not self.risks:
             return
 
-        # Calculate Y position after milestone row and all swimlanes
+        # Calculate Y position after milestone row, all swimlanes, and bottom header
         total_content_height = self.get_milestone_area_height() + sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
-        table_y = TIMELINE_HEADER_HEIGHT + total_content_height + TABLE_START_Y_OFFSET
+        # Add bottom timeline header height
+        table_y = TIMELINE_HEADER_HEIGHT + total_content_height + TIMELINE_HEADER_HEIGHT + TABLE_START_Y_OFFSET
 
         # Column widths
         col_widths = [60, 150, 80, 80, 80, 195, 250]
@@ -1096,7 +1258,8 @@ class DrawioGenerator:
         # Position legend to the right of the risk table, aligned with table top
         total_content_height = self.get_milestone_area_height() + sum(self.get_swimlane_height(ws_id) for ws_id in self.workstreams)
         legend_x = 940
-        legend_y = TIMELINE_HEADER_HEIGHT + total_content_height + TABLE_START_Y_OFFSET
+        # Add bottom timeline header height
+        legend_y = TIMELINE_HEADER_HEIGHT + total_content_height + TIMELINE_HEADER_HEIGHT + TABLE_START_Y_OFFSET
 
         # Legend container - two columns
         col_width = 180
@@ -1443,6 +1606,7 @@ class DrawioGenerator:
         self.add_tasks(root)
         self.add_milestones(root)
         self.add_dependencies(root)
+        self.add_bottom_timeline_header(root)  # Mirror calendar at bottom
         self.add_risk_table(root)
         self.add_legend(root)
         self.add_date_marker_labels(root)  # Added last to appear on top
