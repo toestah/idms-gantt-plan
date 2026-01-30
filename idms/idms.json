@@ -576,8 +576,8 @@
       "id": "dai5",
       "name": "DocAI HITL Workflow Integration",
       "workstream": "docai",
-      "start": "2026-02-10",
-      "end": "2026-02-28",
+      "start": "2026-02-09",
+      "end": "2026-02-27",
       "owner": "Ajay / Michael",
       "status": "not_started",
       "percent_complete": 0
