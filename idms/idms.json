@@ -58,7 +58,7 @@
       "end": "2026-01-31",
       "owner": "Dale/Irfan",
       "status": "in_progress",
-      "percent_complete": 85
+      "percent_complete": 90
     },
     {
       "id": "gcp2",
@@ -117,18 +117,30 @@
       "start": "2026-01-26",
       "end": "2026-01-31",
       "owner": "Irfan/Dale",
+      "status": "complete",
+      "percent_complete": 100
+    },
+    {
+      "id": "net_gke_psc",
+      "name": "GKE Cluster Redeployment (PSC)",
+      "workstream": "network",
+      "start": "2026-02-04",
+      "end": "2026-02-10",
+      "owner": "Irfan",
       "status": "in_progress",
-      "percent_complete": 90
+      "percent_complete": 10,
+      "notes": "Redeploy GKE cluster with VPC peering disabled to enable PSC-based control plane access. Agreed in Feb 3 meeting."
     },
     {
       "id": "net3",
-      "name": "PSC Configuration",
+      "name": "PSC Endpoint Creation (T-Cloud)",
       "workstream": "network",
-      "start": "2026-02-02",
-      "end": "2026-02-13",
-      "owner": "Irfan",
-      "status": "at_risk",
-      "percent_complete": 0
+      "start": "2026-02-10",
+      "end": "2026-02-14",
+      "owner": "Praveen/Dan (T-Cloud)",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "T-Cloud creates PSC endpoint with routable IP after GKE cluster redeployed. Blocked on net_gke_psc."
     },
     {
       "id": "net4",
@@ -182,7 +194,7 @@
       "end": "2026-02-05",
       "owner": "Dale",
       "status": "in_progress",
-      "percent_complete": 50
+      "percent_complete": 65
     },
     {
       "id": "mon2",
@@ -232,7 +244,7 @@
       "end": "2026-02-06",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 75,
+      "percent_complete": 85,
       "notes": "C-ATO: Document current state of control implementation and identify gaps"
     },
     {
@@ -375,7 +387,7 @@
       "end": "2026-02-10",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 50,
+      "percent_complete": 60,
       "notes": "UI: Includes Component Library, Search UI, Matter/Case View UI - all basic screens and initial functionality"
     },
     {
@@ -451,7 +463,7 @@
       "end": "2026-02-07",
       "owner": "Samia",
       "status": "in_progress",
-      "percent_complete": 65
+      "percent_complete": 70
     },
     {
       "id": "ds2",
@@ -461,7 +473,7 @@
       "end": "2026-02-14",
       "owner": "Samia/Ajay",
       "status": "in_progress",
-      "percent_complete": 50
+      "percent_complete": 55
     },
     {
       "id": "ds3",
@@ -497,18 +509,18 @@
       "id": "ws1",
       "name": "Workspace/Drive ACL Configuration",
       "workstream": "workspace",
-      "start": "2026-01-26",
-      "end": "2026-02-07",
+      "start": "2026-02-09",
+      "end": "2026-02-13",
       "owner": "Angelica/Waqas",
-      "status": "in_progress",
-      "percent_complete": 40
+      "status": "not_started",
+      "percent_complete": 0
     },
     {
       "id": "ws2",
       "name": "VLDAP/SSO Integration",
       "workstream": "workspace",
       "start": "2026-01-26",
-      "end": "2026-02-18",
+      "end": "2026-02-06",
       "owner": "Gina Bone/IRS",
       "status": "at_risk",
       "percent_complete": 0
@@ -518,9 +530,9 @@
       "name": "BEARS Domain Account Setup",
       "workstream": "workspace",
       "start": "2026-01-26",
-      "end": "2026-02-13",
+      "end": "2026-02-06",
       "owner": "Karthik/Gina Bone",
-      "status": "in_progress",
+      "status": "at_risk",
       "percent_complete": 0
     },
     {
@@ -551,7 +563,7 @@
       "end": "2026-02-03",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 75
+      "percent_complete": 90
     },
     {
       "id": "dai2",
@@ -561,7 +573,7 @@
       "end": "2026-02-03",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 90
+      "percent_complete": 95
     },
     {
       "id": "dai3",
@@ -571,7 +583,7 @@
       "end": "2026-02-06",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 60
+      "percent_complete": 75
     },
     {
       "id": "dai4",
@@ -581,7 +593,7 @@
       "end": "2026-02-10",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 0
+      "percent_complete": 20
     },
     {
       "id": "dai5",
@@ -611,7 +623,7 @@
       "end": "2026-02-07",
       "owner": "Waqas/Mark",
       "status": "in_progress",
-      "percent_complete": 20
+      "percent_complete": 30
     },
     {
       "id": "data2",
@@ -872,13 +884,31 @@
       "to": "ms_full_ato",
       "type": "finish_to_start",
       "notes": "Final AO review leads to Full ATO"
+    },
+    {
+      "from": "ws2",
+      "to": "ws1",
+      "type": "finish_to_start",
+      "notes": "VLDAP/SSO must complete before Workspace/Drive ACL configuration"
+    },
+    {
+      "from": "ws3",
+      "to": "ws1",
+      "type": "finish_to_start",
+      "notes": "BEARS Domain Account must complete before Workspace/Drive ACL configuration"
+    },
+    {
+      "from": "net_gke_psc",
+      "to": "net3",
+      "type": "finish_to_start",
+      "notes": "GKE cluster must be redeployed with VPC peering disabled before T-Cloud can create PSC endpoint"
     }
   ],
   "date_markers": [
     {
       "id": "today",
       "name": "Today",
-      "date": "2026-01-30",
+      "date": "2026-02-04",
       "color": "#4CAF50",
       "style": "solid"
     },
@@ -1038,6 +1068,21 @@
         "data4",
         "data5",
         "data6"
+      ]
+    },
+    {
+      "id": "r9",
+      "name": "GKE Control Plane Network Access",
+      "description": "GKE control plane on non-routable IP (100.10.x.x); deployment server cannot reach it. PSC solution agreed (Feb 3) but requires GKE cluster redeployment and T-Cloud PSC endpoint creation.",
+      "severity": "high",
+      "likelihood": "medium",
+      "status": "monitoring",
+      "mitigation": "PSC approach agreed in Feb 3 meeting. Irfan redeploying GKE with VPC peering disabled; T-Cloud (Praveen/Dan) to create PSC endpoint. Also intermittent SSL cert issue being investigated.",
+      "affected": [
+        "net_gke_psc",
+        "net3",
+        "gcp1",
+        "net6"
       ]
     },
     {
