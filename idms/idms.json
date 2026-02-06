@@ -562,7 +562,7 @@
       "start": "2026-01-26",
       "end": "2026-02-03",
       "owner": "Maham",
-      "status": "done",
+      "status": "complete",
       "percent_complete": 100
     },
     {
@@ -572,8 +572,8 @@
       "start": "2026-01-26",
       "end": "2026-02-03",
       "owner": "Maham",
-      "status": "in_progress",
-      "percent_complete": 95
+      "status": "complete",
+      "percent_complete": 100
     },
     {
       "id": "dai3",
