@@ -387,7 +387,7 @@
       "end": "2026-02-10",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 60,
+      "percent_complete": 80,
       "notes": "UI: Includes Component Library, Search UI, Matter/Case View UI - all basic screens and initial functionality"
     },
     {
@@ -397,8 +397,8 @@
       "start": "2026-02-02",
       "end": "2026-02-20",
       "owner": "Michael",
-      "status": "not_started",
-      "percent_complete": 0,
+      "status": "in_progress",
+      "percent_complete": 30,
       "notes": "UI: AI chat interface development and refinement"
     },
     {
@@ -562,8 +562,8 @@
       "start": "2026-01-26",
       "end": "2026-02-03",
       "owner": "Maham",
-      "status": "in_progress",
-      "percent_complete": 90
+      "status": "done",
+      "percent_complete": 100
     },
     {
       "id": "dai2",
@@ -622,7 +622,7 @@
       "start": "2026-01-27",
       "end": "2026-02-07",
       "owner": "Waqas/Mark",
-      "status": "in_progress",
+      "status": "at_risk",
       "percent_complete": 30
     },
     {
