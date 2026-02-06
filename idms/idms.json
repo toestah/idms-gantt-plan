@@ -87,8 +87,8 @@
       "start": "2026-01-26",
       "end": "2026-02-06",
       "owner": "Irfan",
-      "status": "in_progress",
-      "percent_complete": 90
+      "status": "complete",
+      "percent_complete": 100
     },
     {
       "id": "gcp5",
