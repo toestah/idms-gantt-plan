@@ -88,7 +88,7 @@
       "end": "2026-02-06",
       "owner": "Irfan",
       "status": "in_progress",
-      "percent_complete": 70
+      "percent_complete": 90
     },
     {
       "id": "gcp5",
@@ -365,7 +365,7 @@
       "end": "2026-02-11",
       "owner": "Eric",
       "status": "in_progress",
-      "percent_complete": 30,
+      "percent_complete": 80,
       "notes": "UX: Figma screen designs and user flows"
     },
     {
