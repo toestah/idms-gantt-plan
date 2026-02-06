@@ -405,11 +405,11 @@
       "id": "ui3",
       "name": "Develop Document Collaboration and DocAI HITL",
       "workstream": "uiux",
-      "start": "2026-02-12",
-      "end": "2026-02-27",
+      "start": "2026-02-02",
+      "end": "2026-02-13",
       "owner": "Michael",
-      "status": "not_started",
-      "percent_complete": 0,
+      "status": "in_progress",
+      "percent_complete": 30,
       "notes": "UI: Google Drive integration and Document Verification (HITL) functionality"
     },
     {
