@@ -522,7 +522,7 @@
       "start": "2026-01-26",
       "end": "2026-02-06",
       "owner": "Gina Bone/IRS",
-      "status": "at_risk",
+      "status": "delayed",
       "percent_complete": 0
     },
     {
@@ -532,7 +532,7 @@
       "start": "2026-01-26",
       "end": "2026-02-06",
       "owner": "Karthik/Gina Bone",
-      "status": "at_risk",
+      "status": "delayed",
       "percent_complete": 0
     },
     {
@@ -908,7 +908,7 @@
     {
       "id": "today",
       "name": "Today",
-      "date": "2026-02-04",
+      "date": "2026-02-06",
       "color": "#4CAF50",
       "style": "solid"
     },
