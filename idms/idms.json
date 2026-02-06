@@ -725,7 +725,7 @@
       "name": "Dev Environment Ready",
       "date": "2026-02-07",
       "workstream": "gcp",
-      "status": "on_track"
+      "status": "delayed"
     },
     {
       "id": "ms_docai",
