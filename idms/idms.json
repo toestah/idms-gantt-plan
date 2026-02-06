@@ -85,7 +85,7 @@
       "name": "IAM & CMEK Configuration",
       "workstream": "gcp",
       "start": "2026-01-26",
-      "end": "2026-02-07",
+      "end": "2026-02-06",
       "owner": "Irfan",
       "status": "in_progress",
       "percent_complete": 70
@@ -98,7 +98,7 @@
       "end": "2026-02-13",
       "owner": "Ajay / Dale",
       "status": "in_progress",
-      "percent_complete": 20
+      "percent_complete": 50
     },
     {
       "id": "net1",
