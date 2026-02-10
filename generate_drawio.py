@@ -1602,13 +1602,13 @@ class DrawioGenerator:
         self.add_swimlanes(root)
         self.add_milestone_row(root)
         self.add_weekend_shading(root)
-        self.add_date_markers(root)
         self.add_tasks(root)
         self.add_milestones(root)
         self.add_dependencies(root)
         self.add_bottom_timeline_header(root)  # Mirror calendar at bottom
         self.add_risk_table(root)
         self.add_legend(root)
+        self.add_date_markers(root)  # Added near end so line renders on top of tasks
         self.add_date_marker_labels(root)  # Added last to appear on top
 
         # Convert to string with XML declaration

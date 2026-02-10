@@ -462,8 +462,8 @@
       "start": "2026-01-26",
       "end": "2026-02-07",
       "owner": "Samia",
-      "status": "in_progress",
-      "percent_complete": 70
+      "status": "complete",
+      "percent_complete": 100
     },
     {
       "id": "ds2",
