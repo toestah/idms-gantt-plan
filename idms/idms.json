@@ -10,8 +10,13 @@
   "workstreams": [
     {
       "id": "gcp",
-      "name": "GCP Env(s)",
+      "name": "GCP Env(s) / Infrastructure",
       "color": "#4285F4"
+    },
+    {
+      "id": "datapipeline",
+      "name": "DataFlow Pipeline",
+      "color": "#795548"
     },
     {
       "id": "network",
@@ -47,11 +52,6 @@
       "id": "docai",
       "name": "DocAI",
       "color": "#607D8B"
-    },
-    {
-      "id": "datapipeline",
-      "name": "Data Pipeline",
-      "color": "#795548"
     }
   ],
   "tasks": [

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-02-10T14:24:49.097909" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-02-10T14:26:33.243735" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="2146" math="0" shadow="0">
       <root>
@@ -1028,59 +1028,59 @@
             <mxPoint x="2610" y="1496" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="swimlane_gcp" value="GCP Env(s)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4285F4;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="swimlane_gcp" value="GCP Env(s) / Infrastructure" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4285F4;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="0" y="125" width="150" height="169" as="geometry" />
         </mxCell>
         <mxCell id="cell_259" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4285F4;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
           <mxGeometry x="150" y="125" width="2540" height="169" as="geometry" />
         </mxCell>
-        <mxCell id="swimlane_network" value="Network" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#34A853;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="294" width="150" height="210" as="geometry" />
+        <mxCell id="swimlane_datapipeline" value="DataFlow Pipeline" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#795548;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="0" y="294" width="150" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="cell_260" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#34A853;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="294" width="2540" height="210" as="geometry" />
+        <mxCell id="cell_260" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#795548;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="294" width="2540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="swimlane_network" value="Network" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#34A853;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="0" y="354" width="150" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="cell_261" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#34A853;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="354" width="2540" height="210" as="geometry" />
         </mxCell>
         <mxCell id="swimlane_monitoring" value="Monitoring &amp;amp; Logging" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBBC04;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="504" width="150" height="87" as="geometry" />
+          <mxGeometry x="0" y="564" width="150" height="87" as="geometry" />
         </mxCell>
-        <mxCell id="cell_261" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBBC04;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="504" width="2540" height="87" as="geometry" />
+        <mxCell id="cell_262" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBBC04;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="564" width="2540" height="87" as="geometry" />
         </mxCell>
         <mxCell id="swimlane_ato" value="ATO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EA4335;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="591" width="150" height="169" as="geometry" />
+          <mxGeometry x="0" y="651" width="150" height="169" as="geometry" />
         </mxCell>
-        <mxCell id="cell_262" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EA4335;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="591" width="2540" height="169" as="geometry" />
+        <mxCell id="cell_263" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EA4335;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="651" width="2540" height="169" as="geometry" />
         </mxCell>
         <mxCell id="swimlane_uiux" value="UI/UX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="760" width="150" height="251" as="geometry" />
+          <mxGeometry x="0" y="820" width="150" height="251" as="geometry" />
         </mxCell>
-        <mxCell id="cell_263" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9C27B0;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="760" width="2540" height="251" as="geometry" />
+        <mxCell id="cell_264" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9C27B0;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="820" width="2540" height="251" as="geometry" />
         </mxCell>
         <mxCell id="swimlane_docsearch" value="Document Search" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#00BCD4;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="1011" width="150" height="169" as="geometry" />
+          <mxGeometry x="0" y="1071" width="150" height="169" as="geometry" />
         </mxCell>
-        <mxCell id="cell_264" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#00BCD4;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1011" width="2540" height="169" as="geometry" />
+        <mxCell id="cell_265" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#00BCD4;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1071" width="2540" height="169" as="geometry" />
         </mxCell>
         <mxCell id="swimlane_workspace" value="Workspace" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="1180" width="150" height="87" as="geometry" />
+          <mxGeometry x="0" y="1240" width="150" height="87" as="geometry" />
         </mxCell>
-        <mxCell id="cell_265" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF9800;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1180" width="2540" height="87" as="geometry" />
+        <mxCell id="cell_266" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF9800;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1240" width="2540" height="87" as="geometry" />
         </mxCell>
         <mxCell id="swimlane_docai" value="DocAI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#607D8B;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="1267" width="150" height="169" as="geometry" />
+          <mxGeometry x="0" y="1327" width="150" height="169" as="geometry" />
         </mxCell>
-        <mxCell id="cell_266" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#607D8B;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1267" width="2540" height="169" as="geometry" />
-        </mxCell>
-        <mxCell id="swimlane_datapipeline" value="Data Pipeline" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#795548;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
-          <mxGeometry x="0" y="1436" width="150" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="cell_267" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#795548;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1436" width="2540" height="60" as="geometry" />
+        <mxCell id="cell_267" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#607D8B;fillOpacity=20;strokeColor=#CCCCCC;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1327" width="2540" height="169" as="geometry" />
         </mxCell>
         <mxCell id="cell_268" value="Milestones" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
           <mxGeometry x="0" y="70" width="150" height="55" as="geometry" />
@@ -1197,295 +1197,295 @@
           <mxGeometry x="150" y="211" width="285" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_net1" value="&lt;b&gt;Apigee X Deployment &amp;amp; API Load Balancer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Irfan&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="180" y="380" width="360" height="32" as="geometry" />
+          <mxGeometry x="180" y="440" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_301" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="180" y="380" width="144" height="32" as="geometry" />
+          <mxGeometry x="180" y="440" width="144" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_net2" value="&lt;b&gt;Load Balancer Setup (Dev)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Irfan/Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4CAF50;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="298" width="180" height="32" as="geometry" />
+          <mxGeometry x="150" y="358" width="180" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_302" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="298" width="180" height="32" as="geometry" />
+          <mxGeometry x="150" y="358" width="180" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_net_gke_psc" value="&lt;b&gt;GKE Cluster Redeployment (PSC)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Irfan&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="420" y="462" width="210" height="32" as="geometry" />
+          <mxGeometry x="420" y="522" width="210" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_303" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="420" y="462" width="21" height="32" as="geometry" />
+          <mxGeometry x="420" y="522" width="21" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_304" value="r9" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="615" y="457" width="16" height="16" as="geometry" />
+          <mxGeometry x="615" y="517" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_net3" value="&lt;b&gt;PSC Endpoint Creation (T-Cloud)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Praveen/Dan (T-Cloud)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="600" y="380" width="150" height="32" as="geometry" />
+          <mxGeometry x="600" y="440" width="150" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_305" value="r2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="735" y="375" width="16" height="16" as="geometry" />
+          <mxGeometry x="735" y="435" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="cell_306" value="r3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="753" y="375" width="16" height="16" as="geometry" />
+          <mxGeometry x="753" y="435" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="cell_307" value="r9" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="771" y="375" width="16" height="16" as="geometry" />
+          <mxGeometry x="771" y="435" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_net4" value="&lt;b&gt;FCR Pre-Prod/Prod (Firewall)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Karthik/IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="360" y="298" width="360" height="32" as="geometry" />
+          <mxGeometry x="360" y="358" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_308" value="r2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="705" y="293" width="16" height="16" as="geometry" />
+          <mxGeometry x="705" y="353" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_net5" value="&lt;b&gt;DNS Configuration (Pre-Prod/Prod)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Charles Deel/IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="360" y="421" width="360" height="32" as="geometry" />
+          <mxGeometry x="360" y="481" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_net6" value="&lt;b&gt;E2E Network Connectivity Validation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:7px&quot;&gt;Waqas/Irfan&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="780" y="298" width="150" height="32" as="geometry" />
+          <mxGeometry x="780" y="358" width="150" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_309" value="r1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="915" y="293" width="16" height="16" as="geometry" />
+          <mxGeometry x="915" y="353" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="cell_310" value="r3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="933" y="293" width="16" height="16" as="geometry" />
+          <mxGeometry x="933" y="353" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="cell_311" value="r9" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="951" y="293" width="16" height="16" as="geometry" />
+          <mxGeometry x="951" y="353" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_net7" value="&lt;b&gt;EPZ Workaround Implementation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas/Chris Good&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FFC107;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="339" width="780" height="32" as="geometry" />
+          <mxGeometry x="150" y="399" width="780" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_312" value="r1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="915" y="334" width="16" height="16" as="geometry" />
+          <mxGeometry x="915" y="394" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_mon1" value="&lt;b&gt;Monitoring Setup Validation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4CAF50;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="508" width="330" height="32" as="geometry" />
+          <mxGeometry x="150" y="568" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_313" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="508" width="330" height="32" as="geometry" />
+          <mxGeometry x="150" y="568" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon2" value="&lt;b&gt;Logging Pipeline Configuration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="480" y="508" width="390" height="32" as="geometry" />
+          <mxGeometry x="480" y="568" width="390" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon3" value="&lt;b&gt;Alerting &amp;amp; Dashboards&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="990" y="508" width="360" height="32" as="geometry" />
+          <mxGeometry x="990" y="568" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon4" value="&lt;b&gt;Production Monitoring Setup&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="990" y="549" width="570" height="32" as="geometry" />
+          <mxGeometry x="990" y="609" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon5" value="&lt;b&gt;UI Logging Development and Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael/Samia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="360" y="549" width="360" height="32" as="geometry" />
+          <mxGeometry x="360" y="609" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_314" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="360" y="549" width="36" height="32" as="geometry" />
+          <mxGeometry x="360" y="609" width="36" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato1" value="&lt;b&gt;[C-ATO] Document Current State + Perform Gap Analysis&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="595" width="360" height="32" as="geometry" />
+          <mxGeometry x="150" y="655" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_315" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="595" width="306" height="32" as="geometry" />
+          <mxGeometry x="150" y="655" width="306" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato3" value="&lt;b&gt;[C-ATO] Remediate Findings (Pre-Prod)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="570" y="595" width="360" height="32" as="geometry" />
+          <mxGeometry x="570" y="655" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato4" value="&lt;b&gt;[C-ATO] Finalize Control Documentation + Gather Evidence&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="570" y="718" width="360" height="32" as="geometry" />
+          <mxGeometry x="570" y="778" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato6" value="&lt;b&gt;[C-ATO] IRS Assessment Team Review&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="990" y="595" width="360" height="32" as="geometry" />
+          <mxGeometry x="990" y="655" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_316" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1335" y="590" width="16" height="16" as="geometry" />
+          <mxGeometry x="1335" y="650" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_ato7" value="&lt;b&gt;[C-ATO] Address Feedback + Resubmit&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:7px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="1410" y="595" width="90" height="38" as="geometry" />
+          <mxGeometry x="1410" y="655" width="90" height="38" as="geometry" />
         </mxCell>
         <mxCell id="cell_317" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1485" y="590" width="16" height="16" as="geometry" />
+          <mxGeometry x="1485" y="650" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_ato8" value="&lt;b&gt;[C-ATO] AO Review → C-ATO Decision&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:7px&quot;&gt;IRS AO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="1500" y="595" width="60" height="38" as="geometry" />
+          <mxGeometry x="1500" y="655" width="60" height="38" as="geometry" />
         </mxCell>
         <mxCell id="cell_318" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1545" y="590" width="16" height="16" as="geometry" />
+          <mxGeometry x="1545" y="650" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_ato9" value="&lt;b&gt;[Full ATO] Develop Security Artifacts (SSP, IRP)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="636" width="1410" height="32" as="geometry" />
+          <mxGeometry x="150" y="696" width="1410" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_319" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="636" width="141" height="32" as="geometry" />
+          <mxGeometry x="150" y="696" width="141" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato10" value="&lt;b&gt;[Full ATO] Full Controls Assessment&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="677" width="1410" height="32" as="geometry" />
+          <mxGeometry x="150" y="737" width="1410" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_320" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="677" width="141" height="32" as="geometry" />
+          <mxGeometry x="150" y="737" width="141" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato11" value="&lt;b&gt;[Full ATO] Validation Team Review &amp;amp; SAR Production&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1620" y="595" width="360" height="32" as="geometry" />
+          <mxGeometry x="1620" y="655" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato12" value="&lt;b&gt;[Full ATO] Remediate Findings and/or register POAMs&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:7px&quot;&gt;Maham/Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="2040" y="595" width="150" height="34" as="geometry" />
+          <mxGeometry x="2040" y="655" width="150" height="34" as="geometry" />
         </mxCell>
         <mxCell id="task_ato13" value="&lt;b&gt;[Full ATO] Final AO Review → ATO Decision&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;IRS AO&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="2250" y="595" width="300" height="32" as="geometry" />
+          <mxGeometry x="2250" y="655" width="300" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ux1" value="&lt;b&gt;Screen Identification and Design&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="764" width="510" height="32" as="geometry" />
+          <mxGeometry x="150" y="824" width="510" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_321" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="764" width="408" height="32" as="geometry" />
+          <mxGeometry x="150" y="824" width="408" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ux2" value="&lt;b&gt;User Requirements Validation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="360" y="887" width="570" height="32" as="geometry" />
+          <mxGeometry x="360" y="947" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui1" value="&lt;b&gt;Initial Application Screen Development&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="805" width="480" height="32" as="geometry" />
+          <mxGeometry x="150" y="865" width="480" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_322" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="805" width="384" height="32" as="geometry" />
+          <mxGeometry x="150" y="865" width="384" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui2" value="&lt;b&gt;AI and Chat UI Development&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="360" y="928" width="570" height="32" as="geometry" />
+          <mxGeometry x="360" y="988" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_323" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="360" y="928" width="171" height="32" as="geometry" />
+          <mxGeometry x="360" y="988" width="171" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui3" value="&lt;b&gt;Develop Document Collaboration and DocAI HITL&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="360" y="969" width="360" height="32" as="geometry" />
+          <mxGeometry x="360" y="1029" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_324" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="360" y="969" width="108" height="32" as="geometry" />
+          <mxGeometry x="360" y="1029" width="108" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui4" value="&lt;b&gt;Usability and Accessibility Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael/Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="990" y="764" width="570" height="32" as="geometry" />
+          <mxGeometry x="990" y="824" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui55" value="&lt;b&gt;Preliminary Usability and Accessibility Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael/Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="240" y="846" width="270" height="32" as="geometry" />
+          <mxGeometry x="240" y="906" width="270" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_325" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="240" y="846" width="135" height="32" as="geometry" />
+          <mxGeometry x="240" y="906" width="135" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui5" value="&lt;b&gt;UAT Fixes &amp;amp; Production Deployment&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1410" y="846" width="360" height="32" as="geometry" />
+          <mxGeometry x="1410" y="906" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ui6" value="&lt;b&gt;Technical Documentation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1830" y="805" width="270" height="32" as="geometry" />
+          <mxGeometry x="1830" y="865" width="270" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ds1" value="&lt;b&gt;Vertex AI Search Configuration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Samia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4CAF50;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1015" width="390" height="32" as="geometry" />
+          <mxGeometry x="150" y="1075" width="390" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_326" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1015" width="390" height="32" as="geometry" />
+          <mxGeometry x="150" y="1075" width="390" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ds2" value="&lt;b&gt;Search &amp;amp; Summary API Refinement&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Samia/Ajay&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1056" width="600" height="32" as="geometry" />
+          <mxGeometry x="150" y="1116" width="600" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_327" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1056" width="330" height="32" as="geometry" />
+          <mxGeometry x="150" y="1116" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ds3" value="&lt;b&gt;Search Quality Evaluation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Samia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="570" y="1015" width="600" height="32" as="geometry" />
+          <mxGeometry x="570" y="1075" width="600" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ds4" value="&lt;b&gt;Search Tuning &amp;amp; Optimization&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Samia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="810" y="1056" width="540" height="32" as="geometry" />
+          <mxGeometry x="810" y="1116" width="540" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ds5" value="&lt;b&gt;Production Search Deployment&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="1015" width="360" height="32" as="geometry" />
+          <mxGeometry x="1200" y="1075" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ws1" value="&lt;b&gt;Workspace/Drive ACL Configuration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Angelica/Waqas&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="570" y="1184" width="150" height="32" as="geometry" />
+          <mxGeometry x="570" y="1244" width="150" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ws2" value="&lt;b&gt;VLDAP/SSO Integration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Gina Bone/IRS&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F44336;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1184" width="360" height="32" as="geometry" />
+          <mxGeometry x="150" y="1244" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_328" value="r6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="495" y="1179" width="16" height="16" as="geometry" />
+          <mxGeometry x="495" y="1239" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_ws3" value="&lt;b&gt;BEARS Domain Account Setup&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Karthik/Gina Bone&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F44336;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1225" width="360" height="32" as="geometry" />
+          <mxGeometry x="150" y="1285" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ws4" value="&lt;b&gt;Pilot User Onboarding&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Angelica&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="810" y="1184" width="330" height="32" as="geometry" />
+          <mxGeometry x="810" y="1244" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_329" value="r6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1125" y="1179" width="16" height="16" as="geometry" />
+          <mxGeometry x="1125" y="1239" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_ws5" value="&lt;b&gt;Workspace Integration Testing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Angelica/Waqas&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="1184" width="360" height="32" as="geometry" />
+          <mxGeometry x="1200" y="1244" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_dai1" value="&lt;b&gt;Basic Court Order Model Training&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4CAF50;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1271" width="270" height="32" as="geometry" />
+          <mxGeometry x="150" y="1331" width="270" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_330" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1271" width="270" height="32" as="geometry" />
+          <mxGeometry x="150" y="1331" width="270" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_dai2" value="&lt;b&gt;Statement of Taxpayer Model&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4CAF50;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1312" width="270" height="32" as="geometry" />
+          <mxGeometry x="150" y="1372" width="270" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_331" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1312" width="270" height="32" as="geometry" />
+          <mxGeometry x="150" y="1372" width="270" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_dai3" value="&lt;b&gt;Case Closing Model (incl. Decisions)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="180" y="1353" width="330" height="32" as="geometry" />
+          <mxGeometry x="180" y="1413" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_332" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="180" y="1353" width="247" height="32" as="geometry" />
+          <mxGeometry x="180" y="1413" width="247" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_dai4" value="&lt;b&gt;AUR SNOD Model Training&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="270" y="1394" width="360" height="32" as="geometry" />
+          <mxGeometry x="270" y="1454" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_333" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="270" y="1394" width="72" height="32" as="geometry" />
+          <mxGeometry x="270" y="1454" width="72" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_334" value="r4" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="615" y="1389" width="16" height="16" as="geometry" />
+          <mxGeometry x="615" y="1449" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_dai5" value="&lt;b&gt;DocAI HITL Workflow Integration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Ajay / Michael&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="570" y="1271" width="570" height="32" as="geometry" />
+          <mxGeometry x="570" y="1331" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_dai6" value="&lt;b&gt;DocAI Production Deployment&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="1271" width="360" height="32" as="geometry" />
+          <mxGeometry x="1200" y="1331" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_data1" value="&lt;b&gt;Initial Data Ingestion (Dev)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas/Mark&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F44336;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="180" y="1097" width="360" height="32" as="geometry" />
+          <mxGeometry x="180" y="1157" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_335" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F44336;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="180" y="1097" width="108" height="32" as="geometry" />
+          <mxGeometry x="180" y="1157" width="108" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_data2" value="&lt;b&gt;Salesforce Connectivity &amp;amp; Data Pull&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="390" y="1138" width="570" height="32" as="geometry" />
+          <mxGeometry x="390" y="1198" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_data3" value="&lt;b&gt;Pre-Prod Data Load (10TB subset)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas/Mark&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="1097" width="330" height="32" as="geometry" />
+          <mxGeometry x="1020" y="1157" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_336" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1335" y="1092" width="16" height="16" as="geometry" />
+          <mxGeometry x="1335" y="1152" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_data4" value="&lt;b&gt;Prod Data Transfer Phase 1 (40TB)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1200" y="1138" width="360" height="32" as="geometry" />
+          <mxGeometry x="1200" y="1198" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_337" value="r5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1545" y="1133" width="16" height="16" as="geometry" />
+          <mxGeometry x="1545" y="1193" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="cell_338" value="r7" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1563" y="1133" width="16" height="16" as="geometry" />
+          <mxGeometry x="1563" y="1193" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_data5" value="&lt;b&gt;Prod Data Transfer Phase 2 (40TB)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1410" y="1056" width="360" height="32" as="geometry" />
+          <mxGeometry x="1410" y="1116" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_339" value="r7" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1755" y="1051" width="16" height="16" as="geometry" />
+          <mxGeometry x="1755" y="1111" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_data6" value="&lt;b&gt;Prod Data Transfer Phase 3 (20TB) &amp;amp; Indexing&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Waqas/Mark&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1620" y="1015" width="360" height="32" as="geometry" />
+          <mxGeometry x="1620" y="1075" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_340" value="r7" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFC107;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="1965" y="1010" width="16" height="16" as="geometry" />
+          <mxGeometry x="1965" y="1070" width="16" height="16" as="geometry" />
         </mxCell>
         <mxCell id="task_ux3" value="&lt;b&gt;User Documentation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="805" width="540" height="32" as="geometry" />
+          <mxGeometry x="1020" y="865" width="540" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ux4" value="&lt;b&gt;End User Training Delivery&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Eric&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="1620" y="764" width="480" height="32" as="geometry" />
+          <mxGeometry x="1620" y="824" width="480" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_hyper1" value="&lt;b&gt;Go-Live Hypercare Support&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;All&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1830" y="129" width="540" height="32" as="geometry" />
