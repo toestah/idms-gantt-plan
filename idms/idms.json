@@ -47,6 +47,11 @@
       "id": "docai",
       "name": "DocAI",
       "color": "#607D8B"
+    },
+    {
+      "id": "datapipeline",
+      "name": "Data Pipeline",
+      "color": "#795548"
     }
   ],
   "tasks": [
