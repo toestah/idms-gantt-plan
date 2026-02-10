@@ -193,8 +193,8 @@
       "start": "2026-01-26",
       "end": "2026-02-05",
       "owner": "Dale",
-      "status": "in_progress",
-      "percent_complete": 65
+      "status": "complete",
+      "percent_complete": 100
     },
     {
       "id": "mon2",

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-02-06T13:48:29.417675" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-02-10T09:29:24.316683" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="2086" math="0" shadow="0">
       <root>
@@ -1304,11 +1304,11 @@
         <mxCell id="cell_320" value="r1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F44336;strokeColor=#333333;fontColor=#FFFFFF;fontSize=9;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="915" y="334" width="16" height="16" as="geometry" />
         </mxCell>
-        <mxCell id="task_mon1" value="&lt;b&gt;Monitoring Setup Validation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_mon1" value="&lt;b&gt;Monitoring Setup Validation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4CAF50;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="150" y="508" width="330" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="cell_321" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="508" width="214" height="32" as="geometry" />
+        <mxCell id="cell_321" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="508" width="330" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_mon2" value="&lt;b&gt;Logging Pipeline Configuration&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Dale&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="480" y="508" width="390" height="32" as="geometry" />
