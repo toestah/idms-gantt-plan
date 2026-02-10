@@ -373,14 +373,24 @@ class DrawioGenerator:
 
         return model
 
+    # Layer IDs
+    DEFAULT_LAYER = "1"
+    OVERLAY_LAYER = "2"  # Renders on top of default layer
+
     def add_root_cells(self, root: ET.Element):
-        """Add the required root cells (0 and 1)."""
+        """Add the required root cells (0 and 1) and overlay layer (2)."""
         cell0 = ET.SubElement(root, "mxCell")
         cell0.set("id", "0")
 
         cell1 = ET.SubElement(root, "mxCell")
         cell1.set("id", "1")
         cell1.set("parent", "0")
+
+        # Overlay layer for date markers — always renders above default layer
+        cell2 = ET.SubElement(root, "mxCell")
+        cell2.set("id", self.OVERLAY_LAYER)
+        cell2.set("value", "Date Markers")
+        cell2.set("parent", "0")
 
     def add_weekend_shading(self, root: ET.Element):
         """Add grey shading for weekend days (Saturday and Sunday)."""
@@ -868,13 +878,13 @@ class DrawioGenerator:
             else:
                 stroke_style = ""
 
-            # Vertical marker line
+            # Vertical marker line (on overlay layer so it renders above tasks)
             line_cell = ET.SubElement(root, "mxCell")
             line_cell.set("id", generate_id())
             line_cell.set("value", "")
             line_cell.set("style", f"endArrow=none;html=1;strokeColor={color};strokeWidth=2;{stroke_style}")
             line_cell.set("edge", "1")
-            line_cell.set("parent", "1")
+            line_cell.set("parent", self.OVERLAY_LAYER)
 
             line_geom = ET.SubElement(line_cell, "mxGeometry")
             line_geom.set("relative", "1")
@@ -918,13 +928,13 @@ class DrawioGenerator:
                 label_x = x + 4
                 label_y = milestone_row_y + 5
 
-                # Background for better readability
+                # Background for better readability (on overlay layer)
                 bg_cell = ET.SubElement(root, "mxCell")
                 bg_cell.set("id", generate_id())
                 bg_cell.set("value", "")
                 bg_cell.set("style", "rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;opacity=85;")
                 bg_cell.set("vertex", "1")
-                bg_cell.set("parent", "1")
+                bg_cell.set("parent", self.OVERLAY_LAYER)
 
                 bg_geom = ET.SubElement(bg_cell, "mxGeometry")
                 bg_geom.set("x", str(int(label_x - 2)))
@@ -933,13 +943,13 @@ class DrawioGenerator:
                 bg_geom.set("height", str(16))
                 bg_geom.set("as", "geometry")
 
-                # Label text
+                # Label text (on overlay layer)
                 label_cell = ET.SubElement(root, "mxCell")
                 label_cell.set("id", generate_id())
                 label_cell.set("value", f"<b>{escape_xml(name)}</b>")
                 label_cell.set("style", f"text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor={color};")
                 label_cell.set("vertex", "1")
-                label_cell.set("parent", "1")
+                label_cell.set("parent", self.OVERLAY_LAYER)
 
                 label_geom = ET.SubElement(label_cell, "mxGeometry")
                 label_geom.set("x", str(int(label_x)))
