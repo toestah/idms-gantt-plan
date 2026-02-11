@@ -69,10 +69,10 @@
       "id": "gcp2",
       "name": "Pre-Prod Environment Setup",
       "workstream": "gcp",
-      "start": "2026-01-27",
-      "end": "2026-02-14",
+      "start": "2026-01-26",
+      "end": "2026-02-13",
       "owner": "Dale",
-      "status": "in_progress",
+      "status": "at_risk",
       "percent_complete": 30
     },
     {
