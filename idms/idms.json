@@ -61,7 +61,7 @@
       "workstream": "datapipeline",
       "start": "2026-01-26",
       "end": "2026-02-11",
-      "owner": "Mark/Ajay",
+      "owner": "Mark",
       "status": "complete",
       "percent_complete": 100,
       "notes": "Functional pipeline built in sandbox. Refinement ongoing as real data becomes available."
