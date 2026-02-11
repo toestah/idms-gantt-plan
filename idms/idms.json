@@ -132,8 +132,8 @@
       "start": "2026-02-04",
       "end": "2026-02-10",
       "owner": "Irfan",
-      "status": "in_progress",
-      "percent_complete": 10,
+      "status": "complete",
+      "percent_complete": 100,
       "notes": "Redeploy GKE cluster with VPC peering disabled to enable PSC-based control plane access. Agreed in Feb 3 meeting."
     },
     {
