@@ -587,8 +587,8 @@
       "start": "2026-01-27",
       "end": "2026-02-06",
       "owner": "Maham",
-      "status": "in_progress",
-      "percent_complete": 75
+      "status": "delayed",
+      "percent_complete": 95
     },
     {
       "id": "dai4",
