@@ -71,22 +71,22 @@
       "name": "Deploy Pipeline to Dev (T-Cloud)",
       "workstream": "datapipeline",
       "start": "2026-02-12",
-      "end": "2026-02-20",
+      "end": "2026-02-16",
       "owner": "Ajay/Dale",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "Deploy dataflow pipeline to T-Cloud Dev. Depends on Dev E2E connectivity and Terraform IaC (IDMS-451)."
+      "notes": "Deploy dataflow pipeline to T-Cloud Dev. Depends on Dev E2E connectivity and Terraform IaC (IDMS-451). Target: Monday Feb 16."
     },
     {
       "id": "dp3",
       "name": "Deploy Pipeline to Pre-Prod (T-Cloud)",
       "workstream": "datapipeline",
-      "start": "2026-02-20",
-      "end": "2026-02-28",
+      "start": "2026-02-16",
+      "end": "2026-02-18",
       "owner": "Ajay/Dale",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "Deploy to Pre-Prod after Dev deployment validated."
+      "notes": "Deploy to Pre-Prod after Dev deployment validated. Hard target: Feb 18."
     },
     {
       "id": "dp4",
