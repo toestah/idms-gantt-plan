@@ -107,13 +107,13 @@
     },
     {
       "id": "net1",
-      "name": "Apigee X Deployment & API Load Balancer",
+      "name": "Apigee X Internal API Routing & ALB",
       "workstream": "network",
       "start": "2026-01-27",
       "end": "2026-02-07",
       "owner": "Irfan",
-      "status": "blocked",
-      "percent_complete": 40
+      "status": "in_progress",
+      "percent_complete": 50
     },
     {
       "id": "net2",
@@ -182,14 +182,14 @@
     },
     {
       "id": "net7",
-      "name": "EPZ Workaround Implementation",
+      "name": "EAG Implementation (EPZ Workaround)",
       "workstream": "network",
       "start": "2026-01-26",
       "end": "2026-02-20",
       "owner": "Waqas/Chris Good",
       "status": "at_risk",
       "percent_complete": 0,
-      "notes": "Must complete before Conditional ATO submission - network workaround needed for validation"
+      "notes": "Must complete before Conditional ATO submission - EAG meeting today (Feb 11) for way forward"
     },
     {
       "id": "mon1",
