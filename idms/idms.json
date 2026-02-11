@@ -154,7 +154,7 @@
       "start": "2026-02-02",
       "end": "2026-02-13",
       "owner": "Karthik/IRS",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
       "notes": "Must complete before E2E Network Validation - required for ATO package"
     },
@@ -165,7 +165,7 @@
       "start": "2026-02-02",
       "end": "2026-02-13",
       "owner": "Charles Deel/IRS",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
       "notes": "Must complete before E2E Network Validation - required for ATO package"
     },
