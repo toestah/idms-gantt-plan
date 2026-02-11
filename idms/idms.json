@@ -112,8 +112,9 @@
       "start": "2026-01-27",
       "end": "2026-02-07",
       "owner": "Irfan",
-      "status": "in_progress",
-      "percent_complete": 50
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Internal API routing done. Apigee-side ALB in CMN code ready, pending deployment. Apigee proxy for Salesforce gated on EAG (net7)."
     },
     {
       "id": "net2",
