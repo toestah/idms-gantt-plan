@@ -259,7 +259,7 @@
       "start": "2026-02-09",
       "end": "2026-02-20",
       "owner": "Control Owners",
-      "status": "not_started",
+      "status": "blocked",
       "percent_complete": 0,
       "notes": "C-ATO: Ensure controls implemented in pre-prod environment"
     },

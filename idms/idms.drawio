@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-02-11T10:36:45.445188" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-02-11T10:38:04.487372" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="2146" math="0" shadow="0">
       <root>
@@ -1284,7 +1284,7 @@
         <mxCell id="cell_315" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="150" y="655" width="360" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="task_ato3" value="&lt;b&gt;[C-ATO] Remediate Findings (Pre-Prod)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="task_ato3" value="&lt;b&gt;[C-ATO] Remediate Findings (Pre-Prod)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Control Owners&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F44336;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="570" y="655" width="360" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ato4" value="&lt;b&gt;[C-ATO] Finalize Control Documentation + Gather Evidence&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Maham&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F44336;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
