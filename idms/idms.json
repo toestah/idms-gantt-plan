@@ -595,10 +595,10 @@
       "name": "AUR SNOD Model Training",
       "workstream": "docai",
       "start": "2026-01-30",
-      "end": "2026-02-10",
+      "end": "2026-02-11",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 20
+      "percent_complete": 80
     },
     {
       "id": "dai5",
@@ -913,7 +913,7 @@
     {
       "id": "today",
       "name": "Today",
-      "date": "2026-02-10",
+      "date": "2026-02-11",
       "color": "#4CAF50",
       "style": "solid"
     },
