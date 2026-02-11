@@ -248,8 +248,8 @@
       "start": "2026-01-26",
       "end": "2026-02-06",
       "owner": "Maham",
-      "status": "in_progress",
-      "percent_complete": 85,
+      "status": "complete",
+      "percent_complete": 100,
       "notes": "C-ATO: Document current state of control implementation and identify gaps"
     },
     {
