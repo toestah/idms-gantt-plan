@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" modified="2026-02-11T16:36:55.631831" agent="Project Timeline Generator" version="21.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-02-11T16:40:02.365281" agent="Project Timeline Generator" version="21.0.0" type="device">
   <diagram id="project-timeline" name="IRS IDMS - Intelligent Document Management System">
     <mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2690" pageHeight="2173" math="0" shadow="0">
       <root>
@@ -1405,10 +1405,10 @@
           <mxGeometry x="150" y="1102" width="390" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ds2" value="&lt;b&gt;Search &amp;amp; Summary API Refinement&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Samia/Ajay&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2196F3;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1143" width="600" height="32" as="geometry" />
+          <mxGeometry x="150" y="1143" width="570" height="32" as="geometry" />
         </mxCell>
         <mxCell id="cell_332" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;fillOpacity=30;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="150" y="1143" width="390" height="32" as="geometry" />
+          <mxGeometry x="150" y="1143" width="370" height="32" as="geometry" />
         </mxCell>
         <mxCell id="task_ds3" value="&lt;b&gt;Search Quality Evaluation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;Samia&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9E9E9E;strokeWidth=2;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="570" y="1102" width="600" height="32" as="geometry" />

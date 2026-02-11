@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(/Users/taimur/Projects/IRS_IDMS/jugglebuddy/tools/jira-cli/jira-idms issue list:*)",
+      "Bash(/Users/taimur/Projects/IRS_IDMS/jugglebuddy/tools/jira-cli/jira-idms issue view IDMS-451)",
+      "Bash(/Users/taimur/Projects/IRS_IDMS/jugglebuddy/tools/jira-cli/jira-idms issue view:*)"
     ]
   }
 }
