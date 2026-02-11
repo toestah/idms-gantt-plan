@@ -82,7 +82,7 @@
       "start": "2026-02-09",
       "end": "2026-02-27",
       "owner": "Dale/Irfan",
-      "status": "not_started",
+      "status": "blocked",
       "percent_complete": 0
     },
     {
@@ -103,7 +103,7 @@
       "end": "2026-02-13",
       "owner": "Ajay / Dale",
       "status": "in_progress",
-      "percent_complete": 50
+      "percent_complete": 70
     },
     {
       "id": "net1",
@@ -154,7 +154,7 @@
       "start": "2026-02-02",
       "end": "2026-02-13",
       "owner": "Karthik/IRS",
-      "status": "at_risk",
+      "status": "blocked",
       "percent_complete": 0,
       "notes": "Must complete before E2E Network Validation - required for ATO package"
     },
@@ -239,7 +239,7 @@
       "end": "2026-02-13",
       "owner": "Michael/Samia",
       "status": "in_progress",
-      "percent_complete": 10
+      "percent_complete": 40
     },
     {
       "id": "ato1",
@@ -259,8 +259,8 @@
       "start": "2026-02-09",
       "end": "2026-02-20",
       "owner": "Control Owners",
-      "status": "blocked",
-      "percent_complete": 0,
+      "status": "at_risk",
+      "percent_complete": 10,
       "notes": "C-ATO: Ensure controls implemented in pre-prod environment"
     },
     {
@@ -270,8 +270,8 @@
       "start": "2026-02-09",
       "end": "2026-02-20",
       "owner": "Maham",
-      "status": "blocked",
-      "percent_complete": 0,
+      "status": "in_progress",
+      "percent_complete": 5,
       "notes": "C-ATO: Control implementation statements and evidence from control owners"
     },
     {
@@ -315,7 +315,7 @@
       "end": "2026-03-13",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 10,
+      "percent_complete": 15,
       "notes": "Full ATO: Ongoing - System Security Plan, Incident Response Plan, etc."
     },
     {
@@ -370,7 +370,7 @@
       "end": "2026-02-11",
       "owner": "Eric",
       "status": "in_progress",
-      "percent_complete": 80,
+      "percent_complete": 90,
       "notes": "UX: Figma screen designs and user flows"
     },
     {
@@ -380,8 +380,8 @@
       "start": "2026-02-02",
       "end": "2026-02-20",
       "owner": "Eric",
-      "status": "not_started",
-      "percent_complete": 0,
+      "status": "in_progress",
+      "percent_complete": 15,
       "notes": "CRITICAL: Final refinement and decision making period. Last call before designs/functionality final for MVP. Requires extensive time with users and stakeholders."
     },
     {
@@ -403,7 +403,7 @@
       "end": "2026-02-20",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 30,
+      "percent_complete": 35,
       "notes": "UI: AI chat interface development and refinement"
     },
     {
@@ -414,7 +414,7 @@
       "end": "2026-02-13",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 30,
+      "percent_complete": 40,
       "notes": "UI: Google Drive integration and Document Verification (HITL) functionality"
     },
     {
@@ -435,8 +435,8 @@
       "start": "2026-01-29",
       "end": "2026-02-06",
       "owner": "Michael/Eric",
-      "status": "in_progress",
-      "percent_complete": 50,
+      "status": "complete",
+      "percent_complete": 100,
       "notes": "Formal usability testing with end users, 508 compliance, keyboard navigation, WAVE/Lighthouse testing, and remediation"
     },
     {
@@ -478,7 +478,7 @@
       "end": "2026-02-14",
       "owner": "Samia/Ajay",
       "status": "in_progress",
-      "percent_complete": 55
+      "percent_complete": 65
     },
     {
       "id": "ds3",
@@ -587,8 +587,8 @@
       "start": "2026-01-27",
       "end": "2026-02-06",
       "owner": "Maham",
-      "status": "delayed",
-      "percent_complete": 95
+      "status": "in_progress",
+      "percent_complete": 98
     },
     {
       "id": "dai4",
@@ -598,7 +598,7 @@
       "end": "2026-02-11",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 80
+      "percent_complete": 85
     },
     {
       "id": "dai5",
@@ -628,7 +628,7 @@
       "end": "2026-02-07",
       "owner": "Waqas/Mark",
       "status": "delayed",
-      "percent_complete": 30
+      "percent_complete": 50
     },
     {
       "id": "data2",
