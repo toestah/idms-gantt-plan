@@ -140,11 +140,11 @@
       "id": "net3",
       "name": "PSC Endpoint Creation (T-Cloud)",
       "workstream": "network",
-      "start": "2026-02-10",
-      "end": "2026-02-14",
-      "owner": "Praveen/Dan (T-Cloud)",
-      "status": "not_started",
-      "percent_complete": 0,
+      "start": "2026-02-09",
+      "end": "2026-02-13",
+      "owner": "Irfan",
+      "status": "complete",
+      "percent_complete": 100,
       "notes": "T-Cloud creates PSC endpoint with routable IP after GKE cluster redeployed. Blocked on net_gke_psc."
     },
     {
