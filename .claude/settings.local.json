@@ -4,7 +4,12 @@
       "Bash(python3:*)",
       "Bash(/Users/taimur/Projects/IRS_IDMS/jugglebuddy/tools/jira-cli/jira-idms issue list:*)",
       "Bash(/Users/taimur/Projects/IRS_IDMS/jugglebuddy/tools/jira-cli/jira-idms issue view IDMS-451)",
-      "Bash(/Users/taimur/Projects/IRS_IDMS/jugglebuddy/tools/jira-cli/jira-idms issue view:*)"
+      "Bash(/Users/taimur/Projects/IRS_IDMS/jugglebuddy/tools/jira-cli/jira-idms issue view:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd deployment server update: Irfan created VM with Bamboo in T-Cloud Dev\n\nT-Cloud team unable to get their deployment server working. Irfan built\nIDMS team''s own VM with Bamboo, successfully SSH''d into T-Cloud Dev.\nMajor CI/CD unblock.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)"
     ]
   }
 }
