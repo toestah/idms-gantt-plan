@@ -71,31 +71,31 @@
       "name": "Deploy Pipeline to Dev (T-Cloud)",
       "workstream": "datapipeline",
       "start": "2026-02-12",
-      "end": "2026-02-16",
-      "owner": "Ajay/Dale",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "Deploy dataflow pipeline to T-Cloud Dev. Depends on Dev E2E connectivity and Terraform IaC (IDMS-451). Target: Monday Feb 16."
+      "end": "2026-02-25",
+      "owner": "Ajay/Dale/Mark",
+      "status": "delayed",
+      "percent_complete": 20,
+      "notes": "DELAYED: Blocked on Terraform completion (target Feb 20) and backend deployment. Mark meeting with AJ on Terraform structure for pipeline code. Transitioning to actual data in T-Cloud cloud storage."
     },
     {
       "id": "dp3",
       "name": "Deploy Pipeline to Pre-Prod (T-Cloud)",
       "workstream": "datapipeline",
-      "start": "2026-02-16",
-      "end": "2026-02-18",
+      "start": "2026-02-27",
+      "end": "2026-03-05",
       "owner": "Ajay/Dale",
-      "status": "not_started",
+      "status": "blocked",
       "percent_complete": 0,
-      "notes": "Deploy to Pre-Prod after Dev deployment validated. Hard target: Feb 18."
+      "notes": "BLOCKED: No deployment box in pre-prod. Target pre-prod environment by Feb 27."
     },
     {
       "id": "dp4",
       "name": "Deploy Pipeline to Prod (T-Cloud)",
       "workstream": "datapipeline",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
       "owner": "Ajay/Dale",
-      "status": "not_started",
+      "status": "blocked",
       "percent_complete": 0,
       "notes": "Prod deployment after C-ATO granted. Aligns with prod data transfer phases."
     },
@@ -110,24 +110,48 @@
       "percent_complete": 100
     },
     {
+      "id": "gcp1b",
+      "name": "Dev Deployment Box + Frontend Container",
+      "workstream": "gcp",
+      "start": "2026-02-05",
+      "end": "2026-02-19",
+      "owner": "Irfan/Dale",
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Aretec configured own deployment box (T-Cloud reversed stance). Frontend container deployed manually. Accessible via bastion host on gov laptops."
+    },
+    {
+      "id": "gcp1c",
+      "name": "Dev Terraform Full Provisioning",
+      "workstream": "gcp",
+      "start": "2026-02-12",
+      "end": "2026-02-20",
+      "owner": "Ajay/Dale",
+      "status": "in_progress",
+      "percent_complete": 85,
+      "notes": "Terraform nearly complete. AJ curating scripts for T-Cloud (VPC details, project names). Target: Feb 20."
+    },
+    {
       "id": "gcp2",
       "name": "Pre-Prod Environment Setup",
       "workstream": "gcp",
-      "start": "2026-01-26",
-      "end": "2026-02-13",
-      "owner": "Dale",
-      "status": "at_risk",
-      "percent_complete": 30
+      "start": "2026-02-20",
+      "end": "2026-02-27",
+      "owner": "Dale/Ajay",
+      "status": "delayed",
+      "percent_complete": 10,
+      "notes": "DELAYED from original Feb 13 target. No deployment box in pre-prod yet. Dan Bolton access loss blocking subnet changes. Target: Feb 27."
     },
     {
       "id": "gcp3",
       "name": "Prod Environment Build (GKE + Apigee (routes))",
       "workstream": "gcp",
-      "start": "2026-02-09",
-      "end": "2026-02-27",
+      "start": "2026-03-02",
+      "end": "2026-03-13",
       "owner": "Dale/Irfan",
       "status": "blocked",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "BLOCKED: Depends on Pre-Prod completion and C-ATO. Dan Bolton access loss blocking subnet changes."
     },
     {
       "id": "gcp4",
@@ -144,10 +168,11 @@
       "name": "Terraform IaC Finalization",
       "workstream": "gcp",
       "start": "2026-01-26",
-      "end": "2026-02-13",
+      "end": "2026-02-20",
       "owner": "Ajay / Dale",
       "status": "in_progress",
-      "percent_complete": 70
+      "percent_complete": 90,
+      "notes": "DELAYED from original Feb 13 target. Nearly complete. Dale proved out secret usage. AJ curating Terraform for T-Cloud environment. Target completion: Feb 20."
     },
     {
       "id": "net1",
@@ -158,7 +183,7 @@
       "owner": "Irfan",
       "status": "complete",
       "percent_complete": 100,
-      "notes": "Internal API routing done. Apigee-side ALB in CMN code ready, pending deployment. Apigee proxy for Salesforce gated on EAG (net7)."
+      "notes": "Internal API routing done. Apigee-side ALB in CMN code ready. Apigee endpoint ready in 1-2 days (as of Feb 19)."
     },
     {
       "id": "net2",
@@ -190,51 +215,51 @@
       "owner": "Irfan",
       "status": "complete",
       "percent_complete": 100,
-      "notes": "T-Cloud creates PSC endpoint with routable IP after GKE cluster redeployed. Blocked on net_gke_psc."
+      "notes": "PSC endpoint created. Confirmed Feb 11 by Irfan."
     },
     {
       "id": "net4",
       "name": "FCR Pre-Prod/Prod (Firewall)",
       "workstream": "network",
       "start": "2026-02-02",
-      "end": "2026-02-13",
+      "end": "2026-03-06",
       "owner": "Karthik/IRS",
       "status": "blocked",
       "percent_complete": 0,
-      "notes": "Must complete before E2E Network Validation - required for ATO package"
+      "notes": "BLOCKED: Need IPs from T-Cloud. Dan Bolton access loss blocking subnet structure changes for Pre-Prod and Prod. No progress."
     },
     {
       "id": "net5",
       "name": "DNS Configuration (Pre-Prod/Prod)",
       "workstream": "network",
       "start": "2026-02-02",
-      "end": "2026-02-13",
+      "end": "2026-03-06",
       "owner": "Charles Deel/IRS",
-      "status": "at_risk",
+      "status": "blocked",
       "percent_complete": 0,
-      "notes": "Must complete before E2E Network Validation - required for ATO package"
+      "notes": "BLOCKED: Depends on Pre-Prod environment setup. Dev DNS confirmed working (IRS can resolve URL). Pre-Prod/Prod not started."
     },
     {
       "id": "net6",
       "name": "E2E Network Connectivity Validation",
       "workstream": "network",
-      "start": "2026-02-16",
-      "end": "2026-02-20",
+      "start": "2026-03-02",
+      "end": "2026-03-09",
       "owner": "Waqas/Irfan",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "Must complete BEFORE Conditional ATO submission - feeds into ATO package. Depends on FCR and DNS completion."
+      "status": "delayed",
+      "percent_complete": 10,
+      "notes": "DELAYED from Feb 16-20 target. Dev partial: DNS works, IRS firewall works, but traffic stuck between AT&T NetBond and T-Cloud firewall. AT&T meetings Feb 18 + Feb 25. Pre-Prod/Prod blocked on FCR and DNS."
     },
     {
       "id": "net7",
       "name": "EAG Implementation (EPZ Workaround)",
       "workstream": "network",
       "start": "2026-01-26",
-      "end": "2026-02-20",
+      "end": "2026-03-06",
       "owner": "Waqas/Chris Good",
-      "status": "at_risk",
-      "percent_complete": 0,
-      "notes": "Must complete before Conditional ATO submission - EAG meeting today (Feb 11) for way forward"
+      "status": "delayed",
+      "percent_complete": 15,
+      "notes": "DELAYED: EPZ abandoned. EAG form submitted Feb 11. AT&T NetBond meetings held Feb 12, Feb 18. Issue: AT&T not forwarding traffic to GCP. Next meeting Feb 25 with correct T-Cloud personnel. IRS-side firewall confirmed good."
     },
     {
       "id": "mon1",
@@ -251,18 +276,19 @@
       "name": "Logging Pipeline Configuration",
       "workstream": "monitoring",
       "start": "2026-02-06",
-      "end": "2026-02-18",
-      "owner": "Dale",
-      "status": "not_started",
-      "percent_complete": 0
+      "end": "2026-02-25",
+      "owner": "Samia",
+      "status": "in_progress",
+      "percent_complete": 40,
+      "notes": "Samia working on logging and monitoring (ticket 509). Follow-up meeting scheduled. Extended from Feb 18."
     },
     {
       "id": "mon3",
       "name": "Alerting & Dashboards",
       "workstream": "monitoring",
-      "start": "2026-02-23",
-      "end": "2026-03-06",
-      "owner": "Dale",
+      "start": "2026-02-27",
+      "end": "2026-03-13",
+      "owner": "Samia/Dale",
       "status": "not_started",
       "percent_complete": 0
     },
@@ -270,8 +296,8 @@
       "id": "mon4",
       "name": "Production Monitoring Setup",
       "workstream": "monitoring",
-      "start": "2026-02-23",
-      "end": "2026-03-13",
+      "start": "2026-03-02",
+      "end": "2026-03-20",
       "owner": "Dale",
       "status": "not_started",
       "percent_complete": 0
@@ -281,10 +307,11 @@
       "name": "UI Logging Development and Testing",
       "workstream": "monitoring",
       "start": "2026-02-02",
-      "end": "2026-02-13",
+      "end": "2026-02-20",
       "owner": "Michael/Samia",
       "status": "in_progress",
-      "percent_complete": 40
+      "percent_complete": 65,
+      "notes": "Michael continuing IDMS-34, phase 2 target Feb 19. Requested sandbox Postgres creds to verify audit logs."
     },
     {
       "id": "ato1",
@@ -301,111 +328,122 @@
       "id": "ato3",
       "name": "[C-ATO] Remediate Findings (Pre-Prod)",
       "workstream": "ato",
-      "start": "2026-02-09",
-      "end": "2026-02-20",
+      "start": "2026-02-27",
+      "end": "2026-03-13",
       "owner": "Control Owners",
-      "status": "at_risk",
-      "percent_complete": 10,
-      "notes": "C-ATO: Ensure controls implemented in pre-prod environment"
+      "status": "delayed",
+      "percent_complete": 5,
+      "notes": "DELAYED: Depends on Pre-Prod deployment (target Feb 27). Cannot remediate until environment exists. Original target was Feb 9-20."
     },
     {
       "id": "ato4",
       "name": "[C-ATO] Finalize Control Documentation + Gather Evidence",
       "workstream": "ato",
       "start": "2026-02-09",
-      "end": "2026-02-20",
+      "end": "2026-03-13",
       "owner": "Maham",
-      "status": "in_progress",
-      "percent_complete": 5,
-      "notes": "C-ATO: Control implementation statements and evidence from control owners"
+      "status": "delayed",
+      "percent_complete": 15,
+      "notes": "DELAYED: Extended from Feb 20 target. Evidence gathering ongoing but blocked by pre-prod delays. VLDAP SSO blockers remain. Maham also focused on DocAI finalization."
+    },
+    {
+      "id": "ato5",
+      "name": "[C-ATO] Submit C-ATO Package",
+      "workstream": "ato",
+      "start": "2026-03-13",
+      "end": "2026-03-16",
+      "owner": "Maham",
+      "status": "delayed",
+      "percent_complete": 0,
+      "notes": "DELAYED: Original target Feb 17-21. Shifted due to pre-prod delays and incomplete evidence gathering. New target: mid-March."
     },
     {
       "id": "ato6",
       "name": "[C-ATO] IRS Assessment Team Review",
       "workstream": "ato",
-      "start": "2026-02-23",
-      "end": "2026-03-06",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
       "owner": "IRS",
-      "status": "not_started",
+      "status": "delayed",
       "percent_complete": 0,
-      "notes": "External: ~10 business days for IRS review and feedback"
+      "notes": "DELAYED: ~10 business days for IRS review. Shifted from Feb 23 start due to upstream delays."
     },
     {
       "id": "ato7",
       "name": "[C-ATO] Address Feedback + Resubmit",
       "workstream": "ato",
-      "start": "2026-03-09",
-      "end": "2026-03-11",
+      "start": "2026-03-30",
+      "end": "2026-04-02",
       "owner": "Maham/Control Owners",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "C-ATO: Resolve gaps, resubmit if needed"
+      "notes": "C-ATO: Resolve gaps, resubmit if needed. Compressed timeline."
     },
     {
       "id": "ato8",
-      "name": "[C-ATO] AO Review \u2192 C-ATO Decision",
+      "name": "[C-ATO] AO Review → C-ATO Decision",
       "workstream": "ato",
-      "start": "2026-03-12",
-      "end": "2026-03-13",
+      "start": "2026-04-03",
+      "end": "2026-04-09",
       "owner": "IRS AO",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
-      "notes": "C-ATO: AO reviews and accepts risk, grants Conditional ATO"
+      "notes": "AT RISK: Dangerously close to PoP end (Apr 15). If C-ATO not granted by ~Apr 9, prod deployment cannot happen before PoP end."
     },
     {
       "id": "ato9",
       "name": "[Full ATO] Develop Security Artifacts (SSP, IRP)",
       "workstream": "ato",
       "start": "2026-01-26",
-      "end": "2026-03-13",
+      "end": "2026-03-27",
       "owner": "Maham",
       "status": "in_progress",
       "percent_complete": 15,
-      "notes": "Full ATO: Ongoing - System Security Plan, Incident Response Plan, etc."
+      "notes": "Full ATO: Ongoing - System Security Plan, Incident Response Plan, etc. Extended from Mar 13."
     },
     {
       "id": "ato10",
       "name": "[Full ATO] Full Controls Assessment",
       "workstream": "ato",
       "start": "2026-01-26",
-      "end": "2026-03-13",
+      "end": "2026-03-27",
       "owner": "Maham/Control Owners",
       "status": "in_progress",
       "percent_complete": 10,
-      "notes": "Full ATO: Assess all controls. Runs parallel with C-ATO work from day 1. Ends 2 weeks before SAR."
+      "notes": "Full ATO: Assess all controls. Runs parallel with C-ATO work. Extended from Mar 13."
     },
     {
       "id": "ato11",
       "name": "[Full ATO] Validation Team Review & SAR Production",
       "workstream": "ato",
-      "start": "2026-03-16",
-      "end": "2026-03-27",
+      "start": "2026-03-30",
+      "end": "2026-04-10",
       "owner": "IRS",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
-      "notes": "Full ATO: Security Assessment Report (~2 weeks)"
+      "notes": "AT RISK: Compressed to fit before PoP end. Full ATO: Security Assessment Report."
     },
     {
       "id": "ato12",
       "name": "[Full ATO] Remediate Findings and/or register POAMs",
       "workstream": "ato",
-      "start": "2026-03-30",
-      "end": "2026-04-03",
+      "start": "2026-04-06",
+      "end": "2026-04-11",
       "owner": "Maham/Control Owners",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
-      "notes": "Full ATO: Correct findings, POAM out what can't be addressed"
+      "notes": "AT RISK: May need to run parallel with SAR review. Extremely tight timeline."
     },
     {
       "id": "ato13",
-      "name": "[Full ATO] Final AO Review \u2192 ATO Decision",
+      "name": "[Full ATO] Final AO Review → ATO Decision",
       "workstream": "ato",
-      "start": "2026-04-06",
+      "start": "2026-04-11",
       "end": "2026-04-15",
       "owner": "IRS AO",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
-      "notes": "Full ATO: AO review and authorization (~2 weeks)"
+      "notes": "AT RISK: May extend past PoP end (Apr 15). Full ATO may require PoP extension."
     },
     {
       "id": "ux1",
@@ -414,8 +452,8 @@
       "start": "2026-01-26",
       "end": "2026-02-11",
       "owner": "Eric",
-      "status": "in_progress",
-      "percent_complete": 90,
+      "status": "complete",
+      "percent_complete": 100,
       "notes": "UX: Figma screen designs and user flows"
     },
     {
@@ -423,11 +461,11 @@
       "name": "User Requirements Validation",
       "workstream": "uiux",
       "start": "2026-02-02",
-      "end": "2026-02-20",
+      "end": "2026-02-27",
       "owner": "Eric",
       "status": "in_progress",
-      "percent_complete": 15,
-      "notes": "CRITICAL: Final refinement and decision making period. Last call before designs/functionality final for MVP. Requires extensive time with users and stakeholders."
+      "percent_complete": 50,
+      "notes": "In progress. Eric incorporating feedback into matters page and table (Feb 19). Extended from Feb 20."
     },
     {
       "id": "ui1",
@@ -445,33 +483,33 @@
       "name": "AI and Chat UI Development",
       "workstream": "uiux",
       "start": "2026-02-02",
-      "end": "2026-02-20",
+      "end": "2026-02-27",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 35,
-      "notes": "UI: AI chat interface development and refinement"
+      "percent_complete": 50,
+      "notes": "UI: AI chat interface development and refinement. Extended from Feb 20."
     },
     {
       "id": "ui3",
       "name": "Develop Document Collaboration and DocAI HITL",
       "workstream": "uiux",
       "start": "2026-02-02",
-      "end": "2026-02-13",
+      "end": "2026-02-20",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 40,
-      "notes": "UI: Google Drive integration and Document Verification (HITL) functionality"
+      "percent_complete": 55,
+      "notes": "UI: Google Drive integration and Document Verification (HITL) functionality. Extended from Feb 13."
     },
     {
       "id": "ui4",
       "name": "Usability and Accessibility Testing",
       "workstream": "uiux",
-      "start": "2026-02-23",
-      "end": "2026-03-13",
+      "start": "2026-03-02",
+      "end": "2026-03-20",
       "owner": "Michael/Eric",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "Formal usability testing with end users, 508 compliance, keyboard navigation, WAVE/Lighthouse testing, and remediation"
+      "notes": "Shifted from Feb 23. 508 compliance, keyboard navigation, WAVE/Lighthouse testing, and remediation"
     },
     {
       "id": "ui55",
@@ -488,22 +526,23 @@
       "id": "ui5",
       "name": "UAT Fixes & Production Deployment",
       "workstream": "uiux",
-      "start": "2026-03-09",
-      "end": "2026-03-20",
+      "start": "2026-03-23",
+      "end": "2026-04-03",
       "owner": "Michael",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Mar 9. Depends on C-ATO and Pre-Prod UAT."
     },
     {
       "id": "ui6",
       "name": "Technical Documentation",
       "workstream": "uiux",
-      "start": "2026-03-23",
-      "end": "2026-03-31",
+      "start": "2026-03-30",
+      "end": "2026-04-09",
       "owner": "Michael",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "Style Guide, Standards Guide, FDD/TDD documents, Figma screens, API calls, DB tables/fields/queries. Supports End User Training."
+      "notes": "Shifted from Mar 23. Style Guide, Standards Guide, FDD/TDD documents, Figma screens, API calls, DB tables/fields/queries."
     },
     {
       "id": "ds1",
@@ -520,90 +559,99 @@
       "name": "Search & Summary API Refinement",
       "workstream": "docsearch",
       "start": "2026-01-26",
-      "end": "2026-02-13",
+      "end": "2026-02-20",
       "owner": "Samia/Ajay",
       "status": "in_progress",
-      "percent_complete": 65
+      "percent_complete": 75,
+      "notes": "Extended from Feb 13. Ongoing refinement."
     },
     {
       "id": "ds3",
       "name": "Search Quality Evaluation",
       "workstream": "docsearch",
-      "start": "2026-02-09",
-      "end": "2026-02-28",
+      "start": "2026-02-20",
+      "end": "2026-03-06",
       "owner": "Samia",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Feb 9 start."
     },
     {
       "id": "ds4",
       "name": "Search Tuning & Optimization",
       "workstream": "docsearch",
-      "start": "2026-02-17",
-      "end": "2026-03-06",
+      "start": "2026-03-02",
+      "end": "2026-03-13",
       "owner": "Samia",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Feb 17 start."
     },
     {
       "id": "ds5",
       "name": "Production Search Deployment",
       "workstream": "docsearch",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
       "owner": "Dale",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Mar 2. Depends on C-ATO."
     },
     {
       "id": "ws1",
       "name": "Workspace/Drive ACL Configuration",
       "workstream": "workspace",
-      "start": "2026-02-09",
-      "end": "2026-02-13",
+      "start": "2026-02-27",
+      "end": "2026-03-06",
       "owner": "Angelica/Waqas",
-      "status": "not_started",
-      "percent_complete": 0
+      "status": "delayed",
+      "percent_complete": 0,
+      "notes": "DELAYED from Feb 9-13 target. Blocked on VLDAP/SSO. Hassan reviewing Workspace ATO package requirements with internal TPM (meeting Friday Feb 20)."
     },
     {
       "id": "ws2",
       "name": "VLDAP/SSO Integration",
       "workstream": "workspace",
       "start": "2026-01-26",
-      "end": "2026-02-06",
+      "end": "2026-03-06",
       "owner": "Gina Bone/IRS",
       "status": "delayed",
-      "percent_complete": 0
+      "percent_complete": 10,
+      "notes": "DELAYED: Original target Feb 6. Gina Bone still actively working on it. Blocking ATO controls documentation. Angelica conducting lengthy SSO research."
     },
     {
       "id": "ws3",
       "name": "BEARS Domain Account Setup",
       "workstream": "workspace",
       "start": "2026-01-26",
-      "end": "2026-02-06",
+      "end": "2026-02-11",
       "owner": "Karthik/Gina Bone",
-      "status": "delayed",
-      "percent_complete": 0
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "COMPLETED: Confirmed Feb 11 by Karthik."
     },
     {
       "id": "ws4",
       "name": "Pilot User Onboarding",
       "workstream": "workspace",
-      "start": "2026-02-17",
-      "end": "2026-02-27",
+      "start": "2026-03-09",
+      "end": "2026-03-20",
       "owner": "Angelica",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Feb 17. Depends on VLDAP/SSO and ACL configuration."
     },
     {
       "id": "ws5",
       "name": "Workspace Integration Testing",
       "workstream": "workspace",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
       "owner": "Angelica/Waqas",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Mar 2."
     },
     {
       "id": "dai1",
@@ -632,192 +680,217 @@
       "start": "2026-01-27",
       "end": "2026-02-06",
       "owner": "Maham",
-      "status": "in_progress",
-      "percent_complete": 98
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Validated by Spencer Hitt and Stan (Feb 18). Minor tweaks being finalized."
     },
     {
       "id": "dai4",
       "name": "AUR SNOD Model Training",
       "workstream": "docai",
       "start": "2026-01-30",
-      "end": "2026-02-11",
+      "end": "2026-02-20",
       "owner": "Maham",
       "status": "in_progress",
-      "percent_complete": 85
+      "percent_complete": 95,
+      "notes": "Validated by Spencer Hitt and Stan (Feb 18). ~90% of entities confirmed aligned. Maham finalizing minor tweaks by Feb 20. Final review then DONE."
     },
     {
       "id": "dai5",
       "name": "DocAI HITL Workflow Integration",
       "workstream": "docai",
-      "start": "2026-02-09",
-      "end": "2026-02-27",
+      "start": "2026-02-20",
+      "end": "2026-03-06",
       "owner": "Ajay / Michael",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Feb 9 start. Models need to be finalized first."
     },
     {
       "id": "dai6",
       "name": "DocAI Production Deployment",
       "workstream": "docai",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
       "owner": "Maham",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Mar 2. Depends on C-ATO."
     },
     {
       "id": "data1",
       "name": "Initial Data Ingestion (Dev)",
       "workstream": "docsearch",
       "start": "2026-01-27",
-      "end": "2026-02-07",
+      "end": "2026-02-25",
       "owner": "Waqas/Mark",
       "status": "delayed",
-      "percent_complete": 50
+      "percent_complete": 55,
+      "notes": "DELAYED: Transitioning from synthetic to actual data in T-Cloud. Data available in T-Cloud cloud storage. Waqas loaded ~6M docket records into sandbox. Extended from Feb 7."
     },
     {
       "id": "data2",
       "name": "Salesforce Connectivity & Data Pull",
       "workstream": "docsearch",
       "start": "2026-02-02",
-      "end": "2026-02-20",
+      "end": "2026-03-06",
       "owner": "Waqas",
       "status": "blocked",
-      "percent_complete": 0
+      "percent_complete": 10,
+      "notes": "BLOCKED: No network path to Salesforce (gated on EAG/NetBond resolution). 2 Salesforce engineers now available to update POC APIs. Waqas sending them info. Extended from Feb 20."
     },
     {
       "id": "data3",
       "name": "Pre-Prod Data Load (10TB subset)",
       "workstream": "docsearch",
-      "start": "2026-02-24",
-      "end": "2026-03-06",
+      "start": "2026-03-09",
+      "end": "2026-03-20",
       "owner": "Waqas/Mark",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Feb 24. Depends on Pre-Prod environment and C-ATO for PII data."
     },
     {
       "id": "data4",
       "name": "Prod Data Transfer Phase 1 (40TB)",
       "workstream": "docsearch",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
       "owner": "Waqas",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Mar 2. C-ATO must be granted first for PII data."
     },
     {
       "id": "data5",
       "name": "Prod Data Transfer Phase 2 (40TB)",
       "workstream": "docsearch",
-      "start": "2026-03-09",
-      "end": "2026-03-20",
+      "start": "2026-03-23",
+      "end": "2026-04-03",
       "owner": "Waqas",
       "status": "not_started",
-      "percent_complete": 0
+      "percent_complete": 0,
+      "notes": "Shifted from Mar 9."
     },
     {
       "id": "data6",
       "name": "Prod Data Transfer Phase 3 (20TB) & Indexing",
       "workstream": "docsearch",
-      "start": "2026-03-16",
-      "end": "2026-03-27",
+      "start": "2026-03-30",
+      "end": "2026-04-10",
       "owner": "Waqas/Mark",
-      "status": "not_started",
-      "percent_complete": 0
+      "status": "at_risk",
+      "percent_complete": 0,
+      "notes": "AT RISK: Shifted from Mar 16. Runs up against PoP end (Apr 15). May not complete within PoP."
     },
     {
       "id": "ux3",
       "name": "User Documentation",
       "workstream": "uiux",
-      "start": "2026-02-24",
-      "end": "2026-03-13",
+      "start": "2026-03-09",
+      "end": "2026-03-27",
       "owner": "Eric",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "UX: End user documentation which also covers training materials"
+      "notes": "Shifted from Feb 24. UX: End user documentation which also covers training materials"
     },
     {
       "id": "ux4",
       "name": "End User Training Delivery",
       "workstream": "uiux",
-      "start": "2026-03-16",
-      "end": "2026-03-31",
+      "start": "2026-03-30",
+      "end": "2026-04-11",
       "owner": "Eric",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
-      "notes": "UX: Training delivery supported by Michael's Technical Documentation"
+      "notes": "AT RISK: Shifted from Mar 16. Training delivery compressed. Runs up against PoP end."
     },
     {
       "id": "hyper1",
       "name": "Go-Live Hypercare Support",
       "workstream": "gcp",
-      "start": "2026-03-23",
-      "end": "2026-04-09",
+      "start": "2026-04-03",
+      "end": "2026-04-13",
       "owner": "All",
-      "status": "not_started",
-      "percent_complete": 0
+      "status": "at_risk",
+      "percent_complete": 0,
+      "notes": "AT RISK: Shifted from Mar 23. Only 2 days buffer before PoP end. May require PoP extension."
     },
     {
       "id": "hyper2",
       "name": "Production Stabilization",
       "workstream": "gcp",
-      "start": "2026-04-10",
+      "start": "2026-04-13",
       "end": "2026-04-15",
       "owner": "All",
-      "status": "not_started",
+      "status": "at_risk",
       "percent_complete": 0,
-      "notes": "5 days buffer after Full Production Rollout before PoP end"
+      "notes": "AT RISK: Only 2 days before PoP end. Likely requires PoP extension for meaningful stabilization."
     }
   ],
   "milestones": [
     {
       "id": "ms_dev_ready",
       "name": "Dev Environment Ready",
-      "date": "2026-02-07",
+      "date": "2026-02-20",
       "workstream": "gcp",
       "status": "delayed"
     },
     {
       "id": "ms_docai",
       "name": "All 4 DocAI Models Trained",
-      "date": "2026-02-13",
+      "date": "2026-02-20",
       "workstream": "docai",
-      "status": "at_risk"
+      "status": "on_track"
+    },
+    {
+      "id": "ms_preprod",
+      "name": "Pre-Prod Environment Ready",
+      "date": "2026-02-27",
+      "workstream": "gcp",
+      "status": "delayed"
     },
     {
       "id": "end_user_training",
       "name": "End Users Aligned for Training",
-      "date": "2026-02-17",
+      "date": "2026-03-09",
       "workstream": "docsearch",
-      "status": "on_track"
+      "status": "delayed"
     },
     {
       "id": "ms_search",
       "name": "Search Quality Validated",
-      "date": "2026-03-06",
+      "date": "2026-03-13",
       "workstream": "docsearch",
-      "status": "on_track"
+      "status": "at_risk"
+    },
+    {
+      "id": "ms_cato_approved",
+      "name": "C-ATO Approved",
+      "date": "2026-04-09",
+      "workstream": "ato",
+      "status": "at_risk"
     },
     {
       "id": "ms_prod_ready",
       "name": "Prod Environment Ready",
-      "date": "2026-03-21",
+      "date": "2026-04-03",
       "workstream": "gcp",
-      "status": "on_track"
+      "status": "at_risk"
     },
     {
       "id": "ms_uat",
       "name": "UAT Sign-off",
       "date": "2026-03-27",
       "workstream": "uiux",
-      "status": "on_track"
+      "status": "at_risk"
     },
     {
       "id": "ms_full_ato",
       "name": "Full ATO Granted",
-      "date": "2026-04-09",
+      "date": "2026-04-15",
       "workstream": "ato",
-      "status": "on_track"
+      "status": "at_risk"
     }
   ],
   "dependencies": [
@@ -957,44 +1030,44 @@
   "date_markers": [
     {
       "id": "today",
-      "name": "Today",
-      "date": "2026-02-11",
+      "name": "Today (Feb 19)",
+      "date": "2026-02-19",
       "color": "#4CAF50",
       "style": "solid"
     },
     {
       "id": "dev_ready",
-      "name": "Dev Environment Ready",
-      "date": "2026-02-07",
+      "name": "Dev Terraform Target",
+      "date": "2026-02-20",
       "color": "#4285F4",
       "style": "dashed"
     },
     {
       "id": "preprod_ready",
-      "name": "Pre-Prod Ready Target",
-      "date": "2026-02-14",
+      "name": "Pre-Prod Target (DELAYED)",
+      "date": "2026-02-27",
       "color": "#FF0000",
       "style": "dashed"
     },
     {
       "id": "cato_submit",
-      "name": "C-ATO Submission Target",
-      "date": "2026-02-21",
+      "name": "C-ATO Submission (DELAYED)",
+      "date": "2026-03-16",
       "color": "#FF0000",
       "style": "dashed"
     },
     {
       "id": "cato_approved",
       "name": "C-ATO Approved (Target)",
-      "date": "2026-03-14",
+      "date": "2026-04-09",
       "color": "#EA4335",
       "style": "solid"
     },
     {
       "id": "prod_limited",
-      "name": "Prod Release 1 (Limited)",
-      "date": "2026-03-23",
-      "color": "#2196F3",
+      "name": "Prod Release 1 (AT RISK)",
+      "date": "2026-04-03",
+      "color": "#F44336",
       "style": "dashed"
     },
     {
@@ -1006,9 +1079,9 @@
     },
     {
       "id": "prod_full",
-      "name": "Full Production Rollout",
-      "date": "2026-04-10",
-      "color": "#0B6623",
+      "name": "Full Production Rollout (AT RISK)",
+      "date": "2026-04-13",
+      "color": "#F44336",
       "style": "dashed"
     },
     {
@@ -1023,54 +1096,52 @@
   "risks": [
     {
       "id": "r1",
-      "name": "EPZ Timeline - October 2026",
-      "description": "EPZ configuration not available until October 2026, well past PoP. Workaround required.",
+      "name": "EPZ Timeline + AT&T NetBond Forwarding",
+      "description": "EPZ not available until Oct 2026. AT&T NetBond alternative being pursued but traffic stuck — AT&T not forwarding to GCP. IRS-side firewall confirmed good.",
       "severity": "high",
       "likelihood": "high",
       "status": "open",
-      "mitigation": "Identify and implement network workaround (AT&T NetBond, S3 staging)",
+      "mitigation": "AT&T meetings Feb 18 + Feb 25. EAG form submitted. IRS-side confirmed working. Need T-Cloud firewall permanent exception for NetBond traffic.",
       "affected": [
         "net6",
         "net7",
-        "gcp3"
+        "data2"
       ]
     },
     {
       "id": "r2",
-      "name": "SAIC/T-Cloud Dependency",
-      "description": "SAIC controls T-Cloud infrastructure; requests can cause unexpected delays",
+      "name": "SAIC/T-Cloud Dependency + Dan Bolton Access Loss",
+      "description": "SAIC controls T-Cloud infrastructure. Dan Bolton (network IA manager) has lost access, blocking subnet structure changes for Pre-Prod and Prod.",
       "severity": "high",
-      "likelihood": "medium",
-      "status": "monitoring",
-      "mitigation": "Proactive tracking via inventory sheet, early escalation",
+      "likelihood": "high",
+      "status": "open",
+      "mitigation": "Escalation needed. No workaround identified for Dan Bolton access loss.",
       "affected": [
         "gcp2",
         "gcp3",
-        "net3",
         "net4"
       ]
     },
     {
       "id": "r3",
-      "name": "PSC Implementation Delayed",
-      "description": "Private Service Connect blocked on T-Cloud action and SSL certificates",
-      "severity": "medium",
-      "likelihood": "high",
-      "status": "open",
-      "mitigation": "Using self-signed certs as interim workaround for Dev",
+      "name": "PSC Implementation",
+      "description": "Private Service Connect needed for GKE control plane access.",
+      "severity": "low",
+      "likelihood": "low",
+      "status": "mitigated",
+      "mitigation": "PSC endpoint created (confirmed Feb 11). Deployment box configured by Aretec. GKE control plane accessible.",
       "affected": [
-        "net3",
-        "net6"
+        "net3"
       ]
     },
     {
       "id": "r4",
-      "name": "AUR SNOD Samples Delayed",
-      "description": "4th DocAI document type blocked until Jan 30 samples from Spencer Hitt",
-      "severity": "medium",
-      "likelihood": "medium",
-      "status": "monitoring",
-      "mitigation": "Spencer confirmed Jan 30 ETA; other 3 models proceeding",
+      "name": "DocAI Sample Data",
+      "description": "4th DocAI document type (AUR SNOD) needed samples from Spencer Hitt.",
+      "severity": "low",
+      "likelihood": "low",
+      "status": "mitigated",
+      "mitigation": "All 4 models validated by Spencer Hitt and Stan (Feb 18). ~90% entity alignment confirmed. Maham finalizing by Feb 20.",
       "affected": [
         "dai4",
         "ms_docai"
@@ -1078,42 +1149,47 @@
     },
     {
       "id": "r5",
-      "name": "Conditional ATO Review Time",
-      "description": "IRS review of conditional ATO takes ~10 business days; external dependency with variability. Prod deployment and PII data BLOCKED until C-ATO granted.",
+      "name": "C-ATO Review Timeline → PoP Compression",
+      "description": "C-ATO submission delayed from Feb 17-21 to mid-March. IRS review takes ~10 business days. C-ATO decision now targets Apr 9 — only 6 days before PoP end (Apr 15). Prod deployment, data transfer, hypercare ALL compressed.",
       "severity": "high",
-      "likelihood": "medium",
+      "likelihood": "high",
       "status": "open",
-      "mitigation": "Submit early, maintain close communication with IRS security team, ensure Pre-Prod ready and all evidence gathered BEFORE submission",
+      "mitigation": "Submit as early as possible. Prepare all evidence in parallel. Consider requesting PoP extension NOW if ATO timeline cannot be compressed.",
       "affected": [
+        "ato5",
         "ato6",
         "ato7",
         "ato8",
         "ms_cato_approved",
         "data3",
-        "data4"
+        "data4",
+        "hyper1",
+        "hyper2"
       ]
     },
     {
       "id": "r6",
       "name": "VLDAP/SSO Integration",
-      "description": "SSO integration with Radiant VLDAP required for authentication; dependency on IRS",
+      "description": "SSO integration with Radiant VLDAP required for authentication; dependency on IRS. Still delayed.",
       "severity": "medium",
-      "likelihood": "medium",
+      "likelihood": "high",
       "status": "open",
-      "mitigation": "Karthik following up with Gina Bone; ticket submitted",
+      "mitigation": "Gina Bone actively working. Angelica conducting SSO research. Blocking ATO controls and Workspace integration.",
       "affected": [
         "ws2",
-        "ws4"
+        "ws1",
+        "ws4",
+        "ato4"
       ]
     },
     {
       "id": "r7",
       "name": "100TB Data Transfer Timeline",
-      "description": "Transferring 100TB of historical Tax Court documents in phases is aggressive",
-      "severity": "medium",
+      "description": "Transferring 100TB of historical Tax Court documents in phases. Phase 3 now runs to Apr 10, only 5 days before PoP end.",
+      "severity": "high",
       "likelihood": "medium",
-      "status": "monitoring",
-      "mitigation": "Phased approach (40+40+20TB); prioritize critical documents first",
+      "status": "open",
+      "mitigation": "Phased approach (40+40+20TB). Prioritize critical documents first. May need PoP extension for full data load.",
       "affected": [
         "data4",
         "data5",
@@ -1121,32 +1197,32 @@
       ]
     },
     {
-      "id": "r9",
-      "name": "GKE Control Plane Network Access",
-      "description": "GKE control plane on non-routable IP (100.10.x.x); deployment server cannot reach it. PSC solution agreed (Feb 3) but requires GKE cluster redeployment and T-Cloud PSC endpoint creation.",
-      "severity": "high",
-      "likelihood": "medium",
-      "status": "monitoring",
-      "mitigation": "PSC approach agreed in Feb 3 meeting. Irfan redeploying GKE with VPC peering disabled; T-Cloud (Praveen/Dan) to create PSC endpoint. Also intermittent SSL cert issue being investigated.",
-      "affected": [
-        "net_gke_psc",
-        "net3",
-        "gcp1",
-        "net6"
-      ]
-    },
-    {
       "id": "r8",
       "name": "Compressed End-of-PoP Timeline",
-      "description": "Adding buffer to IRS Conditional ATO review has compressed the timeline. Full Production Rollout (Apr 10) with 5-day stabilization buffer before PoP end (Apr 15).",
-      "severity": "medium",
-      "likelihood": "medium",
+      "description": "External dependency delays have compressed the entire end-of-PoP timeline. Full Production Rollout (Apr 13) with only 2 days before PoP end (Apr 15). Hypercare reduced from 17 days to 10. Full ATO may not complete before PoP end.",
+      "severity": "high",
+      "likelihood": "high",
       "status": "open",
-      "mitigation": "Ensure all validation activities complete BEFORE ATO submission to avoid additional delays. Consider negotiating PoP extension if ATO review takes longer than buffered estimate.",
+      "mitigation": "Request PoP extension. Communicate timeline slippage to IRS/T-Cloud/Google — blockers are on their side. Hassan/Imneet escalating.",
       "affected": [
         "hyper1",
         "hyper2",
-        "prod_full"
+        "ato13",
+        "ux4"
+      ]
+    },
+    {
+      "id": "r9",
+      "name": "Pre-Prod Deployment Box",
+      "description": "No deployment box in pre-prod environment. Blocks all pre-prod deployment activity.",
+      "severity": "high",
+      "likelihood": "medium",
+      "status": "open",
+      "mitigation": "Aretec configured own deployment box for Dev (T-Cloud reversed stance). Need to repeat for Pre-Prod. Target: before Feb 27.",
+      "affected": [
+        "gcp2",
+        "dp3",
+        "ato3"
       ]
     }
   ]
