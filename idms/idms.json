@@ -515,12 +515,12 @@
       "id": "ui4",
       "name": "Usability and Accessibility Testing",
       "workstream": "uiux",
-      "start": "2026-03-02",
+      "start": "2026-02-17",
       "end": "2026-03-20",
       "owner": "Michael/Eric",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "Shifted from Feb 23. 508 compliance, keyboard navigation, WAVE/Lighthouse testing, and remediation"
+      "status": "in_progress",
+      "percent_complete": 30,
+      "notes": "Underway in sandbox with public data. Michael and Eric engaging end users who are providing functional feedback. Full validation with production data pending T-Cloud Pre-Prod availability. 508 compliance, keyboard navigation, WAVE/Lighthouse testing ongoing."
     },
     {
       "id": "ui55",
