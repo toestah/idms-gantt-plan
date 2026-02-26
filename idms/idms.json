@@ -71,11 +71,11 @@
       "name": "Deploy Pipeline to Dev (T-Cloud)",
       "workstream": "datapipeline",
       "start": "2026-02-12",
-      "end": "2026-02-25",
+      "end": "2026-03-03",
       "owner": "Ajay/Dale/Mark",
       "status": "delayed",
-      "percent_complete": 20,
-      "notes": "DELAYED: Blocked on Terraform completion (target Feb 20) and backend deployment. Mark meeting with AJ on Terraform structure for pipeline code. Transitioning to actual data in T-Cloud cloud storage."
+      "percent_complete": 55,
+      "notes": "DELAYED: Ajay completed Secrets Manager integration (IDMS-515, Feb 24). Mark removing Terraform data blocks (target Feb 25). Pipeline code ready but Terraform alignment across repos ongoing. Transitioning to actual data in T-Cloud cloud storage."
     },
     {
       "id": "dp3",
@@ -125,22 +125,22 @@
       "name": "Dev Terraform Full Provisioning",
       "workstream": "gcp",
       "start": "2026-02-12",
-      "end": "2026-02-20",
+      "end": "2026-02-28",
       "owner": "Ajay/Dale",
-      "status": "in_progress",
-      "percent_complete": 85,
-      "notes": "Terraform nearly complete. AJ curating scripts for T-Cloud (VPC details, project names). Target: Feb 20."
+      "status": "delayed",
+      "percent_complete": 92,
+      "notes": "DELAYED past Feb 20 target. Core infra provisioned. Secrets Manager done (Feb 24). Remaining: Terraform data block removal, CloudSQL connectivity (needs VPC peering custom routes + FW exception from T-Cloud). Frontend + backend deployed and reachable from IRS network."
     },
     {
       "id": "gcp2",
       "name": "Pre-Prod Environment Setup",
       "workstream": "gcp",
       "start": "2026-02-20",
-      "end": "2026-02-27",
+      "end": "2026-03-06",
       "owner": "Dale/Ajay",
-      "status": "delayed",
-      "percent_complete": 10,
-      "notes": "DELAYED from original Feb 13 target. No deployment box in pre-prod yet. Dan Bolton access loss blocking subnet changes. Target: Feb 27."
+      "status": "blocked",
+      "percent_complete": 20,
+      "notes": "BLOCKED: 3 of 8 Phase 1 prerequisites complete (all Aretec-owned items). Remaining 5 depend on T-Cloud/IRS (DNS, firewall, Dataflow subnet, FW rules, IAM roles). Deployment box TF code not working — escalated by Chris Good to Chris Lucas and Caric (Feb 24). Dan Bolton access loss still blocking subnet changes."
     },
     {
       "id": "gcp3",
@@ -168,11 +168,11 @@
       "name": "Terraform IaC Finalization",
       "workstream": "gcp",
       "start": "2026-01-26",
-      "end": "2026-02-20",
+      "end": "2026-02-28",
       "owner": "Ajay / Dale",
-      "status": "in_progress",
-      "percent_complete": 90,
-      "notes": "DELAYED from original Feb 13 target. Nearly complete. Dale proved out secret usage. AJ curating Terraform for T-Cloud environment. Target completion: Feb 20."
+      "status": "delayed",
+      "percent_complete": 93,
+      "notes": "DELAYED past Feb 20 target. Modular Terraform library complete for all components. Secrets Manager integration done. Remaining: data block cleanup in Dataflow TF, CloudSQL connectivity fix. IaC proven in Dev — same modules parameterized for Pre-Prod/Prod."
     },
     {
       "id": "net1",
@@ -183,7 +183,18 @@
       "owner": "Irfan",
       "status": "complete",
       "percent_complete": 100,
-      "notes": "Internal API routing done. Apigee-side ALB in CMN code ready. Apigee endpoint ready in 1-2 days (as of Feb 19)."
+      "notes": "Complete. Internal API routing done. Apigee-side ALB in CMN code ready."
+    },
+    {
+      "id": "net1b",
+      "name": "LB NEG Configuration (Search/ADK/Backend)",
+      "workstream": "network",
+      "start": "2026-02-25",
+      "end": "2026-02-28",
+      "owner": "Irfan",
+      "status": "in_progress",
+      "percent_complete": 30,
+      "notes": "Irfan updating search load balancer code to add NEGs (Network Endpoint Groups) for search, ADK, backend, and supporting code — so the LB routes traffic to the correct services."
     },
     {
       "id": "net2",
@@ -246,20 +257,20 @@
       "start": "2026-03-02",
       "end": "2026-03-09",
       "owner": "Waqas/Irfan",
-      "status": "delayed",
-      "percent_complete": 10,
-      "notes": "DELAYED from Feb 16-20 target. Dev partial: DNS works, IRS firewall works, but traffic stuck between AT&T NetBond and T-Cloud firewall. AT&T meetings Feb 18 + Feb 25. Pre-Prod/Prod blocked on FCR and DNS."
+      "status": "in_progress",
+      "percent_complete": 45,
+      "notes": "Dev COMPLETE: IRS-to-T-Cloud connectivity established Feb 21. T-Cloud added firewall exception for IRS proxy CIDRs. IDMS Dev reachable from IRS network. Pre-Prod/Prod validation still blocked on FCR and DNS for higher environments."
     },
     {
       "id": "net7",
-      "name": "EAG Implementation (EPZ Workaround)",
+      "name": "EAG Implementation (Salesforce/eCite Path)",
       "workstream": "network",
       "start": "2026-01-26",
       "end": "2026-03-06",
       "owner": "Waqas/Chris Good",
       "status": "delayed",
-      "percent_complete": 15,
-      "notes": "DELAYED: EPZ abandoned. EAG form submitted Feb 11. AT&T NetBond meetings held Feb 12, Feb 18. Issue: AT&T not forwarding traffic to GCP. Next meeting Feb 25 with correct T-Cloud personnel. IRS-side firewall confirmed good."
+      "percent_complete": 25,
+      "notes": "DELAYED: EPZ abandoned. IRS-to-T-Cloud NetBond connectivity RESOLVED (Feb 21) — but Salesforce/eCite path still requires EAG. EAG form submitted Feb 11. AT&T meetings held Feb 12, 18, 25. Separate path from now-resolved IRS connectivity."
     },
     {
       "id": "mon1",
@@ -276,11 +287,11 @@
       "name": "Logging Pipeline Configuration",
       "workstream": "monitoring",
       "start": "2026-02-06",
-      "end": "2026-02-25",
+      "end": "2026-02-27",
       "owner": "Samia",
       "status": "in_progress",
-      "percent_complete": 40,
-      "notes": "Samia working on logging and monitoring (ticket 509). Follow-up meeting scheduled. Extended from Feb 18."
+      "percent_complete": 85,
+      "notes": "Audit event logging to database complete and deployed to T-Cloud Dev. Splunk integration configuration submitted. Smoke test validation of logging output in progress. Samia coordinating with Maham on ATO evidence alignment."
     },
     {
       "id": "mon3",
@@ -307,11 +318,11 @@
       "name": "UI Logging Development and Testing",
       "workstream": "monitoring",
       "start": "2026-02-02",
-      "end": "2026-02-20",
+      "end": "2026-02-24",
       "owner": "Michael/Samia",
-      "status": "in_progress",
-      "percent_complete": 65,
-      "notes": "Michael continuing IDMS-34, phase 2 target Feb 19. Requested sandbox Postgres creds to verify audit logs."
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Complete. UI logging implemented (phases 1 and 2). Audit event logging to database deployed to T-Cloud Dev."
     },
     {
       "id": "ato1",
@@ -342,9 +353,9 @@
       "start": "2026-02-09",
       "end": "2026-03-13",
       "owner": "Maham",
-      "status": "delayed",
-      "percent_complete": 15,
-      "notes": "DELAYED: Extended from Feb 20 target. Evidence gathering ongoing but blocked by pre-prod delays. VLDAP SSO blockers remain. Maham also focused on DocAI finalization."
+      "status": "in_progress",
+      "percent_complete": 30,
+      "notes": "DELAYED but progressing. Maham meeting with Patrick (IRS security assessor) for ATO evidence discussions. 15 controls in Qmulos. DocAI finalization now complete, freeing Maham to focus on ATO. VLDAP SSO still a blocker for some controls. Pre-Prod evidence still depends on environment availability."
     },
     {
       "id": "ato5",
@@ -464,8 +475,8 @@
       "end": "2026-02-27",
       "owner": "Eric",
       "status": "in_progress",
-      "percent_complete": 50,
-      "notes": "In progress. Eric incorporating feedback into matters page and table (Feb 19). Extended from Feb 20."
+      "percent_complete": 65,
+      "notes": "Eric continuing refinement on matters and matter details pages. 3 tickets moved to Done (design phase). Figma consolidated. Needs to schedule time with Waqas to review research/folders page requirements."
     },
     {
       "id": "ui1",
@@ -486,19 +497,19 @@
       "end": "2026-02-27",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 50,
-      "notes": "UI: AI chat interface development and refinement. Extended from Feb 20."
+      "percent_complete": 60,
+      "notes": "UI: AI chat interface. Matters detail changes pushed to Dev (IDMS-501/502/503 done). Working on IDMS-513, investigating IDMS-516/517 (main matters table updates)."
     },
     {
       "id": "ui3",
       "name": "Develop Document Collaboration and DocAI HITL",
       "workstream": "uiux",
       "start": "2026-02-02",
-      "end": "2026-02-20",
+      "end": "2026-02-27",
       "owner": "Michael",
       "status": "in_progress",
-      "percent_complete": 55,
-      "notes": "UI: Google Drive integration and Document Verification (HITL) functionality. Extended from Feb 13."
+      "percent_complete": 60,
+      "notes": "UI: Google Drive integration and HITL functionality. Extended from Feb 20. DocAI processors now finalized, enabling HITL UI integration."
     },
     {
       "id": "ui4",
@@ -560,32 +571,32 @@
       "workstream": "docsearch",
       "start": "2026-01-26",
       "end": "2026-02-20",
-      "owner": "Samia/Ajay",
-      "status": "in_progress",
-      "percent_complete": 75,
-      "notes": "Extended from Feb 13. Ongoing refinement."
+      "owner": "Samia/Taimur",
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Complete. Backend caching (SearchCache + signed URL cache), parallel URL signing, Gunicorn tuning, page size optimization. Frontend AbortController and response time metrics. API stabilized."
     },
     {
       "id": "ds3",
       "name": "Search Quality Evaluation",
       "workstream": "docsearch",
-      "start": "2026-02-20",
-      "end": "2026-03-06",
+      "start": "2026-01-15",
+      "end": "2026-02-13",
       "owner": "Samia",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "Shifted from Feb 9 start."
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Complete (ahead of gantt schedule). Ground truth datasets built, evaluation metrics calculator developed (DCG@K scoring, 95% similarity matching). Final evaluation results documented. Relevance thresholds tuned based on results."
     },
     {
       "id": "ds4",
       "name": "Search Tuning & Optimization",
       "workstream": "docsearch",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
-      "owner": "Samia",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "Shifted from Feb 17 start."
+      "start": "2026-02-09",
+      "end": "2026-02-13",
+      "owner": "Taimur/Samia",
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Complete (ahead of gantt schedule). Discovery Engine relevance threshold tuned, extractive segment scoring enabled with relevance filtering. Backend: search cache, signed URL cache, parallel signing, server tuning. Frontend: request cancellation, response time tracking."
     },
     {
       "id": "ds5",
@@ -689,22 +700,22 @@
       "name": "AUR SNOD Model Training",
       "workstream": "docai",
       "start": "2026-01-30",
-      "end": "2026-02-20",
+      "end": "2026-02-24",
       "owner": "Maham",
-      "status": "in_progress",
-      "percent_complete": 95,
-      "notes": "Validated by Spencer Hitt and Stan (Feb 18). ~90% of entities confirmed aligned. Maham finalizing minor tweaks by Feb 20. Final review then DONE."
+      "status": "complete",
+      "percent_complete": 100,
+      "notes": "Complete. All 8 DocAI processors assembled and working (confirmed Feb 24). Validated by Spencer Hitt and Stan. Coordinating with Mark to deploy first processor to Dev environment."
     },
     {
       "id": "dai5",
       "name": "DocAI HITL Workflow Integration",
       "workstream": "docai",
-      "start": "2026-02-20",
-      "end": "2026-03-06",
+      "start": "2026-02-26",
+      "end": "2026-03-10",
       "owner": "Ajay / Michael",
-      "status": "not_started",
-      "percent_complete": 0,
-      "notes": "Shifted from Feb 9 start. Models need to be finalized first."
+      "status": "in_progress",
+      "percent_complete": 10,
+      "notes": "Models now finalized (all 8 processors working). Maham coordinating with Mark to deploy first processor to Dev. HITL UI integration can begin."
     },
     {
       "id": "dai6",
@@ -722,11 +733,11 @@
       "name": "Initial Data Ingestion (Dev)",
       "workstream": "docsearch",
       "start": "2026-01-27",
-      "end": "2026-02-25",
+      "end": "2026-03-03",
       "owner": "Waqas/Mark",
       "status": "delayed",
-      "percent_complete": 55,
-      "notes": "DELAYED: Transitioning from synthetic to actual data in T-Cloud. Data available in T-Cloud cloud storage. Waqas loaded ~6M docket records into sandbox. Extended from Feb 7."
+      "percent_complete": 70,
+      "notes": "DELAYED: Data available in T-Cloud cloud storage. ~6M docket records loaded in sandbox. Transitioning to actual data in T-Cloud Dev. Pipeline code ready but Terraform/Dataflow alignment in progress."
     },
     {
       "id": "data2",
@@ -838,10 +849,10 @@
     },
     {
       "id": "ms_docai",
-      "name": "All 4 DocAI Models Trained",
-      "date": "2026-02-20",
+      "name": "All 8 DocAI Processors Complete",
+      "date": "2026-02-24",
       "workstream": "docai",
-      "status": "on_track"
+      "status": "complete"
     },
     {
       "id": "ms_preprod",
@@ -860,9 +871,9 @@
     {
       "id": "ms_search",
       "name": "Search Quality Validated",
-      "date": "2026-03-13",
+      "date": "2026-02-13",
       "workstream": "docsearch",
-      "status": "at_risk"
+      "status": "complete"
     },
     {
       "id": "ms_cato_approved",
@@ -1030,8 +1041,8 @@
   "date_markers": [
     {
       "id": "today",
-      "name": "Today (Feb 19)",
-      "date": "2026-02-19",
+      "name": "Today (Feb 26)",
+      "date": "2026-02-26",
       "color": "#4CAF50",
       "style": "solid"
     },
@@ -1096,14 +1107,13 @@
   "risks": [
     {
       "id": "r1",
-      "name": "EPZ Timeline + AT&T NetBond Forwarding",
-      "description": "EPZ not available until Oct 2026. AT&T NetBond alternative being pursued but traffic stuck — AT&T not forwarding to GCP. IRS-side firewall confirmed good.",
-      "severity": "high",
-      "likelihood": "high",
-      "status": "open",
-      "mitigation": "AT&T meetings Feb 18 + Feb 25. EAG form submitted. IRS-side confirmed working. Need T-Cloud firewall permanent exception for NetBond traffic.",
+      "name": "Salesforce/eCite Network Path (EAG)",
+      "description": "IRS-to-T-Cloud connectivity RESOLVED (Feb 21) — T-Cloud added permanent firewall exception for IRS proxy CIDRs. However, Salesforce/eCite connectivity still requires separate EAG path via AT&T NetBond. EPZ not available until Oct 2026.",
+      "severity": "medium",
+      "likelihood": "medium",
+      "status": "monitoring",
+      "mitigation": "EAG form submitted Feb 11. AT&T meetings held Feb 12, 18, 25. IRS-to-T-Cloud path is resolved — this risk now only affects Salesforce integration. 2 Salesforce engineers available to update POC APIs once connectivity established.",
       "affected": [
-        "net6",
         "net7",
         "data2"
       ]
@@ -1125,11 +1135,11 @@
     {
       "id": "r3",
       "name": "PSC Implementation",
-      "description": "Private Service Connect needed for GKE control plane access.",
+      "description": "Private Service Connect needed for GKE control plane access. Fully resolved in Dev.",
       "severity": "low",
       "likelihood": "low",
-      "status": "mitigated",
-      "mitigation": "PSC endpoint created (confirmed Feb 11). Deployment box configured by Aretec. GKE control plane accessible.",
+      "status": "closed",
+      "mitigation": "CLOSED: PSC endpoint created (Feb 11). Deployment box configured by Aretec. GKE control plane accessible. Same pattern applies to Pre-Prod/Prod.",
       "affected": [
         "net3"
       ]
@@ -1137,11 +1147,11 @@
     {
       "id": "r4",
       "name": "DocAI Sample Data",
-      "description": "4th DocAI document type (AUR SNOD) needed samples from Spencer Hitt.",
+      "description": "All 8 DocAI processors assembled and validated. Risk fully resolved.",
       "severity": "low",
       "likelihood": "low",
-      "status": "mitigated",
-      "mitigation": "All 4 models validated by Spencer Hitt and Stan (Feb 18). ~90% entity alignment confirmed. Maham finalizing by Feb 20.",
+      "status": "closed",
+      "mitigation": "CLOSED (Feb 24): All 8 processors working. Validated by Spencer Hitt and Stan. Maham coordinating first processor deployment to Dev with Mark.",
       "affected": [
         "dai4",
         "ms_docai"
@@ -1214,11 +1224,11 @@
     {
       "id": "r9",
       "name": "Pre-Prod Deployment Box",
-      "description": "No deployment box in pre-prod environment. Blocks all pre-prod deployment activity.",
+      "description": "No deployment box in pre-prod environment. Terraform code for stg/prod deployment hosts not working. Blocks all pre-prod deployment activity.",
       "severity": "high",
-      "likelihood": "medium",
+      "likelihood": "high",
       "status": "open",
-      "mitigation": "Aretec configured own deployment box for Dev (T-Cloud reversed stance). Need to repeat for Pre-Prod. Target: before Feb 27.",
+      "mitigation": "Chris Good escalated to Chris Lucas and Caric (Feb 24). Praveen's partial solution deemed unacceptable. Fallback: manual deploy from existing box, but GKE VPC connectivity issue remains. Critical path for Feb 27 Pre-Prod target.",
       "affected": [
         "gcp2",
         "dp3",
