@@ -337,14 +337,14 @@
     },
     {
       "id": "ato3",
-      "name": "[C-ATO] Remediate Findings (Pre-Prod)",
+      "name": "[C-ATO] Remediate Assessment Findings",
       "workstream": "ato",
-      "start": "2026-02-27",
-      "end": "2026-03-13",
-      "owner": "Control Owners",
-      "status": "delayed",
-      "percent_complete": 5,
-      "notes": "DELAYED: Depends on Pre-Prod deployment (target Feb 27). Cannot remediate until environment exists. Original target was Feb 9-20."
+      "start": "2026-03-19",
+      "end": "2026-03-24",
+      "owner": "Maham/Karthik/Control Owners",
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Remediate findings flagged by IRS assessment team after their 10-day review. Runs parallel with feedback/AO decision window."
     },
     {
       "id": "ato4",
@@ -1023,6 +1023,12 @@
       "to": "net6",
       "type": "finish_to_start",
       "notes": "EPZ workaround must be in place for E2E network validation"
+    },
+    {
+      "from": "ato6",
+      "to": "ato3",
+      "type": "finish_to_start",
+      "notes": "Assessment findings can only be remediated after IRS review completes"
     },
     {
       "from": "ato13",
