@@ -136,7 +136,7 @@
       "name": "Pre-Prod Environment Setup",
       "workstream": "gcp",
       "start": "2026-02-20",
-      "end": "2026-03-06",
+      "end": "2026-03-07",
       "owner": "Dale/Ajay",
       "status": "blocked",
       "percent_complete": 20,
@@ -351,40 +351,40 @@
       "name": "[C-ATO] Finalize Control Documentation + Gather Evidence",
       "workstream": "ato",
       "start": "2026-02-09",
-      "end": "2026-03-13",
-      "owner": "Maham",
+      "end": "2026-03-03",
+      "owner": "Maham/Karthik",
       "status": "in_progress",
-      "percent_complete": 30,
-      "notes": "DELAYED but progressing. Maham meeting with Patrick (IRS security assessor) for ATO evidence discussions. 15 controls in Qmulos. DocAI finalization now complete, freeing Maham to focus on ATO. VLDAP SSO still a blocker for some controls. Pre-Prod evidence still depends on environment availability."
+      "percent_complete": 70,
+      "notes": "Active push toward Mar 4 submission. Maham and Karthik reviewed with Patrick Rommel (Feb 25). 15 controls in Qmulos. DocAI finalization nearly complete, freeing Maham to focus on ATO. VLDAP SSO still a blocker for some controls."
     },
     {
       "id": "ato5",
       "name": "[C-ATO] Submit C-ATO Package",
       "workstream": "ato",
-      "start": "2026-03-13",
-      "end": "2026-03-16",
-      "owner": "Maham",
-      "status": "delayed",
-      "percent_complete": 0,
-      "notes": "DELAYED: Original target Feb 17-21. Shifted due to pre-prod delays and incomplete evidence gathering. New target: mid-March."
+      "start": "2026-03-02",
+      "end": "2026-03-04",
+      "owner": "Maham/Karthik",
+      "status": "in_progress",
+      "percent_complete": 60,
+      "notes": "DELAYED from original Feb 17-21 target but actively progressing. Maham and Karthik reviewed with Patrick Rommel (Feb 25). Target submission: Wed Mar 4."
     },
     {
       "id": "ato6",
       "name": "[C-ATO] IRS Assessment Team Review",
       "workstream": "ato",
-      "start": "2026-03-16",
-      "end": "2026-03-27",
+      "start": "2026-03-05",
+      "end": "2026-03-19",
       "owner": "IRS",
-      "status": "delayed",
+      "status": "not_started",
       "percent_complete": 0,
-      "notes": "DELAYED: ~10 business days for IRS review. Shifted from Feb 23 start due to upstream delays."
+      "notes": "~10 business days for IRS review. Begins after C-ATO submission (target Mar 4)."
     },
     {
       "id": "ato7",
       "name": "[C-ATO] Address Feedback + Resubmit",
       "workstream": "ato",
-      "start": "2026-03-30",
-      "end": "2026-04-02",
+      "start": "2026-03-20",
+      "end": "2026-03-25",
       "owner": "Maham/Control Owners",
       "status": "not_started",
       "percent_complete": 0,
@@ -394,8 +394,8 @@
       "id": "ato8",
       "name": "[C-ATO] AO Review → C-ATO Decision",
       "workstream": "ato",
-      "start": "2026-04-03",
-      "end": "2026-04-09",
+      "start": "2026-03-26",
+      "end": "2026-04-02",
       "owner": "IRS AO",
       "status": "at_risk",
       "percent_complete": 0,
@@ -580,7 +580,7 @@
       "id": "ds3",
       "name": "Search Quality Evaluation",
       "workstream": "docsearch",
-      "start": "2026-01-15",
+      "start": "2026-01-26",
       "end": "2026-02-13",
       "owner": "Samia",
       "status": "complete",
@@ -704,7 +704,18 @@
       "owner": "Maham",
       "status": "complete",
       "percent_complete": 100,
-      "notes": "Complete. All 8 DocAI processors assembled and working (confirmed Feb 24). Validated by Spencer Hitt and Stan. Coordinating with Mark to deploy first processor to Dev environment."
+      "notes": "Complete. All 8 DocAI processors assembled and working (confirmed Feb 24). Validated by Spencer Hitt and Stan."
+    },
+    {
+      "id": "dai4b",
+      "name": "DocAI Processor Final Tweaks (Spencer Feedback)",
+      "workstream": "docai",
+      "start": "2026-02-25",
+      "end": "2026-02-27",
+      "owner": "Maham",
+      "status": "in_progress",
+      "percent_complete": 40,
+      "notes": "Spencer provided minor tweaks during this week's review. Waiting on additional documents from Karthik (expected today Feb 26). Once received, Maham needs ~1 day to resolve. Target: Fri Feb 27."
     },
     {
       "id": "dai5",
@@ -857,7 +868,7 @@
     {
       "id": "ms_preprod",
       "name": "Pre-Prod Environment Ready",
-      "date": "2026-02-27",
+      "date": "2026-03-06",
       "workstream": "gcp",
       "status": "delayed"
     },
@@ -878,7 +889,7 @@
     {
       "id": "ms_cato_approved",
       "name": "C-ATO Approved",
-      "date": "2026-04-09",
+      "date": "2026-04-02",
       "workstream": "ato",
       "status": "at_risk"
     },
@@ -1056,21 +1067,21 @@
     {
       "id": "preprod_ready",
       "name": "Pre-Prod Target (DELAYED)",
-      "date": "2026-02-27",
+      "date": "2026-03-06",
       "color": "#FF0000",
       "style": "dashed"
     },
     {
       "id": "cato_submit",
-      "name": "C-ATO Submission (DELAYED)",
-      "date": "2026-03-16",
+      "name": "C-ATO Submission Target",
+      "date": "2026-03-04",
       "color": "#FF0000",
       "style": "dashed"
     },
     {
       "id": "cato_approved",
       "name": "C-ATO Approved (Target)",
-      "date": "2026-04-09",
+      "date": "2026-04-02",
       "color": "#EA4335",
       "style": "solid"
     },
