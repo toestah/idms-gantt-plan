@@ -146,12 +146,12 @@
       "id": "gcp3",
       "name": "Prod Environment Build (GKE + Apigee (routes))",
       "workstream": "gcp",
-      "start": "2026-03-02",
-      "end": "2026-03-13",
+      "start": "2026-03-24",
+      "end": "2026-04-04",
       "owner": "Dale/Irfan",
       "status": "blocked",
       "percent_complete": 0,
-      "notes": "BLOCKED: Depends on Pre-Prod completion and C-ATO. Dan Bolton access loss blocking subnet changes."
+      "notes": "BLOCKED: Waiting on C-ATO approval (~Mar 24). Same Terraform modules as Dev/Pre-Prod, parameterized for Prod. Dan Bolton access loss still a risk for subnet changes."
     },
     {
       "id": "gcp4",
@@ -252,14 +252,14 @@
     },
     {
       "id": "net6",
-      "name": "E2E Network Connectivity Validation",
+      "name": "E2E Network Connectivity Validation (Pre-Prod)",
       "workstream": "network",
-      "start": "2026-03-02",
-      "end": "2026-03-09",
+      "start": "2026-03-07",
+      "end": "2026-03-13",
       "owner": "Waqas/Irfan",
-      "status": "in_progress",
-      "percent_complete": 45,
-      "notes": "Dev COMPLETE: IRS-to-T-Cloud connectivity established Feb 21. T-Cloud added firewall exception for IRS proxy CIDRs. IDMS Dev reachable from IRS network. Pre-Prod/Prod validation still blocked on FCR and DNS for higher environments."
+      "status": "not_started",
+      "percent_complete": 0,
+      "notes": "Dev DONE (Feb 21): IRS-to-T-Cloud connectivity established, IDMS Dev reachable from IRS network. This task covers Pre-Prod E2E validation after that environment is deployed (target Mar 6)."
     },
     {
       "id": "net7",
@@ -373,33 +373,33 @@
       "name": "[C-ATO] IRS Assessment Team Review",
       "workstream": "ato",
       "start": "2026-03-05",
-      "end": "2026-03-19",
+      "end": "2026-03-18",
       "owner": "IRS",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "~10 business days for IRS review. Begins after C-ATO submission (target Mar 4)."
+      "notes": "10 business day review. Begins day after C-ATO submission (Mar 4). Expected completion: Mar 18."
     },
     {
       "id": "ato7",
-      "name": "[C-ATO] Address Feedback + Resubmit",
+      "name": "[C-ATO] Address Feedback (if needed)",
       "workstream": "ato",
-      "start": "2026-03-20",
-      "end": "2026-03-25",
-      "owner": "Maham/Control Owners",
+      "start": "2026-03-19",
+      "end": "2026-03-20",
+      "owner": "Maham/Karthik",
       "status": "not_started",
       "percent_complete": 0,
-      "notes": "C-ATO: Resolve gaps, resubmit if needed. Compressed timeline."
+      "notes": "Contingency buffer for minor feedback. Expecting clean pass based on Patrick Rommel review."
     },
     {
       "id": "ato8",
       "name": "[C-ATO] AO Review → C-ATO Decision",
       "workstream": "ato",
-      "start": "2026-03-26",
-      "end": "2026-04-02",
+      "start": "2026-03-20",
+      "end": "2026-03-24",
       "owner": "IRS AO",
-      "status": "at_risk",
+      "status": "not_started",
       "percent_complete": 0,
-      "notes": "AT RISK: Dangerously close to PoP end (Apr 15). If C-ATO not granted by ~Apr 9, prod deployment cannot happen before PoP end."
+      "notes": "AO signs off after assessment review. Target: C-ATO granted by ~Mar 24."
     },
     {
       "id": "ato9",
@@ -889,16 +889,16 @@
     {
       "id": "ms_cato_approved",
       "name": "C-ATO Approved",
-      "date": "2026-04-02",
+      "date": "2026-03-24",
       "workstream": "ato",
       "status": "at_risk"
     },
     {
       "id": "ms_prod_ready",
       "name": "Prod Environment Ready",
-      "date": "2026-04-03",
+      "date": "2026-04-04",
       "workstream": "gcp",
-      "status": "at_risk"
+      "status": "on_track"
     },
     {
       "id": "ms_uat",
@@ -941,16 +941,16 @@
       "notes": "Pre-Prod setup must complete for Pre-Prod Ready milestone"
     },
     {
-      "from": "net6",
-      "to": "ms_preprod",
+      "from": "ms_preprod",
+      "to": "net6",
       "type": "finish_to_start",
-      "notes": "E2E network validation must complete for Pre-Prod Ready"
+      "notes": "Pre-Prod must be deployed before E2E network validation in that environment"
     },
     {
-      "from": "ms_preprod",
-      "to": "ato5",
+      "from": "ms_cato_approved",
+      "to": "gcp3",
       "type": "finish_to_start",
-      "notes": "Pre-Prod must be ready before C-ATO can be submitted"
+      "notes": "C-ATO must be granted before Prod environment build can begin"
     },
     {
       "from": "ato4",
@@ -1081,14 +1081,14 @@
     {
       "id": "cato_approved",
       "name": "C-ATO Approved (Target)",
-      "date": "2026-04-02",
+      "date": "2026-03-24",
       "color": "#EA4335",
       "style": "solid"
     },
     {
       "id": "prod_limited",
-      "name": "Prod Release 1 (AT RISK)",
-      "date": "2026-04-03",
+      "name": "Prod Release 1",
+      "date": "2026-04-04",
       "color": "#F44336",
       "style": "dashed"
     },
@@ -1171,11 +1171,11 @@
     {
       "id": "r5",
       "name": "C-ATO Review Timeline → PoP Compression",
-      "description": "C-ATO submission delayed from Feb 17-21 to mid-March. IRS review takes ~10 business days. C-ATO decision now targets Apr 9 — only 6 days before PoP end (Apr 15). Prod deployment, data transfer, hypercare ALL compressed.",
-      "severity": "high",
-      "likelihood": "high",
-      "status": "open",
-      "mitigation": "Submit as early as possible. Prepare all evidence in parallel. Consider requesting PoP extension NOW if ATO timeline cannot be compressed.",
+      "description": "C-ATO submission targeting Mar 4 (delayed from Feb 17-21). 10 business day IRS review → C-ATO decision ~Mar 24. This gives ~3 weeks before PoP end (Apr 15) for Prod build, data transfer, and hypercare.",
+      "severity": "medium",
+      "likelihood": "medium",
+      "status": "monitoring",
+      "mitigation": "Maham/Karthik reviewed with Patrick Rommel (Feb 25). Submitting Mar 4. Timeline is tight but achievable if review goes cleanly. All evidence being prepared in parallel.",
       "affected": [
         "ato5",
         "ato6",
